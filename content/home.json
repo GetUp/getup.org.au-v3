@@ -1,0 +1,146 @@
+{
+  "header": {
+    "title": "People.  Power. <span class=\"underlined underlined--white\">Impact.</span>",
+    "description": "Join over a million GetUp members fighting for a fair, flourishing, and just Australia.",
+    "image": "/images/uploads/members-jumping-with-htvs.jpg",
+    "buttonPrimary": {
+      "label": "Create Petition +",
+      "link": "https://petitions.getup.org.au/petition/start?source=root",
+      "path": "https://petitions.getup.org.au"
+    },
+    "buttonSecondary": {
+      "label": "Donate",
+      "path": "/donate"
+    }
+  },
+  "secondaryAsk": {
+    "heading": "Join the GetUp crew!",
+    "body": [
+      "Join our Crew and be the driving force behind Australia’s most powerful movement for change. Crew members achieve extraordinary impact—protecting our environment, championing human rights and First Nations justice, and fighting for a fairer society. ",
+      "When Crew members speak, the powerful listen. Since 2005, our Crew have made it possible for us to plan big, tackle bold long-term goals, and remain fiercely independent—free to challenge big money and party politics while staying accountable to the people who power our work.",
+      "Your voice matters. Your actions make a difference. Together, we achieve the extraordinary."
+    ],
+    "link": "/donate/crew",
+    "button": "Step up. Power change."
+  },
+  "takeActionNow": {
+    "heading": "Take action now!",
+    "featured": [
+      {
+        "heading": "No to AUKUS, no to war!",
+        "excerpt": "The AUKUS pact ties us to decades of nuclear militarism and a potential future war. Right now, Trump officials want Australia to go even further. But with AUKUS under review in the US and UK, we have a rare chance to act. Add your name to demand an inquiry and walk away.",
+        "link": "https://www.getup.org.au/campaigns/democracy-55c3bc1d-01f0-407d-88c8-92dd9ce94d43/walk-away-from-aukus/review-and-walk-away-from-aukus",
+        "image": "/images/uploads/aukus-sub-creative-commons-license.webp"
+      },
+      {
+        "heading": "✍️ Ban gambling ads now",
+        "excerpt": "Gambling ads are flooding our screens – during sport, on TV, and even in \"family\" programming. The result? Teenagers in Australia are now more likely to have gambled in the past year than played soccer, basketball, or cricket. Let's take gambling ads off our screens for good.",
+        "link": "https://www.getup.org.au/campaigns/gambling-in-sport/ban-gambling-ads-now/ban-gambling-ads-now",
+        "image": "/images/uploads/image_23954_full.png"
+      }
+    ],
+    "other": [
+      {
+        "link": "https://www.getup.org.au/campaigns/economic-fairness-30a37751-ec16-4026-a076-e283f3b4092f/healthcare-affordable-for-all-1b860130-d89e-4e5c-833c-ca1c07013cf1/affordable-healthcare-for-all",
+        "excerpt": "Everyday people are paying more out of pocket than ever before for basic GP visits. Everyone should be able to see their GP without worrying about how much it will cost. Sign the petition to demand urgent government action to make healthcare accessible for all!",
+        "heading": "Affordable healthcare for all!",
+        "image": "/images/uploads/guhealth.jpg"
+      },
+      {
+        "excerpt": "Property investors and their lobbyists want to keep prices sky high, but we won't let them. Housing is a human right - will you add your name to this petition and show Labor that the nation is ready for ambitious housing reform?",
+        "heading": "Bold reforms for affordable housing!",
+        "link": "https://www.getup.org.au/campaigns/economic-fairness-30a37751-ec16-4026-a076-e283f3b4092f/we-need-bold-reforms-for-affordable-housing/we-need-bold-reforms-for-affordable-housing",
+        "image": "/images/uploads/guhouse.jpg"
+      },
+      {
+        "heading": "Share your cost of living story!",
+        "excerpt": "We're crowdsourcing stories from everyday people to shine a light on the true impact of rising living costs across the country. From skyrocketing grocery prices to soaring utility bills, your stories are crucial in shaping the conversation. Our map is live! Click here to view the map, read the stories and add your own.",
+        "link": "https://www.getup.org.au/campaigns/democracy/cost-of-living-map-3f90f749-eb35-45c2-a52e-dfff192965cf/getup-cost-of-living-map",
+        "image": "/images/uploads/col-map.jpg"
+      },
+      {
+        "excerpt": "At GetUp, our power isn’t just in our campaigns—it’s in you. Every action, every donation, every volunteer hour fuels a movement that belongs to all of us. Together, we’ve built something extraordinary, and now, as we embark on our next chapter of growth, we need your voice more than ever.  We’re inviting you to help shape what comes next. This is your movement, and your vision will guide it. Take our member survey today and let’s dream, build, and fight for the future we want—together!",
+        "heading": "Help us shape our movement!",
+        "link": "https://www.getup.org.au/member-survey",
+        "image": "/images/uploads/members-about-page-1-.jpg"
+      }
+    ]
+  },
+  "hero": {
+    "heading": "People. Power. Impact.",
+    "description": "GetUp is a powerful campaigning community. Our movement combines the sheer power of a million members, strategic partners, and a central team of experienced campaigners. Online and offline, we’ve got the people power, and expertise to influence outcomes and hold key decision makers to account.",
+    "button": "Step up. Power change.",
+    "secondaryButton": {
+      "label": "Take action now!",
+      "path": "/take-action"
+    }
+  },
+  "whatIsGetUp": {
+    "heading": "GetUp is a powerful campaigning community.",
+    "body": [
+      "Our movement combines the sheer power of a million members, strategic partners, and a central team of experienced campaigners. Online and offline, we’ve got the people power, and expertise to influence outcomes and hold key decision makers to account.",
+      "GetUp is, and always has been, an independent organisation. Our work is driven by our values, not party politics, and seeks to make real change — not just noise. "
+    ],
+    "images": [
+      "/images/11214726173_8ba682dbbd_k.jpg",
+      "/images/14932567354_8ca75db8b5_o.jpg"
+    ],
+    "impactStats": {
+      "heading": "Our Impact: This Month",
+      "stats": [
+        {
+          "label": "Small Donors",
+          "value": "10,837"
+        },
+        {
+          "label": "Average Donations",
+          "value": "$21.00"
+        },
+        {
+          "label": "Actions Taken",
+          "value": "42,351"
+        }
+      ]
+    }
+  },
+  "mission": {
+    "heading": "Everyday Australians making an extraordinary impact.",
+    "body": "GetUp focuses and amplifies your voice alongside a million others so that you're not just heard – you make a real difference. You help set the strategy, you choose the issues you want to work on, and together, we make a huge impact.",
+    "quote": {
+      "text": "Thanks for being there and making it easier for the little person to have an impact.",
+      "author": "Karen",
+      "authorLabel": "GetUp Member since 2012"
+    },
+    "buttonPrimary": {
+      "label": "Create Petition +",
+      "link": "https://petitions.getup.org.au/petition/start?source=root"
+    },
+    "buttonSecondary": {
+      "label": "Donate",
+      "path": "/donate"
+    }
+  },
+  "values": {
+    "heading": "Our values",
+    "items": [
+      {
+        "heading": "Fair",
+        "body": "GetUp members are campaigning for a fairer taxation system, a better education for every child, and a comprehensive welfare system that protects society's most vulnerable. We’re also fighting for stronger national heritage laws that protect Aboriginal and Torres Strait Islander sacred sites and culture. ",
+        "image": "/images/invasion-day-rally.jpg"
+      },
+      {
+        "heading": "Flourishing",
+        "body": "In a crucial decade for our planet, GetUp members are pushing the government to take action to prevent climate change and pave the way towards a renewable energy future. We also stand for the ongoing protection of our forests, oceans and wildlife. ",
+        "image": "/images/uploads/img_8284_720-1-.jpg"
+      },
+      {
+        "heading": "Just",
+        "body": "GetUp members believe in a fair go for everyone and continue to fight for justice for asylum seekers, support for temporary visa holders and international students during the coronavirus crisis, and a free and fair media — including the ABC.",
+        "image": "/images/fair-ii.jpg"
+      }
+    ]
+  },
+  "footer": {
+    "image": "https://gu-static-hosting.s3.ap-southeast-2.amazonaws.com/gu24-refresh/reference_images/grandmother-with-granddaughter-rally.png"
+  }
+}

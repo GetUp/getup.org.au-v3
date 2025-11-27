@@ -1,0 +1,34 @@
+{
+  "subhead": "We want to live in a country where everyone is treated with fairness and compassion — no matter where they’re from, how they worship, or who they love.",
+  "heading": "Human Rights",
+  "campaigns": [
+    {
+      "title": "Stop hate in its tracks",
+      "excerpt": "Far right extremism in Australia is on the rise – and threatening our diverse communities. Call on politicians across the country to legislate against hate.",
+      "image": "https://cdn.getup.org.au/image_20468_full.jpeg",
+      "href": "https://www.getup.org.au/campaigns/racial-justice/stop-hate-in-its-tracks/no-room-for-neo-nazis",
+      "featured": true
+    },
+    {
+      "title": "Offshore detention",
+      "excerpt": "It's unconscionable that people have been detained offshore for 7 years. Sign the petition and call on the government to bring people to safety now ✍️",
+      "image": "https://cdn.getup.org.au/image_17769_full.jpg",
+      "href": "https://www.getup.org.au/campaigns/refugees/manus-and-nauru-petition/bring-people-to-safety",
+      "featured": true
+    },
+    {
+      "title": "Colour Code",
+      "excerpt": "We’ve created a platform for First Nations, migrant, and multicultural communities to come together and speak out about issues that affect us. Join us!",
+      "image": "https://cdn.getup.org.au/image_17783_full.png",
+      "href": "https://colourcode.org.au",
+      "featured": true
+    }
+  ],
+  "slug": "human-rights",
+  "colour": "#fb661e",
+  "featured": true,
+  "tint_image": true,
+  "title": "Human Rights",
+  "blurb": "Our Human Rights campaigns push for progress on human rights issues including government support for international students and people on temporary visas who are doing it tough, racial justice, and an end to far-right extremism.",
+  "image": "/images/human-rights.jpg"
+}

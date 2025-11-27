@@ -1,0 +1,40 @@
+{
+  "subhead": "We believe in a society defined by social and economic equity, where everyone has the opportunity to succeed.",
+  "heading": "Economic Fairness",
+  "campaigns": [
+    {
+      "title": "People over profits – Stop price gouging now!",
+      "excerpt": "Prices are rising faster than ever, leaving everyday people struggling to afford life's essentials. Big corporations are pocketing massive profits while hiking costs, while the rest of us pay the price. It's time to take bold action to stop price gouging and ensure everyone can afford to live with dignity.\n\nWill you sign the petition and stand up for a fairer economy?\n",
+      "image": "/images/uploads/economy_for_the_people_share_image_.png",
+      "href": "https://www.getup.org.au/campaigns/economic-fairness-30a37751-ec16-4026-a076-e283f3b4092f/people-over-profits-stop-price-gouging/people-over-profits-stop-price-gouging-now",
+      "featured": true
+    },
+    {
+      "title": "Demand action on the Cost of Living crisis!",
+      "excerpt": "We're crowdsourcing stories from everyday people to shine a light on the true impact of rising living costs across the country. \n\nFrom skyrocketing grocery costs to soaring utility bills, your stories are crucial in shaping the conversation. Our map is live! Click here to view the map, read the stories and add your own.",
+      "image": "/images/uploads/col-map.jpg",
+      "featured": true,
+      "href": "https://www.getup.org.au/campaigns/democracy/cost-of-living-map-3f90f749-eb35-45c2-a52e-dfff192965cf/getup-cost-of-living-map"
+    },
+    {
+      "title": "Everyone deserves affordable housing!",
+      "excerpt": "Just 1% of Australians own nearly a quarter of all investment properties. Corporations and wealthy investors are buying up homes, driving up prices, and locking out regular people.\n\nWe need real change—regulate investors, stop profiteering, and prioritise affordable homes. Sign our petition to hold big investors accountable and demand action.",
+      "href": "https://www.getup.org.au/campaigns/economic-fairness-30a37751-ec16-4026-a076-e283f3b4092f/240910-reportback-and-housing-petition/everyone-deserves-affordable-housing",
+      "image": "/images/uploads/shutterstock_294222353.jpg",
+      "featured": true
+    },
+    {
+      "title": "Help us fight for a fairer future!",
+      "excerpt": "Big corporations get away with paying little to no tax while profiting off the communities who helped build their wealth, meanwhile there are people worrying how they'll keep a roof over their heads.\n\nThe GetUp movement is campaigning to make sure rich corporations pay what they owe and everyone has access to the support and services they need. Chip in to help support our work.\n",
+      "image": "/images/uploads/artboard-10.jpg",
+      "href": "https://www.getup.org.au/campaigns/economic-fairness-30a37751-ec16-4026-a076-e283f3b4092f/help-us-fight-for-a-fairer-future/help-us-fight-for-a-fairer-future",
+      "featured": true
+    }
+  ],
+  "slug": "economic-fairness",
+  "colour": "#fb661e",
+  "featured": true,
+  "tint_image": true,
+  "blurb": "Our campaigns for Economic Fairness push for tangible, positive change like increased funding for social housing, local job creation, and a social safety net everyone can rely on.",
+  "image": "/images/economic-fairness.jpg"
+}

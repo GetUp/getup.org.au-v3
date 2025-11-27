@@ -1,0 +1,34 @@
+{
+  "subhead": "We strive for our campaigns to contribute to the larger fight for First Nations Justice across the country.",
+  "heading": "First Nations Justice",
+  "campaigns": [
+    {
+      "title": "Stop Tamboran's mega fracker",
+      "excerpt": "Tamboran Resources just announced a mega fracker is on its way from the US to frack the Beetaloo Basin. Find out more to help stop their devastating plan!",
+      "image": "/images/uploads/tb-fb-megafracker-1.png",
+      "href": "https://www.getup.org.au/campaigns/gas-and-fracking/stop-the-mega-fracker-dfa1ed8b-18b1-4510-a535-43a67fd9e68d/stop-the-mega-fracker",
+      "featured": true
+    },
+    {
+      "title": "Help create a new Federal Aboriginal Heritage Act",
+      "excerpt": "Help create strong new legal standards for protecting Aboriginal and Torres Strait Islander heritage by funding a team of lawyers that includes Eddie Mabo’s lawyer, Greg McIntyre SC.",
+      "image": "https://cdn.getup.org.au/image_20874_full.png",
+      "href": "https://www.getup.org.au/campaigns/first-nations-justice-campaigns/legislate-national-heritage-act/legislate-cultural-heritage-protections",
+      "featured": true
+    },
+    {
+      "title": "Stop First Nations Deaths in Custody",
+      "excerpt": "Call on the National Cabinet to make First Nations deaths in custody a key issue at their next meeting.",
+      "image": "https://cdn.getup.org.au/image_20751_full.png",
+      "href": "https://www.getup.org.au/campaigns/first-nations-justice-campaigns/stop-deaths-in-custody/stop-first-nations-deaths-in-custody",
+      "featured": true
+    }
+  ],
+  "slug": "first-nations-justice",
+  "colour": "#de4f2a",
+  "featured": true,
+  "tint_image": true,
+  "title": "First Nations Justice",
+  "blurb": "Our team leads campaigns to end fracking in the Northern Territory, increase democratic participation, and create new federal laws protecting Aboriginal cultural heritage. Land Rights and Climate Justice are central to all our campaigns, and all First Nations work at GetUp is led by a team of campaigners from the Widjabul Wia-bul, Gooreng Gooreng, Warlpiri, Luritja-Pitjantjatjara, Wakka Wakka, Gubbi Gubbi, Yanyuwa and Garrwa Nations. There is no Justice without First Nations Justice.",
+  "image": "/images/first-nations-justice.jpg"
+}

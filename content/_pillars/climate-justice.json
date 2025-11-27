@@ -1,0 +1,40 @@
+{
+  "subhead": "We’re striving for a safe climate and thriving, vibrant natural world that future generations can enjoy for years to come.",
+  "heading": "Climate Justice",
+  "campaigns": [
+    {
+      "title": "Stand with Traditional Owners against fracking",
+      "excerpt": "Water is life in the NT. The Albanese Government has the power to protect water and Country from fracking, but only a massive public outcry will ensure they act. Stand in solidarity with First Nations communities—add your name to their powerful open letter demanding action before it's too late.",
+      "image": "/images/uploads/dftnt.jpg",
+      "featured": true,
+      "href": "https://www.getup.org.au/campaigns/first-nations-justice-campaigns/sign-the-open-letter-to-end-fracking-in-the-beetaloo/unite-with-traditional-owners-against-fracking"
+    },
+    {
+      "title": "Public money for public good, not gas",
+      "excerpt": "Treasurer Jim Chalmers can stop $1.9 billion of public money from being wasted on the destructive Middle Arm gas hub and instead invest it in clean energy, healthcare, and vital services for NT communities. Let’s unite and demand that our money builds a just, sustainable future, not more fossil fuel profits.\n",
+      "image": "/images/uploads/guchalmers.jpg",
+      "href": "https://www.getup.org.au/campaigns/climate-justice/email-treasurer-public-money-for-public-good-not-gas/treasurer-public-money-for-public-good-not-gas",
+      "featured": true
+    },
+    {
+      "title": "Stop Dutton's dangerous nuclear agenda",
+      "excerpt": "Peter Dutton is pushing risky nuclear reactors onto seven communities without addressing the costs or climate risks. Together we can stand united with First Nations leaders and show our strength in rejecting these dangerous plans for the sake of our communities and our climate.",
+      "image": "/images/uploads/gudutton.png",
+      "href": "https://www.getup.org.au/campaigns/climate-justice/nuclear-petition-ad23eb4e-f7a3-454f-9a52-3d84fbc9e9fb/stop-dutton-s-dangerous-nuclear-agenda",
+      "featured": true
+    },
+    {
+      "title": "Take a stand against three coal mine expansions",
+      "excerpt": "The Albanese Government just approved three massive coal mine expansions, locking in billions of tonnes of climate pollution that will worsen floods, bushfires, and heat waves. Join the fight to protect our climate, water, and communities—sign the petition demanding an end to new and expanded coal mines.",
+      "href": "https://www.getup.org.au/campaigns/climate-justice/petition-no-new-or-expanded-coal/take-a-stand-against-3-coal-mine-expansions",
+      "featured": true,
+      "image": "/images/uploads/gucoal.jpg"
+    }
+  ],
+  "slug": "climate-justice",
+  "colour": "#4b46d5",
+  "featured": true,
+  "tint_image": true,
+  "blurb": "Our Climate Justice campaigns hold the government to account and demand clean energy and climate solutions that keep us and our planet safe.",
+  "image": "/images/environmental-justice.jpg"
+}

@@ -1,0 +1,27 @@
+{
+  "subhead": "We know that an open, free, and fair media is one of the cornerstones of democracy — and must be defended.",
+  "heading": "Media and Democracy",
+  "campaigns": [
+    {
+      "title": "Protect whistleblowers!",
+      "excerpt": "Two whistleblowers face life in jail in Australia because the laws meant to protect them are broken. We need the Government to drop their cases and implement immediate reform to stop the war on whistleblowers.",
+      "href": "https://www.getup.org.au/stop-the-war-on-whistleblowers",
+      "image": "/images/uploads/mx-website-whistleblower-thumb-v5.png",
+      "featured": true
+    },
+    {
+      "title": "Save our ABC!",
+      "excerpt": "Call on the Albanese Government to restore and increase critical funding to the ABC so it can meet the needs of our communities with confidence, independence, and integrity.",
+      "image": "https://cdn.getup.org.au/image_20969_full.jpg",
+      "href": "https://www.getup.org.au/campaigns/abc-media-campaigns/morrison-fund-the-abc/save-our-abc",
+      "featured": true
+    }
+  ],
+  "slug": "media-democracy",
+  "colour": "#4b46d5",
+  "featured": true,
+  "tint_image": true,
+  "title": "Media and Democracy",
+  "blurb": "Our Media and Democracy campaigns fight to keep our ABC fully funded, for press freedom and whistleblower protections, and for a strong anti-corruption commission with real power to hold politicians to account.",
+  "image": "/images/fair-media.jpg"
+}

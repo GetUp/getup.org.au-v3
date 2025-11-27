@@ -1,0 +1,75 @@
+{
+  "header": {
+    "heading": "Reports",
+    "subhead": "Independent research reports commissioned by GetUp",
+    "image": "/images/report-header.jpg"
+  },
+  "reports": [
+    {
+      "heading": "Insidious and Intentional: Political Interference and Harassment of the ABC ",
+      "description": "A record of how the Coalition Government has systematically and relentlessly attacked the ABC, and the risks this creates for the ABC's independence and our communities ",
+      "image": "/images/uploads/screen-shot-2022-02-14-at-12.22.37-pm.png",
+      "link": "https://cdn.getup.org.au/2871-_Insidious_and_intentional-_political_interference_and_harassment_of_the_ABC.pdf"
+    },
+    {
+      "heading": "Democracy Dossier:  Secrecy and Power in Australia’s National Security State",
+      "description": "Report exposing Australia's growing culture of secrecy, and how creeping surveillance powers have been misappropriated to target journalists and whistleblowers.",
+      "link": "https://www.getup.org.au/democracy-dossier-report",
+      "image": "/images/uploads/screen-shot-2021-09-06-at-8.56.35-am.png"
+    },
+    {
+      "heading": "Who controls our media",
+      "description": "Who controls our media details the far-reaching effects of media concentration on our democracy... and how to fight them.",
+      "image": "/images/who-controls-our-media.jpg",
+      "link": "https://cdn.getup.org.au/2810-GetUp_-_Who_Controls_Our_Media_.pdf"
+    },
+    {
+      "heading": "Smokescreen: The rhetoric and reality of federal bushfire recovery modelling",
+      "description": "This report reviewed what was promised in the wake of the Black Summer fires with what was actually delivered on the ground.",
+      "image": "/images/smokescreen.jpg",
+      "link": "https://cdn.getup.org.au/2798-Smokescreen-_21_Feb_-_Edited_FINAL_(1).pdf"
+    },
+    {
+      "heading": "Lies, debates, and silences: How News Corp produces climate scepticism in Australia",
+      "description": "This report proved not only that News Corp is negative towards climate action, but they're actively creating debate and confusion while they politicise the issue.",
+      "image": "/images/lies-debates-and-silences.jpg",
+      "link": "https://cdn.getup.org.au/2790-Lies_Debates_and_Silences_FINAL.pdf"
+    },
+    {
+      "heading": "It's Our ABC ",
+      "description": "This report, published with Per Capita, exposes the $783 million the Coalition has slashed from the ABC's budget since being elected in 2013.",
+      "image": "/images/uploads/its-our-abc-report.jpg",
+      "link": "https://cdn.getup.org.au/2749-ABC_Report.pdf"
+    },
+    {
+      "heading": "Closing the Caribbean Connection",
+      "description": "Closing the Caribbean Connection modelled ways of closing corporate tax cheating loopholes – one of which was adopted by the Turnbull Government just months after its release!",
+      "image": "/images/closing-the-carribean-connection.jpg",
+      "link": "https://cdn.getup.org.au/2731-CCC_-_full_version.pdf"
+    },
+    {
+      "heading": "Inside Job: Political Interference at the ABC",
+      "description": "This report exposed the intricate web of connections that was corroding our ABC's independence from the inside out. And make clear how we needed to stop it.",
+      "image": "/images/inside-job.jpg",
+      "link": "https://cdn.getup.org.au/2725-2549-Inside_Job-Political_Interference_at_the_ABC.pdf"
+    },
+    {
+      "heading": "The Homegrown Power Plan",
+      "description": "The Homegrown Power Plan was a joint project between GetUp and Solar Citizens. The report maps out exactly how Australia can (and must) get to a 100% renewable future in less than a generation – and it's making political waves to this very day.",
+      "image": "/images/homegrown-power-plant.jpg",
+      "link": "https://cdn.getup.org.au/2727-1499-Homegrown_Power_Plan_-Full_Report.pdf"
+    },
+    {
+      "heading": "Dark Money: The hidden millions in Australia's political finance system",
+      "description": "This report exposed exactly how only 15% of financial contributions to the major political parties are transparent, and mapped out the path to a better way.",
+      "image": "/images/dark-money.jpg",
+      "link": "https://cdn.getup.org.au/2728-1969-Dark_Money.pdf"
+    },
+    {
+      "heading": "A History of Misconduct: The Case for a Federal Icac",
+      "description": "This report reveals a pattern of politicians acting with impunity, turning a blind eye to misconduct and sweeping scandals under the rug – all while making the powerful case for a Federal ICAC.",
+      "image": "/images/history-of-misconduct.jpg",
+      "link": "https://cdn.getup.org.au/2729-A_History_of_Misconduct.pdf"
+    }
+  ]
+}
