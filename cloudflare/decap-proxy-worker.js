@@ -156,17 +156,50 @@ export default {
             Accept: "application/vnd.github.v3+json",
           };
 
-          // Map collection to folder
-          const collectionFolders = {
-            campaigns: "content/_campaigns",
-            pillars: "content/_pillars",
-            faqs: "content/_faqs",
-            board: "content/_board",
+          // Map "files" collections (slug -> specific file path)
+          const fileCollections = {
+            pages: {
+              home: "content/home.json",
+              about: "content/about.json",
+              reports: "content/reports.json",
+              "privacy-policy": "content/privacy-policy.yaml",
+            },
+            shared: {
+              "footer-cta": "content/footer-cta.json",
+            },
+            major_donations_disclosures: {
+              "major-donations-disclosures": "content/major-donations-disclosures.json",
+            },
+            transparency_reports: {
+              "transparency-reports": "content/transparency-reports.json",
+            },
+            transparency_page: {
+              "transparency-page": "content/transparency-page.json",
+            },
           };
 
-          const folder = collectionFolders[params.collection] || `content/_${params.collection}`;
-          const extension = "json";
-          const filePath = `${folder}/${params.slug}.${extension}`;
+          // Map "folder" collections (slug -> folder/slug.ext)
+          const folderCollections = {
+            campaigns: { folder: "content/_campaigns", ext: "json" },
+            pillars: { folder: "content/_pillars", ext: "json" },
+            faqs: { folder: "content/_faqs", ext: "md" },
+            board: { folder: "content/_board", ext: "md" },
+          };
+
+          let filePath;
+          if (fileCollections[params.collection]?.[params.slug]) {
+            // Files collection - use exact path
+            filePath = fileCollections[params.collection][params.slug];
+          } else if (folderCollections[params.collection]) {
+            // Folder collection - construct path with correct extension
+            const { folder, ext } = folderCollections[params.collection];
+            filePath = `${folder}/${params.slug}.${ext}`;
+          } else {
+            // Default fallback
+            filePath = `content/_${params.collection}/${params.slug}.json`;
+          }
+
+          console.log(`unpublishedEntry: collection=${params.collection}, slug=${params.slug}, path=${filePath}`);
 
           const fileUrl = `https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/contents/${filePath}?ref=${actionBranch}`;
           const fileRes = await fetch(fileUrl, { headers: ghHeaders });
@@ -215,16 +248,44 @@ export default {
           // Path provided directly
           filePath = params.path;
         } else if (params.collection && params.slug) {
-          // Build path from collection and slug
-          const collectionFolders = {
-            campaigns: "content/_campaigns",
-            pillars: "content/_pillars",
-            faqs: "content/_faqs",
-            board: "content/_board",
+          // Map "files" collections (slug -> specific file path)
+          const fileCollections = {
+            pages: {
+              home: "content/home.json",
+              about: "content/about.json",
+              reports: "content/reports.json",
+              "privacy-policy": "content/privacy-policy.yaml",
+            },
+            shared: {
+              "footer-cta": "content/footer-cta.json",
+            },
+            major_donations_disclosures: {
+              "major-donations-disclosures": "content/major-donations-disclosures.json",
+            },
+            transparency_reports: {
+              "transparency-reports": "content/transparency-reports.json",
+            },
+            transparency_page: {
+              "transparency-page": "content/transparency-page.json",
+            },
           };
-          const folder = collectionFolders[params.collection] || `content/_${params.collection}`;
-          const extension = "json";
-          filePath = `${folder}/${params.slug}.${extension}`;
+
+          // Map "folder" collections (slug -> folder/slug.ext)
+          const folderCollections = {
+            campaigns: { folder: "content/_campaigns", ext: "json" },
+            pillars: { folder: "content/_pillars", ext: "json" },
+            faqs: { folder: "content/_faqs", ext: "md" },
+            board: { folder: "content/_board", ext: "md" },
+          };
+
+          if (fileCollections[params.collection]?.[params.slug]) {
+            filePath = fileCollections[params.collection][params.slug];
+          } else if (folderCollections[params.collection]) {
+            const { folder, ext } = folderCollections[params.collection];
+            filePath = `${folder}/${params.slug}.${ext}`;
+          } else {
+            filePath = `content/_${params.collection}/${params.slug}.json`;
+          }
         } else {
           return new Response(JSON.stringify({ error: "Missing path or collection/slug" }), {
             status: 400,
@@ -390,8 +451,48 @@ export default {
           }
         });
       } else if (action === "entriesByFiles") {
-        // Get specific files - return empty, Decap will fetch individually
-        return new Response(JSON.stringify([]), {
+        // Get specific files by path
+        const files = params.files || [];
+        console.log(`entriesByFiles: fetching ${files.length} files`, JSON.stringify(files));
+
+        const ghHeaders = {
+          Authorization: `Bearer ${env.GITHUB_TOKEN}`,
+          "User-Agent": "decap-proxy-worker",
+          Accept: "application/vnd.github.v3+json",
+        };
+
+        const entries = await Promise.all(
+          files.map(async (file) => {
+            try {
+              const fileUrl = `https://api.github.com/repos/${env.REPO_OWNER}/${env.REPO_NAME}/contents/${file.path}?ref=${actionBranch}`;
+              const fileRes = await fetch(fileUrl, { headers: ghHeaders });
+
+              if (!fileRes.ok) {
+                console.error(`Failed to fetch ${file.path}: ${fileRes.status}`);
+                return null;
+              }
+
+              const fileData = await fileRes.json();
+              return {
+                file: {
+                  path: file.path,
+                  label: file.label,
+                  ...fileData
+                },
+                data: fileData.content ? atob(fileData.content) : ""
+              };
+            } catch (err) {
+              console.error(`Error fetching ${file.path}:`, err);
+              return null;
+            }
+          })
+        );
+
+        // Filter out failed fetches
+        const validEntries = entries.filter(e => e !== null);
+        console.log(`entriesByFiles: returning ${validEntries.length} entries`);
+
+        return new Response(JSON.stringify(validEntries), {
           status: 200,
           headers: {
             ...corsHeaders,

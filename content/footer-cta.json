@@ -1,0 +1,14 @@
+{
+  "heading": "GetUp gives everyday Australians the chance to make an extraordinary impact – online, across the airwaves, and in the streets.",
+  "body": [
+    "GetUp focuses and amplifies your voice alongside a million others so that you’re not just heard – you make a real difference. You help set the strategy, you choose the issues you want to work on, and together, we make a huge impact. "
+  ],
+  "buttonPrimary": {
+    "label": "Get involved!",
+    "path": "/signup"
+  },
+  "buttonSecondary": {
+    "label": "Donate",
+    "path": "/donate"
+  }
+}

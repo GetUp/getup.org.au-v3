@@ -22,10 +22,9 @@ CF_ACCESS_AUD = "ce38525cd2b19766460ff7548bee32958321c7575f820401a35b41d93708b3d
 
 [observability]
 [observability.logs]
-enabled = false
+enabled = true
 head_sampling_rate = 1
 invocation_logs = true
-persist = true
 
 # =============================================================================
 # Pages Configuration (for Cloudflare Pages Functions)
