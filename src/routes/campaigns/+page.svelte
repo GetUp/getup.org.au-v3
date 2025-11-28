@@ -1,19 +1,19 @@
-<script>
-  import TakeAction from "$lib/components/take-action.svelte";
+<script lang="ts">
   import CampaignsAccordion from "$lib/components/campaigns-accordion.svelte";
+  import CampaignCard from "$lib/components/campaign-card.svelte";
   import SidebarSubmenu from "$lib/components/sidebar-submenu.svelte";
   import { campaigns as rootCampaigns, pillars } from "$lib/data/content";
 
   const campaignList = rootCampaigns.filter((campaign) => !campaign.archived);
 
-  const pillarMeta = pillars
+  const pillarMeta: Record<string, (typeof pillars)[number]> = pillars
     .filter((pillar) => pillar.slug !== "all")
     .reduce((acc, pillar) => {
-      acc[pillar.heading] = pillar;
+      acc[pillar.slug] = pillar;
       return acc;
-    }, {});
+    }, {} as Record<string, (typeof pillars)[number]>);
 
-  const pillarBuckets = campaignList.reduce((acc, campaign) => {
+  const pillarBuckets = campaignList.reduce<Record<string, typeof campaignList>>((acc, campaign) => {
     const key = campaign.pillar || "all";
     if (!acc[key]) acc[key] = [];
     acc[key].push(campaign);
@@ -23,9 +23,9 @@
   const accordionPillars = Object.entries(pillarBuckets).map(([key, campaigns]) => {
     const meta = pillarMeta[key];
     return {
-      slug: meta?.slug || (key === "all" ? "all" : key.toLowerCase().replace(/\s+/g, "-")),
-      heading: meta?.heading || "All campaigns",
-      subhead: meta?.subhead || "Browse every live campaign in one place.",
+      slug: meta?.slug || (key === "all" ? "core" : key.toLowerCase().replace(/\s+/g, "-")),
+      heading: meta?.heading || (key === "all" ? "Core campaigns" : key.replace(/-/g, " ")),
+      subhead: meta?.subhead || (key === "all" ? "Browse every live campaign in one place." : ""),
       blurb: meta?.blurb,
       colour: meta?.colour || "var(--color-orange)",
       image: meta?.image,
@@ -33,8 +33,10 @@
     };
   });
 
-  const sidebarPillars = accordionPillars;
-  const takeActionList = campaignList;
+  const featuredCampaigns = campaignList
+    .filter((c) => c.featured)
+    .sort((a, b) => (a.title || "").localeCompare(b.title || ""))
+    .slice(0, 4);
 </script>
 
 <svelte:head>
@@ -77,7 +79,7 @@
         <!-- Mobile Dropdown Instance -->
         <div class="lg:hidden">
           <SidebarSubmenu
-            items={sidebarPillars.map((p) => ({
+            items={accordionPillars.map((p) => ({
               label: p.heading,
               href: `#${p.slug}`,
             }))}
@@ -93,7 +95,7 @@
     <div class="lg:flex lg:gap-12">
       <div class="hidden lg:block">
         <SidebarSubmenu
-          items={sidebarPillars.map((p) => ({
+          items={accordionPillars.map((p) => ({
             label: p.heading,
             href: `#${p.slug}`,
           }))}
@@ -102,12 +104,38 @@
         />
       </div>
 
-      <div class="flex-1 min-w-0 space-y-10">
-        <CampaignsAccordion pillars={accordionPillars} />
+      <div class="flex-1 min-w-0 space-y-0">
+        {#if featuredCampaigns.length}
+          <div class="space-y-4 mb-6">
+            <h2 class="text-xl font-bold text-slate-900">Featured campaigns</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+              {#each featuredCampaigns as campaign}
+                <a
+                  href={campaign.href}
+                  class="bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col"
+                >
+                  {#if campaign.image}
+                    <div class="aspect-[4/3] bg-gray-100 max-h-56 overflow-hidden">
+                      <img
+                        src={campaign.image}
+                        alt={campaign.title}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  {/if}
+                  <div class="p-4">
+                    <h3 class="text-lg font-semibold text-slate-900 line-clamp-2">
+                      {campaign.title}
+                    </h3>
+                  </div>
+                </a>
+              {/each}
+            </div>
+          </div>
+        {/if}
 
-        <div class="pt-4">
-          <TakeAction heading="Take action now" actions={takeActionList} />
-        </div>
+        <CampaignsAccordion pillars={accordionPillars} />
       </div>
     </div>
   </section>

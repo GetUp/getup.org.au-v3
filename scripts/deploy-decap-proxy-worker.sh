@@ -12,4 +12,9 @@ if ! command -v wrangler >/dev/null; then
   exit 1
 fi
 
-wrangler publish cloudflare/decap-proxy-worker.js
+wrangler deploy cloudflare/decap-proxy-worker.js --name getup-v3-decap-proxy-worker --compatibility-date 2025-11-27
+
+pnpm dlx wrangler --name getup-v3-decap-proxy-worker secret put GITHUB_TOKEN       # paste PAT when prompted
+pnpm dlx wrangler --name getup-v3-decap-proxy-worker secret put REPO_OWNER         # e.g. GetUp
+pnpm dlx wrangler --name getup-v3-decap-proxy-worker secret put REPO_NAME          # e.g. getup.org.au-v3
+pnpm dlx wrangler --name getup-v3-decap-proxy-worker secret put ALLOWED_BRANCH     # e.g. main

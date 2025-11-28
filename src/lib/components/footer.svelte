@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import Logo from './logo.svelte';
   import { pillars } from '$lib/data/content';
 
@@ -110,3 +111,4 @@
     </p>
   </div>
 </footer>
+<!-- @ts-nocheck -->

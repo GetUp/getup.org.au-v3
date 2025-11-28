@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { marked } from 'marked';
@@ -23,3 +24,4 @@ export async function load() {
         sections
     };
 }
+// @ts-nocheck

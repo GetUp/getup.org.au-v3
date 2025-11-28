@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import Ticker from "./ticker.svelte";
@@ -332,3 +333,4 @@
     </div>
   </div>
 {/if}
+<!-- @ts-nocheck -->

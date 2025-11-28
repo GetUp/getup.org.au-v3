@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { getContext } from "svelte";
   import Hero from "$lib/components/hero.svelte";
   import Ticker from "$lib/components/ticker.svelte";
@@ -10,7 +10,8 @@
   import MobileCarousel from "$lib/components/mobile-carousel.svelte";
   import { homeContent } from "$lib/data/content";
 
-  const modals = getContext("modals");
+  type ModalsContext = { openSignup: () => void; openDonation: () => void };
+  const modals = getContext<ModalsContext>("modals");
   const featuredCampaigns = homeContent.takeActionNow.featured || [];
   const primaryFeaturedCampaign = featuredCampaigns[0];
   const additionalFeaturedCampaigns = featuredCampaigns.slice(1);
@@ -26,7 +27,7 @@
     })),
   ];
 
-  function scrollSnapAction(node) {
+  function scrollSnapAction(node: HTMLElement) {
     if (window.innerWidth >= 768) return; // Only for mobile
 
     let hasSnapped = false;
@@ -133,7 +134,7 @@
       <!-- Mobile: Carousel -->
       <div class="md:hidden mt-8">
         <MobileCarousel items={mobileCarouselItems} autoPlayInterval={3500}>
-          {#snippet children(item)}
+          {#snippet children(item: any)}
             {#if item.type === "secondary"}
               <SecondaryAskCard
                 data={item.data}

@@ -1,0 +1,19 @@
+# Cloudflare Worker config for the Decap CMS proxy
+name = "getup-v3-decap-proxy-worker"
+main = "cloudflare/decap-proxy-worker.js"
+compatibility_date = "2024-12-01"
+workers_dev = true
+
+# Replace with your Cloudflare Account ID (required for deploys)
+account_id = "1c1e85ffaa0dc8de2a075921c2376730"
+
+# Uncomment to set a default allowed branch (can also be a secret)
+# [vars]
+ALLOWED_BRANCH = "main"
+REPO_OWNER = "GetUp"
+REPO_NAME = "getup.org.au-v3"
+[env.production]
+# Uncomment and set a production-only route if you want to bind to a specific hostname/path
+# routes = [
+#   { pattern = "proxy.getup.org.au/repo/*", zone_name = "getup.org.au" }
+# ]

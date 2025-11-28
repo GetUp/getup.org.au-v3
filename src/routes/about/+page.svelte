@@ -1,6 +1,5 @@
 <script lang="ts">
   import { aboutContent } from "$lib/data/content";
-  const hero = aboutContent.header;
   const who = aboutContent.who;
   const what = aboutContent.what;
   const how = aboutContent.how;
@@ -18,8 +17,8 @@
 <section class="space-y-16">
   <!-- Who we are -->
   <div class="space-y-8">
-  <div class="space-y-4">
-    <h1 class="text-3xl md:text-4xl font-subheader leading-tight">About GetUp</h1>
+    <div class="space-y-4">
+      <h1 class="text-3xl md:text-4xl font-subheader leading-tight">About GetUp</h1>
       <h2 class="text-3xl md:text-4xl font-subheader leading-tight">{who.subhead}</h2>
       {#if who.body?.length}
         <p class="text-lg text-gray-800 leading-relaxed">{who.body[0]}</p>

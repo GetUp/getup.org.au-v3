@@ -16,7 +16,7 @@
 </svelte:head>
 
 <section class="willpower-hero text-white">
-  <div class="willpower-hero__bg" />
+  <div class="willpower-hero__bg"></div>
   <div class="willpower-hero__content">
     <div class="space-y-4">
       <h1>{heading}</h1>

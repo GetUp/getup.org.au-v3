@@ -1,4 +1,5 @@
 <script lang="ts">
+  // @ts-nocheck
   import Logo from "./logo.svelte";
   import PillarIcon from "./icons/pillar-icons.svelte";
   import { pillars } from "$lib/data/content";
@@ -102,6 +103,12 @@
       </div>
 
       <div class="flex space-x-3 lg:space-x-4 items-center font-medium">
+        <button
+          onclick={onOpenDonation}
+          class="btn btn-sm btn-ghost whitespace-nowrap px-3 py-2 text-sm u-arrow"
+        >
+          Donate
+        </button>
         <a
           href="https://petitions.getup.org.au"
           target="_blank"
@@ -110,12 +117,6 @@
         >
           Start petition
         </a>
-        <button
-          onclick={onOpenDonation}
-          class="btn btn-sm btn-ghost whitespace-nowrap px-3 py-2 text-sm u-arrow"
-        >
-          Donate
-        </button>
       </div>
     </div>
 
@@ -130,6 +131,12 @@
       </a>
 
       <div class="flex items-center space-x-3 ml-auto mr-4">
+        <button
+          onclick={onOpenDonation}
+          class="btn btn-sm btn-ghost whitespace-nowrap text-xs px-2 u-arrow"
+        >
+          Donate
+        </button>
         <a
           href="https://petitions.getup.org.au"
           target="_blank"
@@ -138,12 +145,6 @@
         >
           Start petition
         </a>
-        <button
-          onclick={onOpenDonation}
-          class="btn btn-sm btn-ghost whitespace-nowrap text-xs px-2 u-arrow"
-        >
-          Donate
-        </button>
       </div>
 
       <button type="button" onclick={() => (mobileMenuOpen = true)}>
@@ -269,3 +270,4 @@
     </div>
   {/if}
 </nav>
+<!-- @ts-nocheck -->

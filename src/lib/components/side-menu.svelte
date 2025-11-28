@@ -28,13 +28,13 @@
     { name: 'Annual Reports', href: '#reports' },
   ];
   
-  function handleBackdropClick(e) {
+  function handleBackdropClick(e: MouseEvent) {
     if (e.target === e.currentTarget) {
       onClose();
     }
   }
   
-  function handleBackdropKeydown(e) {
+  function handleBackdropKeydown(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       onClose();
     }

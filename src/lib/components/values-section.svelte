@@ -28,13 +28,6 @@
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-slate-900 w-1/12 hidden xl:block"></div>
     <div class="relative bg-linear-to-l from-slate-900 to-slate-600">
-      <img
-        src="/images/math-texture.svg"
-        class="absolute h-full w-full opacity-10 inset-0 object-cover hidden xl:block"
-        style="z-index: -1;"
-        role="presentation"
-        alt=""
-      />
       <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 lg:py-24">
         <div class="flex mx-auto">
           <div class="w-full lg:grid xl:grid-cols-12 lg:grid-flow-row-dense">

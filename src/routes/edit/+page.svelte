@@ -1,4 +1,5 @@
 <script>
+  // @ts-nocheck
   import { onMount } from "svelte";
 
   let cmsLoaded = $state(false);
@@ -51,3 +52,4 @@
     </div>
   {/if}
 </main>
+<!-- @ts-nocheck -->

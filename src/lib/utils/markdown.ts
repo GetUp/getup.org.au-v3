@@ -2,9 +2,7 @@ import { marked } from "marked";
 
 marked.setOptions({
   gfm: true,
-  breaks: true,
-  mangle: false,
-  headerIds: false,
+  breaks: true
 });
 
 export function renderMarkdown(md: string): string {

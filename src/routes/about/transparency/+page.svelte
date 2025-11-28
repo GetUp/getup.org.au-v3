@@ -9,7 +9,7 @@
   };
 
   const blocks =
-    page.blocks?.map((block, index) => {
+    (page.blocks as any[] | undefined)?.map((block: any, index: number) => {
       const title = block.title || block.heading || "";
       const navTitle = block.nav_title || title;
       return {

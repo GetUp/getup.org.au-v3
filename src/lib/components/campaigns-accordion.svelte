@@ -1,6 +1,7 @@
 <script>
   import { slide } from 'svelte/transition';
   import { pillars as pillarData } from '$lib/data/content';
+  import LogoMarkExclaim from './logo-mark-exclaim.svelte';
   
   let { pillars = pillarData.filter((pillar) => pillar.slug !== 'all') } = $props();
   let openSlug = $state('');
@@ -20,15 +21,13 @@
           onclick={() => toggle(pillar.slug)}
           aria-expanded={openSlug === pillar.slug}
         >
-          {#if pillar.image}
-            <div class="w-14 h-14 rounded-md overflow-hidden border border-gray-200 shrink-0">
+          <div class="w-16 h-16 rounded-md overflow-hidden border border-gray-200 shrink-0 bg-slate-900 flex items-center justify-center">
+            {#if pillar.image}
               <img src={pillar.image} alt={pillar.heading} class="w-full h-full object-cover" loading="lazy" />
-            </div>
-          {:else}
-            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold" style={`background:${pillar.colour}`}>
-              {pillar.heading[0]}
-            </div>
-          {/if}
+            {:else}
+              <LogoMarkExclaim class="w-7 h-7 text-white" />
+            {/if}
+          </div>
           <div class="flex-1 text-left">
             <h3 class="font-subheader text-slate text-lg md:text-xl">{pillar.heading}</h3>
             <p class="text-sm text-gray-600 mt-0.5 font-sans">{pillar.subhead}</p>

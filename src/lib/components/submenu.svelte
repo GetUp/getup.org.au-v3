@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   let {
     items = [],
     activeHref = '',
@@ -16,7 +16,7 @@
     mobileMenuOpen = false;
   }
 
-  function isActive(href) {
+  function isActive(href: string) {
     if (!activeHref) return false;
     return activeHref === href || activeHref.startsWith(href + '/');
   }

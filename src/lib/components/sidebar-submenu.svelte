@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   let {
@@ -14,7 +14,7 @@
   let isOpen = $state(false);
   let isHeaderVisible = $state(true);
 
-  function isActive(href) {
+  function isActive(href: string) {
     if (!activeHref) return false;
     return activeHref === href || activeHref.startsWith(href + "/");
   }
@@ -153,7 +153,7 @@
     : ''}"
 >
   <nav>
-    <ul class="sidebar-submenu-list">
+    <ul class="sidebar-submenu-list text-white lg:text-slate-900">
       {#each items as item}
         <li>
           <a
@@ -164,9 +164,9 @@
             onclick={close}
           >
             {#if item.icon}
-              <svelte:component this={item.icon} size={18} />
+              <svelte:component this={item.icon} size={18} class="text-white lg:text-slate-900" />
             {/if}
-            <span>{item.label}</span>
+            <span class="text-white lg:text-slate-900">{item.label}</span>
           </a>
 
           {#if item.children && item.children.length > 0}
@@ -180,7 +180,7 @@
                       : ''}"
                     onclick={close}
                   >
-                    {child.label}
+                    <span class="text-white lg:text-slate-900">{child.label}</span>
                   </a>
                 </li>
               {/each}

@@ -13,7 +13,7 @@
   let lastName = $state('');
   let postcode = $state('');
   let phone = $state('');
-  let interests = $state([]);
+  let interests = $state<string[]>([]);
   let isSubmitting = $state(false);
   let step = $state(1);
   
@@ -25,15 +25,15 @@
     { id: 'human-rights', label: 'Human Rights' },
   ];
   
-  function toggleInterest(id) {
+  function toggleInterest(id: string) {
     if (interests.includes(id)) {
-      interests = interests.filter(i => i !== id);
+      interests = interests.filter((i) => i !== id);
     } else {
       interests = [...interests, id];
     }
   }
   
-  async function handleSubmit(e) {
+  async function handleSubmit(e: Event) {
     e.preventDefault();
     if (step === 1) {
       step = 2;
@@ -54,13 +54,13 @@
     step = 1;
   }
   
-  function handleBackdropClick(e) {
+  function handleBackdropClick(e: MouseEvent) {
     if (e.target === e.currentTarget) {
       onClose();
     }
   }
   
-  function handleKeyDown(e) {
+  function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       onClose();
     }

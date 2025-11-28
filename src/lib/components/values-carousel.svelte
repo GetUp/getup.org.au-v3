@@ -1,17 +1,17 @@
-<script>
+<script lang="ts">
   import { onMount, onDestroy } from "svelte";
 
   let { items = [] } = $props();
 
   let currentIndex = $state(0);
-  let autoPlayTimer;
+  let autoPlayTimer: ReturnType<typeof setInterval> | null = null;
   let isTransitioning = $state(false);
   let touchStartX = 0;
   let touchEndX = 0;
 
   const titles = ["Fair", "Flourishing", "Just"];
 
-  function scrollToIndex(index) {
+  function scrollToIndex(index: number) {
     if (isTransitioning) return;
 
     isTransitioning = true;
@@ -62,11 +62,11 @@
     startAutoPlay();
   }
 
-  function onTouchStart(event) {
+  function onTouchStart(event: TouchEvent) {
     touchStartX = event.changedTouches[0].clientX;
   }
 
-  function onTouchEnd(event) {
+  function onTouchEnd(event: TouchEvent) {
     touchEndX = event.changedTouches[0].clientX;
     const delta = touchEndX - touchStartX;
     const threshold = 40;
@@ -78,13 +78,6 @@
 </script>
 
 <div class="relative bg-linear-to-l from-slate-900 to-slate-600">
-  <img
-    src="/images/math-texture.svg"
-    class="absolute h-full w-full opacity-10 inset-0 object-cover"
-    style="z-index: -1;"
-    role="presentation"
-    alt=""
-  />
 
   <!-- Navigation Handles -->
   <button

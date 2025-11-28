@@ -17,4 +17,6 @@ pnpm install
 pnpm run build
 
 # Publish the .svelte-kit/output adapter build (Pages supports static + functions).
-pnpm dlx wrangler pages publish build --project-name "${CF_PAGES_PROJECT}" --account-id "${CLOUDFLARE_ACCOUNT_ID}"
+# Wrangler v3 no longer accepts --account-id for Pages publish; it uses your logged-in account
+# or the account_id in wrangler.toml. Keep CF_PAGES_PROJECT for the target project.
+pnpm dlx wrangler pages publish build --project-name "${CF_PAGES_PROJECT}"

@@ -51,6 +51,7 @@
           src={iframeSrc}
           id="contact-form"
           scrolling="no"
+          title="Contact form"
           class="w-full"
           style="border: none; height: 760px;"
         ></iframe>
