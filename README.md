@@ -21,11 +21,68 @@ pnpm preview       # serve the production build locally
 Key entry points:
 - `src/routes/+page.svelte` – home page composition.
 - `src/lib/components/` – UI building blocks (hero, campaign cards, etc.).
-- `public/edit/config.yml` – Decap CMS config that points editors at content files.
+- `static/config.yml` – Decap CMS config that points editors at content files.
+
+## Architecture: Decap CMS Authentication
+
+The CMS uses a secure architecture with Cloudflare Access and a private Worker:
+
+```
+Browser → getup-static-v3.gu.tools/edit → Cloudflare Access (Google login)
+                                                    ↓
+Browser → getup-static-v3.gu.tools/api/* → Pages Function → [Service Binding] → Worker → GitHub API
+                                           (same origin)     (internal only)
+```
+
+### Components
+
+1. **Cloudflare Access Application: `GetUp-V3`**
+   - Protects `/api` and `/edit` paths on `getup-static-v3.gu.tools`
+   - Uses Google Workspace identity provider (restricted to org domain)
+   - Issues JWT tokens validated by the worker
+
+2. **Pages Function** (`functions/api/[[path]].js`)
+   - Proxies `/api/*` requests to the worker via service binding
+   - Forwards the `Cf-Access-Jwt-Assertion` header for authentication
+   - Eliminates CORS issues by keeping requests same-origin
+
+3. **Decap Proxy Worker** (`cloudflare/decap-proxy-worker.js`)
+   - Not publicly accessible (no workers.dev URL, no custom domain)
+   - Only reachable via the Pages Function service binding
+   - Validates Cloudflare Access JWTs (signature, expiry, audience)
+   - Proxies authenticated requests to GitHub API using a PAT
+
+### Service Binding Configuration
+
+Configured in `wrangler.toml` under `[pages]`:
+```toml
+[[pages.services]]
+binding = "DECAP_WORKER"
+service = "getup-v3-decap-proxy-worker"
+```
+This connects the Pages Function to the private worker without needing a public URL.
+
+### Worker Environment Variables
+
+Set in `wrangler.toml` or Cloudflare dashboard:
+- `GITHUB_TOKEN` – GitHub PAT with repo access (set as secret)
+- `REPO_OWNER` – GitHub org/user (e.g., `GetUp`)
+- `REPO_NAME` – Repository name (e.g., `getup.org.au-v3`)
+- `ALLOWED_BRANCH` – Branch for content operations (default: `main`)
+- `CF_ACCESS_TEAM_NAME` – Zero Trust org name (e.g., `getup`)
+- `CF_ACCESS_AUD` – Access Application audience tag
 
 ## Deployment
-- **Site:** run `scripts/pages-publish.sh` to build and publish to Cloudflare Pages (requires `CLOUDFLARE_ACCOUNT_ID` and `CF_PAGES_PROJECT`).
-- **Decap proxy:** run `scripts/deploy-decap-proxy-worker.sh` to publish `cloudflare/decap-proxy-worker.js` via Wrangler. Configure Cloudflare Access on the worker route and set secrets for `GITHUB_TOKEN`, `REPO_OWNER`, `REPO_NAME`, and `ALLOWED_BRANCH`.
+
+All deploy commands read configuration from `wrangler.toml`.
+
+```bash
+pnpm deploy:worker   # Deploy the Decap proxy worker
+pnpm deploy:pages    # Build and deploy to Cloudflare Pages
+pnpm deploy          # Deploy both (worker first, then pages)
+```
+
+First-time setup only: `wrangler secret put GITHUB_TOKEN` (GitHub PAT with repo access)
 
 ## Repository
 Target GitHub location: `GetUp/getup.org.au-v3`. Initialize the repo here and push to that remote to make this the canonical v3 codebase.
