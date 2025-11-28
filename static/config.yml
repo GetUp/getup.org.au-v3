@@ -1,7 +1,7 @@
 ---
 backend:
   name: proxy
-  proxy_url: "https://getup-v3-decap-proxy-worker.gu.workers.dev/"
+  proxy_url: "/api"
   branch: main
 
 local_backend: true
