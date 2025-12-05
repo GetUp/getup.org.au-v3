@@ -1,0 +1,168 @@
+{
+  "type": "faqs",
+  "heading": "FAQs",
+  "items": [
+    {
+      "title": "How can I become a GetUp member?",
+      "section": "Getting Involved",
+      "order": 10,
+      "content": "All you need to do is sign up today is to click <a href=\"/\">Get Involved!</a> and enter your email address.\n\n\nOr you could even join your local <a href=\"https://action.getup.org.au/\">GetUp Action Group</a> if you would like to volunteer."
+    },
+    {
+      "title": "How can I change my personal details?",
+      "section": "Subscription Troubleshooting",
+      "order": 10,
+      "content": "If you'd like to change any of your personal details, sign in to access your\n<a href=\"/dashboard\">GetUp member details</a> where you'll be able to change your\nsubscription details.\n\n\nAlternatively please <a href=\"/contact-us\">get in contact</a> with us directly."
+    },
+    {
+      "title": "I’d like to know more about the donations that fund GetUp",
+      "section": "Donations",
+      "order": 10,
+      "content": "For more information about donations, including a live tracker of donations to GetUp and GetUp’s financial records, see our <a href=\"/about/transparency\">financial, legal, and donations transparency</a> details."
+    },
+    {
+      "title": "I'm having problems navigating the GetUp website",
+      "section": "Technical Issues",
+      "order": 10,
+      "content": "Sorry about that! If you find a broken link or have feedback about the navigation of our website, we'd appreciate if you could <a href=\"/contact-us#contact-form\">get in touch to let us know</a>."
+    },
+    {
+      "title": "What does GetUp campaign on?",
+      "section": "GetUp Campaigns",
+      "order": 10,
+      "content": "GetUp works on a whole lot of campaigns in the areas of environmental justice, economic fairness, human rights and democratic integrity.\n\n\nTo learn more about what we are campaigning on at the moment, see our [current campaigns](/campaign)."
+    },
+    {
+      "title": "What is GetUp?",
+      "section": "About GetUp",
+      "order": 10,
+      "content": "GetUp is an independent campaigning community made up of over one million everyday people working together to build a fair, flourishing, and just Australia. We're boldly progressive and people-powered to our core and we have a decade-long history of taking on powerful interests, and winning.\n\n\nFrom making sure hundreds of thousands more people are able to vote in elections, to successfully stopping major projects threatening the Great Barrier Reef, or securing billions of dollars in new funding for mental health. Whatever we do, we do it with as many people as possible, using our hands, our hearts, our voices to fight for the issues that matter most.\n\n\n[Learn more about us](/about)"
+    },
+    {
+      "title": "Are there other ways to donate instead of using a credit card on the website?",
+      "section": "Donations",
+      "order": 20,
+      "content": "Yes, you can donate to Getup:\n\n\n<ul>\n  <li>\n    <strong>Via mail: </strong>Download, print, and fill out our\n    <a href=\"https://cdn.getup.org.au/common/forms/getup-donation.pdf\">donation form</a>. Please make\n    your cheque or money order to ‘GetUp’ and post (no stamp required) to:<br>\n    <strong>GetUp, Reply Paid 90596, Surry Hills, NSW 2010</strong>\n  </li>\n  <li>\n    <strong>Via PayPal:</strong> You will see a PayPal link on all our donation forms. \n  </li>\n</ul>\n\nYou can email <strong>donations@getup.org.au</strong> if you would like further assistance."
+    },
+    {
+      "title": "How do I reset my password?",
+      "section": "Subscription Troubleshooting",
+      "order": 20,
+      "content": "To reset your password <a href=\"/dashboard\">head to your member details</a> (you'll need to log out if you're already signed in) and select the link that says 'Forgot your password?'."
+    },
+    {
+      "title": "How do I volunteer?",
+      "section": "Getting Involved",
+      "order": 20,
+      "content": "One of the best ways to get involved as a volunteer is to connect with your GetUp local action group. <a href=\"https://action.getup.org.au/\">Head to the GetUp Action Hub</a>  to find out more and connect with your closest group."
+    },
+    {
+      "title": "I know about an important issue that you aren’t working on. How can I get a campaign up and running?",
+      "section": "GetUp Campaigns",
+      "order": 20,
+      "content": "While GetUp may not have capacity to lead every worthwhile campaign, you can kickstart your own campaign by heading to <a href=\"https://me.getup.org.au\">Campaigns By Me.</a>"
+    },
+    {
+      "title": "Is GetUp affiliated with any political parties?",
+      "section": "About GetUp",
+      "order": 20,
+      "content": "No. GetUp's work is driven by 1 million members across Australia. Together, we pressure, persuade and work with anyone in and outside government who can deliver real change on the issues that drive us, without ever giving or receiving money, or direction, from any political party, politician or candidate. GetUp's political independence allows GetUp to work with and critique all political parties without fear or favour.\n\n\nFor more information please see our [Statement of Independence](/about/independence)."
+    },
+    {
+      "title": "When I put my postcode in to your website to send an email to my MP, the",
+      "section": "Technical Issues",
+      "order": 20,
+      "content": ">+"
+    },
+    {
+      "title": "Can I work at GetUp?",
+      "section": "Getting Involved",
+      "order": 30,
+      "content": "Check out <a href=\"/about/careers\">GetUp Careers</a> for current opportunities.\n\n\nGetUp campaigns are facilitated by a core Strategy Team who provide expert strategy and research,\ncommunications, fundraising, creative and digital skills and administrative support."
+    },
+    {
+      "title": "Does GetUp campaign on international issues?",
+      "section": "GetUp Campaigns",
+      "order": 30,
+      "content": "GetUp does a lot of work that has impact beyond Australia’s borders, like advocating climate action and justice for refugees. But our focus is mostly on Australia and we’ve got our hands pretty full here.\n\n\nThere are lots of other great organisations like GetUp all over the world. In fact, GetUp works with a growing network of progressive organisations in The Open Network – <a href=\"https://www.the-open.net/\">check them out.</a>"
+    },
+    {
+      "title": "How can I change or cancel my regular donation?",
+      "section": "Donations",
+      "order": 30,
+      "content": "If you would like to cancel your recurring Crew gift, please email us at <a\nhref=\"mailto:donations@getup.org.au\">donations@getup.org.au </a>\n\n\nYou can make other <a href=\"/dashboard\">changes to your Crew gift</a> yourself."
+    },
+    {
+      "title": "How do I unsubscribe from GetUp emails?",
+      "section": "Subscription Troubleshooting",
+      "order": 30,
+      "content": "[You can unsubscribe at any time.](/unsubscribe)\n\n\nPlease note that after you have unsubscribed, if you sign GetUp or Campaigns By Me petitions, or take action with GetUp in another way, you will be resubscribed to the GetUp mailing list."
+    },
+    {
+      "title": "Are you a non-profit organisation?",
+      "section": "Donations",
+      "order": 40,
+      "content": "Yes, GetUp is registered as a not-for-profit company limited by guarantee. Our ABN number is 99114027986."
+    },
+    {
+      "title": "I already unsubscribed but have continued to receive GetUp emails – what’s going on?",
+      "section": "Subscription Troubleshooting",
+      "order": 40,
+      "content": "When you sign one of GetUp’s petitions or take an action with us, you’ll be automatically subscribed to our emails. If you unsubscribe and then sign another GetUp or Campaigns By Me petition, you will be resubscribed. You can always <a href=\"/unsubscribe\">unsubscribe</a> again at any time."
+    },
+    {
+      "title": "If you campaign on issues, why do you get involved in elections?",
+      "section": "GetUp Campaigns",
+      "order": 40,
+      "content": "Elections give GetUp members a powerful opportunity to drive progressive change on the issues they care about. Elected representatives have a huge impact on what is possible in Australian politics. So elections are a really important opportunity to drive new change and fight for what we believe in. But GetUp doesn’t support or endorse candidates during elections – we campaign on the issues that matter to GetUp members and make these part of the conversation.\n\n\nFor more information, please see our <a href=\"/about/independence\">Statement of Independence.</a>"
+    },
+    {
+      "title": "Are donations to GetUp tax-deductible?",
+      "section": "Donations",
+      "order": 50,
+      "content": "Donations to GetUp are not tax-deductible. This is an important measure to ensure that GetUp's campaign and advocacy work\nremains independent from government."
+    },
+    {
+      "title": "I'm a member but I haven't received updates from GetUp recently – what’s going on?",
+      "section": "Subscription Troubleshooting",
+      "order": 50,
+      "content": "If you’re missing out on GetUp updates, you should first check your email spam folder. If you’re still having difficulty, let us know by <a href=\"/contact-us#contact-form\">getting in touch</a> and we’ll see what we can do."
+    },
+    {
+      "title": "Can I unsubscribe from a specific campaign?",
+      "section": "Subscription Troubleshooting",
+      "order": 60,
+      "content": "Unfortunately, at the moment we don’t have a method to selectively unsubscribe members from particular email campaigns.\n\n\nFrom time to time, GetUp may email you on issues that aren't your cup of tea, but we hope you'll stick with us to hear about and take action on other campaigns that you care about. If you'd like to unsubscribe from all GetUp emails <a href=\"/unsubscribe\">you can do so here.</a>"
+    },
+    {
+      "title": "What is your donations policy?",
+      "section": "Donations",
+      "order": 60,
+      "content": "GetUp is a not-for-profit organisation and does not receive any money from any political parties or the Government. Instead, we're supported by thousands of individuals who may not have a lot of time or money, but who care about the issues and want to have a say.\n\n\nThe vast majority of donors to GetUp give under $100, but some individuals and organisations give larger amounts.\n\n\n<a href=\"/donations-policy\">View our donations policy.</a>"
+    },
+    {
+      "title": "How did you get my email address?",
+      "section": "Subscription Troubleshooting",
+      "order": 80,
+      "content": "GetUp only adds email addresses if a person signs up to receive updates. We are committed to protecting your privacy. You may have signed up on our homepage or by participating in a GetUp petition or action, which automatically signs you up to receive GetUp updates.\n\n\nIf you do not remember subscribing, it is possible that someone else subscribed you using your email address. At the bottom of every email we send, there is a link to unsubscribe. If you feel you have been added in error, or would like to stop receiving GetUp updates, you can <a href=\"/unsubscribe\">unsubscribe</a> at any time."
+    },
+    {
+      "title": "Why is my donation not being processed? It says it has been declined.",
+      "section": "Donations",
+      "order": 80,
+      "content": "That's frustrating! There are a range of reasons why this may be the case.\n\n\nDouble check you have entered your details correctly into the donations form. If you have selected \"Other amount\", check that you have entered an amount.\n\n\nIf you continue to have problems, please email us at <a href=\"mailto:donations@getup.org.au\">donations@getup.org.au</a> and we'll help solve the problem."
+    },
+    {
+      "title": "How can I include GetUp in my Will?",
+      "section": "Donations",
+      "order": 90,
+      "content": "Find out more about <a href=\"/donate/willpower\">leaving a bequest to GetUp</a>"
+    },
+    {
+      "title": "I want to receive GetUp emails, but can you stop requesting donations from me?",
+      "section": "Donations",
+      "order": 100,
+      "content": "Unfortunately at the moment GetUp doesn't have a method to selectively unsubscribe members from particular donation emails. Because of this, everyone receives the same donation requests.\n\n\nBeyond donating, there are many other ways to get involved – signing petitions, writing to MPs, posting on social media and sharing information with friends and family. These are just as important and powerful ways to drive change."
+    }
+  ]
+}

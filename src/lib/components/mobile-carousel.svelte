@@ -1,25 +1,25 @@
 <script>
   import { onMount, onDestroy } from "svelte";
 
-  let { items = [], autoPlayInterval = 4000, children } = $props();
+  let { items = [], autoPlayInterval = 4000, children, itemsPerView = 1 } = $props();
 
-  let currentIndex = $state(0);
+  let currentGroupIndex = $state(0);
   let container;
   let autoPlayTimer;
   let isTransitioning = $state(false);
-  let direction = $state(1); // 1 for forward, -1 for backward
+  const groupCount = $derived(Math.ceil(items.length / itemsPerView));
 
   function scrollToIndex(index) {
     if (!container || isTransitioning) return;
 
     isTransitioning = true;
-    currentIndex = index;
+    currentGroupIndex = index;
 
-    const scrollWidth = container.scrollWidth;
-    const itemWidth = scrollWidth / items.length;
+    const itemWidth = container.clientWidth / itemsPerView;
+    const targetItemIndex = index * itemsPerView;
 
     container.scrollTo({
-      left: itemWidth * index,
+      left: itemWidth * targetItemIndex,
       behavior: "smooth",
     });
 
@@ -29,12 +29,12 @@
   }
 
   function next() {
-    const nextIndex = (currentIndex + 1) % items.length;
+    const nextIndex = (currentGroupIndex + 1) % groupCount;
     scrollToIndex(nextIndex);
   }
 
   function prev() {
-    const prevIndex = currentIndex === 0 ? items.length - 1 : currentIndex - 1;
+    const prevIndex = currentGroupIndex === 0 ? groupCount - 1 : currentGroupIndex - 1;
     scrollToIndex(prevIndex);
   }
 
@@ -71,97 +71,183 @@
   function handleScroll() {
     if (isTransitioning || !container) return;
 
-    const scrollWidth = container.scrollWidth;
-    const itemWidth = scrollWidth / items.length;
-    const newIndex = Math.round(container.scrollLeft / itemWidth);
+    const itemWidth = container.clientWidth / itemsPerView;
+    const newGroupIndex = Math.round((container.scrollLeft / itemWidth) / itemsPerView);
 
-    if (newIndex !== currentIndex) {
-      currentIndex = newIndex;
+    if (newGroupIndex !== currentGroupIndex) {
+      currentGroupIndex = newGroupIndex;
     }
   }
 </script>
 
-<div class="relative">
-  <!-- Navigation Handles -->
-  <button
-    onclick={prev}
-    disabled={currentIndex === 0}
-    class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white hover:scale-110 active:scale-95"
-    aria-label="Previous"
-  >
-    <svg
-      class="w-5 h-5 text-slate-900"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2.5"
-        d="M15 19l-7-7 7-7"
-      />
-    </svg>
-  </button>
-
-  <button
-    onclick={next}
-    disabled={currentIndex === items.length - 1}
-    class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-white hover:scale-110 active:scale-95"
-    aria-label="Next"
-  >
-    <svg
-      class="w-5 h-5 text-slate-900"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2.5"
-        d="M9 5l7 7-7 7"
-      />
-    </svg>
-  </button>
-
+<div class="carousel">
   <!-- Carousel Container -->
   <div
     bind:this={container}
     onscroll={handleScroll}
     ontouchstart={handleTouchStart}
     ontouchend={handleTouchEnd}
-    class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4"
-    style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;"
+    class="carousel__track"
   >
-    {#each items as item, i}
-      <div class="shrink-0 w-full snap-center px-2">
+    {#each items as item, i (item.key || i)}
+      <div
+        class="carousel__slide"
+        style={`flex: 0 0 ${100 / itemsPerView}%; max-width: ${100 / itemsPerView}%;`}
+      >
         {@render children(item, i)}
       </div>
     {/each}
   </div>
 
-  <!-- Dots Indicator -->
-  <div class="flex justify-center gap-2 mt-4">
-    {#each items as _, i}
-      <button
-        onclick={() => scrollToIndex(i)}
-        class="transition-all duration-300 {i === currentIndex
-          ? 'w-8 h-2 bg-slate-900'
-          : 'w-2 h-2 bg-slate-300'} rounded-full"
-        aria-label={`Go to slide ${i + 1}`}
-      ></button>
-    {/each}
+  <!-- Navigation and Dots Indicator -->
+  <div class="carousel__nav">
+    <!-- Previous Button -->
+    <button
+      onclick={prev}
+      class="carousel__nav-btn"
+      aria-label="Previous"
+    >
+      <svg
+        class="carousel__nav-icon"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="carousel__dots">
+      {#each Array(groupCount) as _, i}
+        <button
+          onclick={() => scrollToIndex(i)}
+          class="carousel__dot {i === currentGroupIndex ? 'carousel__dot--active' : ''}"
+          aria-label={`Go to slide ${i + 1}`}
+        ></button>
+      {/each}
+    </div>
+
+    <!-- Next Button -->
+    <button
+      onclick={next}
+      class="carousel__nav-btn"
+      aria-label="Next"
+    >
+      <svg
+        class="carousel__nav-icon"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
   </div>
 </div>
 
 <style>
-  .scrollbar-hide {
+  /* ==========================================================================
+     Carousel Component
+     ========================================================================== */
+
+  .carousel {
+    position: relative;
+  }
+
+  .carousel__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    align-items: stretch;
+    margin: 0 calc(-1 * var(--space-2));
+    padding: 0 var(--space-2);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  .scrollbar-hide::-webkit-scrollbar {
+  .carousel__track::-webkit-scrollbar {
     display: none;
+  }
+
+  .carousel__slide {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0 var(--space-1);
+    display: flex;
+    min-height: 400px;
+  }
+
+  .carousel__slide > :global(*) {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Navigation */
+  .carousel__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .carousel__nav-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .carousel__nav-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .carousel__nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  .carousel__nav-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-slate);
+  }
+
+  /* Dots */
+  .carousel__dots {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-slate-300);
+    border: none;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .carousel__dot--active {
+    width: 32px;
+    background: var(--color-slate);
   }
 </style>

@@ -1,0 +1,19 @@
+{
+  "heading": "Our movement",
+  "body": [
+    "Our movement combines the sheer power of a million members, strategic partners, and a central team of experienced campaigners. Online and offline, we’ve got the people power, and expertise to influence outcomes and hold key decision makers to account.",
+    "GetUp is, and always has been, an independent organisation. Our work is driven by our values, not party politics, and seeks to make real change — not just noise. "
+  ],
+  "images": [
+    "/images/11214726173_8ba682dbbd_k.jpg",
+    "/images/14932567354_8ca75db8b5_o.jpg"
+  ],
+  "impactStats": {
+    "heading": "Our Impact: Last 30 days",
+    "stats": [
+      { "label": "# Small Donors", "value": "10,837" },
+      { "label": "Average Donation", "value": "$21.00" },
+      { "label": "# Actions Taken", "value": "42,351" }
+    ]
+  }
+}

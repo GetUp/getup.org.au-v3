@@ -9,13 +9,20 @@
 
   onMount(async () => {
     if (!iframeElement || typeof window === "undefined") return;
-    // Lazy-load to avoid SSR window usage; handle default/named export shapes
-    const mod = await import("iframe-resizer/js/iframeResizer");
-    const iframeResize = mod?.iframeResizer || mod?.default;
-    if (!iframeResize) return;
 
+    // Set the iframe src first
     iframeElement.src = src + window.location.search;
-    iframeResize({}, iframeElement);
+
+    // Lazy-load iframe-resizer to avoid SSR window usage
+    try {
+      const iframeResizeModule = await import("@iframe-resizer/parent");
+      const iframeResize = iframeResizeModule.default;
+      if (iframeResize) {
+        iframeResize({ license: 'GPLv3' }, iframeElement);
+      }
+    } catch (error) {
+      console.warn("Failed to initialize iframe-resizer:", error);
+    }
   });
 </script>
 

@@ -1,0 +1,81 @@
+{
+  "type": "work_at_getup",
+  "heading": "Work at GetUp",
+  "subheading": "Want to build a progressive Australia alongside our excellent members and staff?",
+  "intro": "GetUp is an independent movement of more than 1,000,000 members campaigning for social justice, economic fairness and environmental sustainability in Australia. Join our team and come to work each day to fight for action on climate change, for a fairer go for asylum seekers and to protect Australia's social safety net.\n",
+  "bullets": [
+    "Work with our inspiring, passionate, and growing membership.",
+    "Work within a tight, talented, fun team of world class campaigners, organisers, technologists and analysts."
+  ],
+  "cta_label": "View current vacancies",
+  "cta_href": "#vacancies",
+  "hero_image": "/images/uploads/work-at-getup.jpg",
+  "benefits": [
+    {
+      "title": "Purposeful Work",
+      "description": "You won't be pushing paper at GetUp. You'll be working to make Australia a more progressive society - to get government action on climate change and commitment to renewable energy, to get kids out of detention, to keep the budget fair to all Australians, to save the Great Barrier Reef."
+    },
+    {
+      "title": "Autonomous and Challenging Work",
+      "description": "You'll have a high degree of independence and autonomy at GetUp - if you have a great campaign or project or creative idea, run it past your boss, make it happen! Every day will be different and lots of days you'll be thrown curve balls and need to work out how to hit them out of the park."
+    },
+    {
+      "title": "Learn from the Best",
+      "description": "While you'll have autonomy, you'll also receive guidance and training from some of the best campaigners in the country, both on staff and in the wider progressive movement."
+    },
+    {
+      "title": "Flexible on Hours and Location of Work",
+      "description": "While we aim to work roughly 9-5 and from the office, we understand that sometimes you may need to work 11-7 or from your home."
+    },
+    {
+      "title": "Work Life Balance",
+      "description": "We want our staff to work hard, but we also want them to have fulfilling lives outside of work. We are committed to getting our staff out of the office on time in the evenings and offer six weeks annual leave per year. Study leave may be negotiated."
+    },
+    {
+      "title": "Parent Friendly Workplace",
+      "description": "We offer generous paid parental leave for both primary and secondary carers. And our flexibility on hours and location of work is useful for working parents."
+    },
+    {
+      "title": "Global Partners",
+      "description": "We are part of a global progressive movement. We teach and learn from the best international campaigners by regularly connecting - through conferences and secondments - with partners in Europe, the US, Canada, India, and South Africa."
+    }
+  ],
+  "values": [
+    {
+      "title": "Member Driven",
+      "description": "The first question we ask in all that we do is 'what can members do to create change?'. Our members are enablers of change. We put GetUp members at the centre of all campaign strategies and tactics – they are instrumental to any campaign victory. We take our responsibility as the stewards of members' time and money very seriously. We are open with and accountable to our members. We are GetUp members."
+    },
+    {
+      "title": "Passionate",
+      "description": "We are lifelong members of the progressive movement. We are powered by a deep and abiding passion for progressive change, for resisting conservative forces, and for fighting injustice and inequality. We desire to create progressive change on the issues that matter most to our members – climate change, asylum seekers and the social safety net, amongst others."
+    },
+    {
+      "title": "Strive for Impact and Excellence",
+      "description": "We are impact-driven and strategic. Our success is measured not by number of members or facebook likes. It is measured by whether we are influencing discourses, debates and decision makers. While our work is ambitious, we don't dive down every rabbit hole. We pick our battles. We focus on strategic opportunities to build power and show power, with a strong compass of short- and long-term purpose. We do the best work we can because we know that we make the greatest impact when our work is exceptional. We work hard, smart, and have a reputation for excellence."
+    },
+    {
+      "title": "Derive Strength from Diversity",
+      "description": "A diverse team, membership and movement makes us better at seeing and fighting injustice. Our impacts are strongest when informed by diverse perspectives. We invest in and champion best practice solutions to increase diversity and empower every team member. We take positive action to prevent oppression, talking candidly about barriers to diversity and supporting each other through these conversations. We acknowledge our privilege and use it for good, constantly asking ourselves: how does my work support diverse voices and leadership? How am I working to share power in my day-to-day?"
+    },
+    {
+      "title": "Supportive of Partner Organisations",
+      "description": "GetUp is one cog in the progressive movement wheel. We are humbled by the knowledge and talent of other progressive groups. We are thankful for the opportunity to work alongside them for a common purpose. We learn from them. At the same time, we recognise our privilege and strength, and use that to help other progressives. We empower the movement to do more, and do better, and we become stronger ourselves when we do. By acting generously and selflessly, we make our movement stronger."
+    },
+    {
+      "title": "Supportive of Each Other",
+      "description": "We are a team and we are greater than the sum of our parts. We depend on each other's talents, expertise and passions to achieve excellence in all that we do. We're never turfy or competitive because we are stronger when we work together. Everything we achieve is the outcome of incredible collaboration and ongoing learning. We always make time to lend a hand or to give advice, because we know that it increases our impact. We share in each others successes and mistakes. We make sure that our teammates are looking after themselves. When the going gets tough - whether it be when we've had bad news about a campaign, or whether someone needs support about something going on in their life - we've got each other's backs."
+    },
+    {
+      "title": "Audacious",
+      "description": "Audacity is our standard practice. While we manage for risk, we never accept 'it can't be done' or 'that's impossible'. We are always aiming higher, pushing our own boundaries and getting outside our comfort zones, in our pursuit of progressive change. We're willing to take risks to achieve our goals. We are pioneers in our field, trying new and ambitious tactics to achieve our goals. We dream big, we are groundbreaking, we defy limits and never shy away from new challenges."
+    },
+    {
+      "title": "Nimble",
+      "description": "We always have our ear to the ground to identify opportunities to be impactful, and seize key moments as they arise. We are rapid responders - quick-thinking and fast-moving. Our rapid response is always weighed with accuracy and quality, a balance we try to get right by focusing on impact. The complex, ever-changing Australian political landscape in which we toil often necessitates changing gear, shifting priorities or pivoting to move forward with the most strategic action. We are flexible, adaptable, agile, and prepared to go all in to get the job done."
+    },
+    {
+      "title": "Experimental",
+      "description": "We are always innovating and experimenting. This means we are constantly taking risks and facing roadblocks and dead ends along the way. We aim to fail faster, meaning that we do not hold back on ideas for fear of failure. Rather, we try them out and either succeed or fail faster. We constantly scrutinise our work in terms of impact and reflect critically on what we could be doing better. We encourage open and transparent process, inviting feedback and evaluation on our work from each other, our members and our partner organisations. We relish any opportunities to improve our work because it makes us run more effective campaigns. We are constantly learning."
+    }
+  ]
+}

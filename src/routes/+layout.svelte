@@ -7,13 +7,11 @@
   import Footer from "$lib/components/footer.svelte";
   import SignupModal from "$lib/components/signup-modal.svelte";
   import SideMenu from "$lib/components/side-menu.svelte";
-  import DonationModal from "$lib/components/donation-modal.svelte";
 
   let { children } = $props();
 
   let signupModalOpen = $state(false);
   let sideMenuOpen = $state(false);
-  let donationModalOpen = $state(false);
 
   function openSignup() {
     signupModalOpen = true;
@@ -31,17 +29,8 @@
     sideMenuOpen = false;
   }
 
-  function openDonation() {
-    donationModalOpen = true;
-  }
-
-  function closeDonation() {
-    donationModalOpen = false;
-  }
-
   setContext("modals", {
     openSignup,
-    openDonation,
     openSideMenu,
   });
 </script>
@@ -60,7 +49,7 @@
 </svelte:head>
 <div class="min-h-screen bg-white">
   {#if !$page.url.pathname.startsWith("/edit")}
-    <Header onOpenSignup={openSignup} onOpenDonation={openDonation} />
+    <Header onOpenSignup={openSignup} />
   {/if}
 
   {@render children()}
@@ -77,6 +66,5 @@
       onClose={closeSideMenu}
       onOpenSignup={openSignup}
     />
-    <DonationModal isOpen={donationModalOpen} onClose={closeDonation} />
   {/if}
 </div>

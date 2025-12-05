@@ -1,14 +1,27 @@
 <script>
   import { slide } from 'svelte/transition';
-  import { pillars as pillarData } from '$lib/data/content';
+  import { campaigns as campaignData, pillars as pillarData } from '$lib/data/content';
   import LogoMarkExclaim from './logo-mark-exclaim.svelte';
   
   let { pillars = pillarData.filter((pillar) => pillar.slug !== 'all') } = $props();
   let openSlug = $state('');
+
+  const campaignList = campaignData.filter((campaign) => !campaign.archived);
+  const campaignsBySlug = $derived(
+    campaignList.reduce((acc, campaign) => {
+      const key = campaign.pillar || 'core';
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(campaign);
+      return acc;
+    }, /** @type {Record<string, typeof campaignList>} */ ({}))
+  );
   
   /** @param {string} slug */
   const toggle = (slug) => {
     openSlug = openSlug === slug ? '' : slug;
+    if (typeof window !== 'undefined') {
+      history.replaceState(history.state, '', `#${slug}`);
+    }
   };
 </script>
 
@@ -29,8 +42,14 @@
             {/if}
           </div>
           <div class="flex-1 text-left">
+            <p class="text-xs uppercase tracking-wide text-gray-500">Pillar</p>
             <h3 class="font-subheader text-slate text-lg md:text-xl">{pillar.heading}</h3>
-            <p class="text-sm text-gray-600 mt-0.5 font-sans">{pillar.subhead}</p>
+            {#if pillar.subhead}
+              <p class="text-sm text-gray-700 mt-0.5 font-sans">{pillar.subhead}</p>
+            {/if}
+            {#if pillar.examples}
+              <p class="text-sm text-gray-600 mt-0.5 font-sans italic">{pillar.examples}</p>
+            {/if}
           </div>
           <svg class="w-5 h-5 text-gray-400 transition-transform {openSlug === pillar.slug ? 'rotate-90' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -38,13 +57,13 @@
         </button>
         
         {#if openSlug === pillar.slug}
-          <div class="px-4 pb-4 space-y-3" transition:slide={{ duration: 200 }}>
+          <div class="px-6 pb-5 space-y-3" transition:slide={{ duration: 200 }}>
             {#if pillar.blurb}
               <p class="text-sm text-gray-700 font-sans">{pillar.blurb}</p>
             {/if}
-            <div class="space-y-2">
-              {#each pillar.campaigns as campaign}
-                <a 
+            <div class="space-y-2 pl-2 border-l-2 border-gray-100">
+              {#each campaignsBySlug[pillar.slug] || [] as campaign}
+                <a
                   class="flex gap-3 p-3 rounded-lg border border-gray-100 hover:border-orange hover:bg-sand transition-colors items-center"
                   href={campaign.href}
                 >

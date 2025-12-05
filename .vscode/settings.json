@@ -1,0 +1,5 @@
+// For YAML config file
+{ "yaml.schemas": {
+  "https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json": ["/static/config.yml"]
+}
+}

@@ -1,0 +1,75 @@
+{
+    "header": {
+        "header": "One million people working to build a progressive Australia.",
+        "image": "/images/human-rights.jpg"
+    },
+    "who": {
+        "type": "who",
+        "header": "Driven by the values of everyday people.",
+        "image": "/images/power-up-group.jpg",
+        "body": "By combining the power of one million members, movement partners, and a central team of expert strategists, we do what it takes to make an extraordinary impact.\n\nGetUp members come from every walk of life, and are united by a shared belief in fairness, compassion, and courage. Together they set our movement’s agenda on issues they care about, from human rights and climate action to economic fairness and First Nations justice."
+    },
+    "what": {
+        "type": "what",
+        "header": "Driven by values, not party politics.",
+        "body": "From making sure people are able to vote in elections to successfully stopping major projects threatening the Great Barrier Reef, our movement has a decade-long history of taking on powerful interests — and winning.",
+        "items": [
+            {
+                "text": "Fighting for a safe and healthy climate",
+                "image": "/images/issues-pollution.jpg",
+                "alt": ""
+            },
+            {
+                "text": "Protecting the future of our reef",
+                "image": "/images/issues-reef.jpg",
+                "alt": ""
+            },
+            {
+                "text": "Holding governments to account",
+                "image": "/images/issues-dutton.jpg",
+                "alt": ""
+            },
+            {
+                "text": "Stopping the world’s biggest coal mine",
+                "image": "/images/issues-mine.jpg",
+                "alt": ""
+            },
+            {
+                "text": "Defending refugees & asylum seekers",
+                "image": "/images/issues-refugee.jpg",
+                "alt": ""
+            },
+            {
+                "text": "Campaigning for a fair and just Australia",
+                "image": "/images/issues-marriage.jpg",
+                "alt": ""
+            }
+        ]
+    },
+    "how": {
+        "type": "how",
+        "header": "Whatever it takes to make genuine progress.",
+        "body": "Together with our team of experienced strategists, our members use their voice, time, and skills to take action that moves the needle online and offline.",
+        "strategySmallImage": "/images/press-freedom-poster.jpg",
+        "strategyImage": "/images/tessa-with-doggo.jpg",
+        "strategies": [
+            {
+                "heading": "Online actions",
+                "body": "Simple actions that together amount to significant power: signing petitions, writing to influence key decision makers, or chipping in to help fund polling, research, or advertising."
+            },
+            {
+                "heading": "Offline actions",
+                "body": "Careful, strategic, and bold action in the real world: meeting local MPs, handing out How To Vote cards at polling booths, or attending rallies."
+            },
+            {
+                "heading": "In the media",
+                "body": "Using our powerful and respected voice in Australian politics: building greater awareness of the issues we care about, and holding decision makers accountable to the public."
+            }
+        ]
+    },
+    "donations": {
+        "type": "donations",
+        "header": "Helping power a million-strong movement for real change.",
+        "body": "Together, we’re not just heard—when GetUp speaks, power listens. We've won a High Court case, secured millions for mental health funding, compelled governments to begin cracking down on multinational tax avoidance, and united to win Marriage Equality. Every dollar you donate to our movement goes toward building a more fair, flourishing, and just Australia.\n\nYour donation will be used to fund billboards that get our messages in front of decision makers, hard-hitting TV ads in the lounge rooms of key electorates, and rallies demonstrating people power.\n\nOur Crew regular donors allow us to plan big, tackle bold long-term goals, and remain fiercely independent—free to challenge big money and party politics while staying accountable to the people who power our movement.\n\nYour voice matters. Your actions make a difference. Together, we achieve the extraordinary."
+    }
+}

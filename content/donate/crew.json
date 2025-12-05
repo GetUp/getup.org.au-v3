@@ -1,0 +1,31 @@
+{
+  "type": "crew",
+  "heading": "Join GetUp Crew",
+  "subhead": "Become the driving force of our movement with a regular contribution",
+  "body": "GetUp Crew members are the backbone of our movement. Your regular support allows us to plan long-term campaigns, respond quickly to breaking issues, and build the movement power we need to create lasting change.\n\nAs a Crew member, you'll be part of a community of Australians who are committed to creating a fair, flourishing, and just Australia for all.",
+  "embed": "https://www.getup.org.au/campaigns/getup/homepage/make-a-donation-b?recurring=true",
+  "benefits": [
+    {
+      "heading": "Strategic Impact",
+      "body": "Your regular donations allow us to plan and execute long-term campaigns that create systemic change."
+    },
+    {
+      "heading": "Rapid Response",
+      "body": "When urgent issues arise, we can act immediately without waiting for fundraising drives."
+    },
+    {
+      "heading": "Movement Building",
+      "body": "Regular support helps us invest in organizing, training, and empowering members across Australia."
+    },
+    {
+      "heading": "Independence",
+      "body": "Member contributions keep us accountable to our community, not corporate interests."
+    }
+  ],
+  "testimonial": {
+    "quote": "Being part of GetUp Crew means I'm making a difference every single month. It's my way of investing in the Australia I want to see.",
+    "author": "Sarah M.",
+    "location": "Melbourne"
+  },
+  "image": "https://gu-static-hosting.s3.ap-southeast-2.amazonaws.com/gu24-refresh/reference_images/grandmother-with-granddaughter-rally.png"
+}

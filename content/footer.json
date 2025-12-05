@@ -1,0 +1,113 @@
+{
+  "socialMedia": [
+    {
+      "label": "Facebook",
+      "url": "https://facebook.com/getupaustralia",
+      "icon": "facebook",
+      "iconFile": "/icons/social/facebook.svg"
+    },
+    {
+      "label": "Twitter",
+      "url": "https://twitter.com/getup",
+      "icon": "twitter",
+      "iconFile": "/icons/social/twitter.svg"
+    },
+    {
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/getup.org.au",
+      "icon": "bluesky",
+      "iconFile": "/icons/social/bluesky.svg"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://instagram.com/getup_australia",
+      "icon": "instagram",
+      "iconFile": "/icons/social/instagram.svg"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/user/getupaustralia",
+      "icon": "youtube",
+      "iconFile": "/icons/social/youtube.svg"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@getup_australia",
+      "icon": "tiktok",
+      "iconFile": "/icons/social/tiktok.svg"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/company/getup",
+      "icon": "linkedin",
+      "iconFile": "/icons/social/linkedin.svg"
+    }
+  ],
+  "linkColumns": [
+    {
+      "label": "Donate",
+      "items": [
+        {
+          "label": "Make a donation",
+          "path": "",
+          "page": "/donate"
+        },
+        {
+          "label": "Gift in your Will",
+          "path": "",
+          "page": "/donate/willpower"
+        },
+        {
+          "label": "Donations Policy",
+          "path": "",
+          "page": "/donations-policy"
+        },
+        {
+          "label": "Donations Disclosure",
+          "path": "",
+          "page": "/about/transparency"
+        }
+      ]
+    },
+    {
+      "label": "Info",
+      "items": [
+        {
+          "label": "Update your details",
+          "path": "/dashboard",
+          "external": true,
+          "target": "_self",
+          "url": "https://www.getup.org.au/dashboard"
+        },
+        {
+          "label": "Unsubscribe",
+          "path": "",
+          "page": "/unsubscribe"
+        },
+        {
+          "label": "Privacy Policy",
+          "path": "",
+          "page": "/privacy-policy"
+        },
+        {
+          "label": "Frequently Asked Questions",
+          "path": "",
+          "page": "/about/faqs"
+        },
+        {
+          "label": "Contact Us",
+          "path": "",
+          "page": "/contact-us"
+        },
+        {
+          "label": "Work at GetUp",
+          "path": "",
+          "page": "/about/work-at-getup"
+        }
+      ]
+    }
+  ],
+  "acknowledgment": "Our team acknowledges that we meet and work on the land of the Gadigal people of the Eora Nation. We wish to pay respect to their Elders — past, present and future — and acknowledge the important role all Aboriginal and Torres Strait Islander people continue to play within Australia and the GetUp community.",
+  "warning": "WARNING: Aboriginal and Torres Strait Islander people are warned that this website may contain images or names of deceased persons.",
+  "copyright": "© {{year}} GetUp! All rights reserved. Authorised by D. Loasby, GetUp, 52 Reservoir St, Sydney."
+}

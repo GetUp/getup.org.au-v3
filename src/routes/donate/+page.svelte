@@ -1,35 +1,9 @@
 <script>
   import TijuanaEmbed from "$lib/components/tijuana-embed.svelte";
+  import { donateContent } from "$lib/data/content";
 
-  const donateContent = {
-    heading: "Power people-driven change",
-    subhead:
-      "Your donation fuels independent campaigns that put people before corporate power.",
-    embed: "https://www.getup.org.au/campaigns/getup/homepage/make-a-donation",
-    body: `
-      Every gift helps GetUp members push for climate justice, fair housing, and a more just Australia. We don't take corporate donations — that keeps us accountable to our community, not big business.
-    `,
-    highlights: [
-      "Transparent and member-powered",
-      "Campaigns across climate, justice, and fairness",
-      "Grassroots organising in every state",
-    ],
-    image:
-      "https://gu-static-hosting.s3.ap-southeast-2.amazonaws.com/gu24-refresh/reference_images/grandmother-with-granddaughter-rally.png",
-    ctas: [
-      {
-        heading: "Start a monthly gift",
-        copy: "Provide stable support so campaigns can move fast when it matters.",
-        action: "Donate monthly",
-      },
-      {
-        heading: "Make a one-off gift",
-        copy: "Back a campaign today and help us scale the fight for change.",
-        action: "Donate once",
-      },
-    ],
-  };
-
+  const header = donateContent.header || {};
+  const heroImage = "/images/media-header.jpg";
 </script>
 
 <svelte:head>
@@ -41,88 +15,86 @@
 </svelte:head>
 
 <main class="bg-white">
-  <section class="relative overflow-hidden bg-(--color-sand)">
-    <div class="max-w-7xl mx-auto px-4 py-12 md:py-16 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="space-y-6">
-        <h1 class="font-display text-3xl md:text-4xl uppercase text-(--color-slate)">
-          {donateContent.heading}
-        </h1>
-        <p class="text-xl text-(--color-slate-light)">
-          {donateContent.subhead}
-        </p>
-        <p class="text-lg text-(--color-slate)">
-          {donateContent.body}
-        </p>
-        <ul class="space-y-3 text-(--color-slate)">
-          {#each donateContent.highlights as point}
-            <li class="flex items-start gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-(--color-orange) mt-1"></span>
-              <span>{point}</span>
-            </li>
-          {/each}
-        </ul>
-        <a href="#donate-form" class="btn btn-primary btn-sm u-plus">
-          Donate now
-        </a>
-        <a href="/reports" class="btn btn-ghost btn-sm u-arrow">
-          See impact
-        </a>
-      </div>
-
-      <div class="relative bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100">
-        <div class="h-56 md:h-72 overflow-hidden">
-          <img
-            src={donateContent.image}
-            alt="GetUp community in action"
-            class="w-full h-full object-cover"
-          />
-        </div>
-        <div class="p-6 space-y-4">
-          <div class="flex items-center justify-between">
-            <p class="font-subheader text-xl uppercase text-(--color-slate)">
-              Donate securely
-            </p>
-            <span class="text-sm text-(--color-slate-light)">
-              256-bit encrypted
-            </span>
-          </div>
-          <p class="text-(--color-slate)">
-            Choose your amount, frequency, and payment method securely below.
-          </p>
-          <a class="btn btn-primary btn-block u-plus" href="#donate-form">
-            Go to donation form
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- Header + embed split -->
   <section class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 grid lg:grid-cols-2 gap-6">
-      {#each donateContent.ctas as cta, i}
-        <div
-          class={`p-8 rounded-xl border shadow-sm ${
-            i === 0 ? "bg-(--color-orange)" : "bg-(--color-purple)"
-          } text-white flex flex-col gap-4`}
-        >
-          <p class="font-subheader text-2xl uppercase">{cta.heading}</p>
-          <p class="text-lg">{cta.copy}</p>
-          <a
-            class="btn btn-sm bg-white text-(--color-slate) font-extrabold uppercase text-center"
-            href="#donate-form"
-          >
-            {cta.action}
-          </a>
+    <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-14">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="space-y-6">
+          <h1 class="font-display font-bold text-(--color-orange) text-4xl md:text-5xl leading-tight">
+            {header.heading}
+          </h1>
+          <p class="text-xl md:text-2xl text-(--color-orange) leading-tight">
+            {header.subhead}
+          </p>
+          {#if header.highlights?.[0]}
+            <p class="font-body text-lg md:text-xl text-(--color-slate)">
+              {header.highlights[0]}
+            </p>
+          {/if}
+          {#if header.body}
+            <div class="space-y-4 text-lg leading-relaxed text-(--color-slate)">
+              <p>{header.body}</p>
+            </div>
+          {/if}
+          {#if header.ctas?.length}
+            <div class="hidden lg:grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {#each header.ctas as cta, i}
+                <a
+                  class="relative overflow-hidden rounded-xl border border-(--color-sand) bg-(--color-sand) shadow-sm p-5 space-y-3"
+                  href={cta.link}
+                >
+                  <h2 class="font-display text-xl md:text-2xl leading-snug text-(--color-slate)">{cta.heading}</h2>
+                  <p class="text-(--color-slate) text-base md:text-lg leading-relaxed">{cta.copy}</p>
+                  <span
+                    class={`inline-flex items-center gap-2 font-semibold text-sm px-3 py-2 rounded-md ${
+                      i === 0
+                        ? "bg-(--color-purple) text-white"
+                        : "bg-(--color-orange) text-white"
+                    } border border-(--color-sand)`}
+                  >
+                    {cta.action}
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              {/each}
+            </div>
+          {/if}
         </div>
-      {/each}
-    </div>
-  </section>
-
-  <section id="donate-form" class="bg-white">
-    <div class="max-w-5xl mx-auto px-4 pb-16">
-      <div class="rounded-xl overflow-hidden shadow-xl border border-gray-100">
-        <TijuanaEmbed src={donateContent.embed} />
+        <div class="w-full bg-gray-200 rounded-lg overflow-hidden border border-gray-300">
+          <div class="aspect-video">
+            <TijuanaEmbed src={header.embed} />
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  {#if header.ctas?.length}
+    <section class="bg-white py-12 md:py-16 lg:hidden">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+        {#each header.ctas as cta, i}
+          <a
+            class="relative overflow-hidden rounded-2xl shadow-lg border border-(--color-sand) bg-(--color-sand) group"
+            href={cta.link}
+          >
+            <div
+              class="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity"
+            ></div>
+            <div class="relative p-8 text-(--color-slate-light) space-y-3">
+              <h2 class="font-display text-xl leading-tight">{cta.heading}</h2>
+              <p class="text-base opacity-95 leading-relaxed">{cta.copy}</p>
+              <span
+                class={`inline-flex items-center gap-2 font-semibold px-3 py-2 rounded-md ${
+                  i === 0 ? "bg-(--color-purple) text-white" : "bg-(--color-orange) text-white"
+                }`}
+              >
+                {cta.action}
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
+          </a>
+        {/each}
+      </div>
+    </section>
+  {/if}
 </main>

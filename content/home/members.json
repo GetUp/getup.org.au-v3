@@ -1,0 +1,17 @@
+{
+  "heading": "Our members",
+  "body": "GetUp focuses and amplifies your voice alongside a million others so that you're not just heard – you make a real difference. You help set the strategy, you choose the issues you want to work on, and together, we make a huge impact.",
+  "quote": {
+    "text": "Thanks for being there and making it easier for the little person to have an impact.",
+    "author": "Karen",
+    "authorLabel": "GetUp Member since 2012"
+  },
+  "buttonPrimary": {
+    "label": "Create Petition +",
+    "link": "https://petitions.getup.org.au/petition/start?source=root"
+  },
+  "buttonSecondary": {
+    "label": "Donate",
+    "path": "/donate"
+  }
+}

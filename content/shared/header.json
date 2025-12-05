@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "label": "Campaigns",
+      "page": "/campaigns",
+      "external": false
+    },
+    {
+      "label": "About",
+      "page": "/about",
+      "external": false
+    },
+    {
+      "label": "Reports",
+      "page": "/reports",
+      "external": false
+    }
+  ]
+}

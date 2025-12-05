@@ -1,0 +1,55 @@
+{
+  "type": "board",
+  "heading": "Our Board",
+  "intro": "A diverse group of leaders in advocacy, law, finance, and community organising who steward our independence and accountability.",
+  "members": [
+    {
+      "name": "Ben Margetts",
+      "role": "",
+      "image": "/images/uploads/ben-margetts-headshot.jpg",
+      "order": 0,
+      "body": "Ben is the General Manager at Avaaz, where he has been part of the leadership team for over 10 years. In this role he is responsible for Organizational Development and oversees People & Culture, Technology, Product and other organizational functions. Ben believes wholeheartedly in people-powered change, and has consulted for and advised leading advocacy groups across the world. Having spent more than a decade abroad, Ben now lives with his family on beautiful Awabakal Country."
+    },
+    {
+      "name": "Glen Berman",
+      "role": "Chair",
+      "image": "/images/uploads/glen-b-square.png",
+      "order": 10,
+      "body": "Glen is a PhD candidate at the Australian National University, studying the social and societal implications of emerging technology practices. Previously, he helped lead technology-driven social change organisations in Australia and the United States. He co-founded Australian Progress, a national nonprofit focused on building the capacity of civil society organisations to create systems change, was Managing Director of SumOfUs, a global online movement focused on corporate accountability, and was General Manager at the Australian Youth Climate Coalition. Glen currently also provides independent consulting services to nonprofits, with a focus on campaign strategy and facilitation. Glen lives and works on the lands of the Wurundjeri people of the Kulin Nation."
+    },
+    {
+      "name": "Alan Wu",
+      "role": "Deputy Chair",
+      "image": "/images/uploads/alan-wu-square.png",
+      "order": 20,
+      "body": "Alan is a not-for-profit corporate governance specialist, working with communities to build power to make decisions that matter. He currently serves as chair of Democracy in Colour, Australia’s first racial justice initiative run by people of colour; and on the board of the Victorian Pride Centre, the nation’s first purpose-built centre for LGBTIQ+ communities.\n\nAlan previously served as the youngest and longest-serving member of the board of Oxfam Australia, as chair of Australia’s peak body for young people, as Envoy for Young People to the Executive Director of the UN Environment Programme, and on the Australian National Commission for UNESCO. He was also an executive and lawyer with the Australian Government, working in the Departments of the Attorney-General, and Prime Minister and Cabinet.\n\nAlan is admitted as a lawyer to the Supreme Court of the Australian Capital Territory, and is a Fellow of the Governance Institute of Australia and the Chartered Governance Institute."
+    },
+    {
+      "name": "Stephen Monk",
+      "role": "",
+      "image": "/images/board/stephen-monk.jpg",
+      "order": 80,
+      "body": "Stephen Monk is an IT entrepreneur with several successful consulting and product businesses in the UK and Australia. Within these organisations he provides technical leadership, strategic direction and financial management. He’s a software developer at heart, and now spends most of this time working with large enterprises to help their staff embrace new technology and become more digitally savvy. Stephen has a Bachelor of Arts and Bachelor of Science majoring in Applied Computing, Political Science and Psychology from the University of Tasmania."
+    },
+    {
+      "name": "Claire Harman",
+      "role": "",
+      "image": "/images/uploads/claire-harman.jpg",
+      "order": 95,
+      "body": "Claire Harman is the Head of People and Culture at the Australian Conservation Foundation (ACF). In this role she is responsible for learning and development, recruitment, equity, diversity, inclusion and justice and organisational design. Prior to ACF, Claire was Chief of Staff at Purpose, a global social impact consultancy that supports progressive organisations, activists, businesses, and philanthropies. While Claire started her career in program management and campaigning, her work has evolved to focus on building and sustaining impactful teams in an advocacy context. Originally from Ballarat, Claire now lives and works on the lands of the Wurundjeri people of the Kulin Nation."
+    },
+    {
+      "name": "Zaahir Edries",
+      "role": "",
+      "image": "/images/uploads/zaahir-edries.jpg",
+      "order": 999,
+      "body": "Zaahir is an organiser, and strategist with a history in democracy campaigning and law reform work throughout Australia over two decades as a movement lawyer. Zaahir was previously GetUp's General Counsel following a career in private practice and in-house roles. He is a foundation member of the Muslim Legal Network (NSW) and was its president for four years where he led a number of key initiatives, giving evidence at a number of state and federal parliamentary inquiries on, anti discrimination, refugees rights, counter terrorism and racial vilification legislation. Zaahir has served on a number of boards and executive committees and also consults to several for-purpose organisations around the globe on political risk, management, and strategic governance matters. Zaahir holds a Bachelor of Legal Studies from Murdoch University and a Masters of Law and Legal Practice from the University of Technology, Sydney as well as being a qualified fitness instructor."
+    }
+  ],
+  "accordions": [
+    {
+      "title": "Board Charter",
+      "body": "The Board of Directors is responsible for the overall governance, management and strategic direction of GetUp."
+    }
+  ]
+}

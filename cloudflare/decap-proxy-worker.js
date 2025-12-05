@@ -158,23 +158,44 @@ export default {
 
           // Map "files" collections (slug -> specific file path)
           const fileCollections = {
-            pages: {
-              home: "content/home.json",
-              about: "content/about.json",
+            home: {
+              header: "content/home/header.json",
+              hero: "content/home/hero.json",
+              "take-action": "content/home/take-action.json",
+              impact: "content/home/impact.json",
+              members: "content/home/members.json",
+              values: "content/home/values.json",
+              footer: "content/home/footer.json",
+            },
+            about: {
+              header: "content/about/header.json",
+              who: "content/about/who.json",
+              what: "content/about/what.json",
+              how: "content/about/how.json",
+              donations: "content/about/donations.json",
+              transparency: "content/about/transparency.json",
+              board: "content/about/board.json",
+              faqs: "content/about/faqs.json",
+              "work-at-getup": "content/about/work-at-getup.json",
+            },
+            donate: {
+              donate: "content/donate/donate.json",
+              crew: "content/donate/crew.json",
+              willpower: "content/donate/willpower.json",
+            },
+            pillars: { pillars: "content/pillars.json" },
+            other_pages: {
+              "donations-policy": "content/donations-policy.yaml",
+              "contact-us": "content/contact-us.json",
+              unsubscribe: "content/unsubscribe.json",
               reports: "content/reports.json",
               "privacy-policy": "content/privacy-policy.yaml",
             },
-            shared: {
-              "footer-cta": "content/footer-cta.json",
-            },
-            major_donations_disclosures: {
-              "major-donations-disclosures": "content/major-donations-disclosures.json",
-            },
-            transparency_reports: {
-              "transparency-reports": "content/transparency-reports.json",
-            },
-            transparency_page: {
-              "transparency-page": "content/transparency-page.json",
+            shared: { "footer-cta": "content/footer-cta.json" },
+            site_pages: { pages: "content/site-pages.json" },
+            settings: {
+              home_page: "content/settings/hero.json",
+              campaigns: "content/settings/campaigns.json",
             },
           };
 
@@ -182,8 +203,6 @@ export default {
           const folderCollections = {
             campaigns: { folder: "content/_campaigns", ext: "json" },
             pillars: { folder: "content/_pillars", ext: "json" },
-            faqs: { folder: "content/_faqs", ext: "md" },
-            board: { folder: "content/_board", ext: "md" },
           };
 
           let filePath;
@@ -250,23 +269,44 @@ export default {
         } else if (params.collection && params.slug) {
           // Map "files" collections (slug -> specific file path)
           const fileCollections = {
-            pages: {
-              home: "content/home.json",
-              about: "content/about.json",
+            home: {
+              header: "content/home/header.json",
+              hero: "content/home/hero.json",
+              "take-action": "content/home/take-action.json",
+              impact: "content/home/impact.json",
+              members: "content/home/members.json",
+              values: "content/home/values.json",
+              footer: "content/home/footer.json",
+            },
+            about: {
+              header: "content/about/header.json",
+              who: "content/about/who.json",
+              what: "content/about/what.json",
+              how: "content/about/how.json",
+              donations: "content/about/donations.json",
+              transparency: "content/about/transparency.json",
+              board: "content/about/board.json",
+              faqs: "content/about/faqs.json",
+              "work-at-getup": "content/about/work-at-getup.json",
+            },
+            donate: {
+              donate: "content/donate/donate.json",
+              crew: "content/donate/crew.json",
+              willpower: "content/donate/willpower.json",
+            },
+            pillars: { pillars: "content/pillars.json" },
+            other_pages: {
+              "donations-policy": "content/donations-policy.yaml",
+              "contact-us": "content/contact-us.json",
+              unsubscribe: "content/unsubscribe.json",
               reports: "content/reports.json",
               "privacy-policy": "content/privacy-policy.yaml",
             },
-            shared: {
-              "footer-cta": "content/footer-cta.json",
-            },
-            major_donations_disclosures: {
-              "major-donations-disclosures": "content/major-donations-disclosures.json",
-            },
-            transparency_reports: {
-              "transparency-reports": "content/transparency-reports.json",
-            },
-            transparency_page: {
-              "transparency-page": "content/transparency-page.json",
+            shared: { "footer-cta": "content/footer-cta.json" },
+            site_pages: { pages: "content/site-pages.json" },
+            settings: {
+              home_page: "content/settings/hero.json",
+              campaigns: "content/settings/campaigns.json",
             },
           };
 
@@ -274,8 +314,6 @@ export default {
           const folderCollections = {
             campaigns: { folder: "content/_campaigns", ext: "json" },
             pillars: { folder: "content/_pillars", ext: "json" },
-            faqs: { folder: "content/_faqs", ext: "md" },
-            board: { folder: "content/_board", ext: "md" },
           };
 
           if (fileCollections[params.collection]?.[params.slug]) {

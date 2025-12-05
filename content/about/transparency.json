@@ -1,0 +1,582 @@
+{
+  "type": "transparency_page",
+  "title": "Transparency",
+  "slug": "transparency",
+  "blocks": [
+    {
+      "type": "markdown",
+      "id": "aec-disclosures",
+      "title": "Australian Electoral Commission Disclosures",
+      "body": "## Australian Electoral Commission Disclosures\n\n\n\nGetUp is a Political Campaigner, with the same regulation and requirements as political party or an associated entity of a political party, but we go above and beyond.\n\nYou can read GetUp's [political expenditure declarations](https://transparency.aec.gov.au/ClientEntity/EntityDetail?clientIdentifier=30343) to the AEC.\n\nThe Australian Electoral Commission has confirmed GetUp's independence from political parties on three separate occasions:\n\nFirst, **[in 2005](https://www.aec.gov.au/Parties_and_Representatives/compliance/AEC_Advice/Getup.htm)**. Then again, **[in 2010](http://www.aec.gov.au/Parties_and_Representatives/compliance/AEC_Advice/2010-nov-get-up.htm)**. And yet again, **[in 2019](https://www.aec.gov.au/Parties_and_Representatives/compliance/files/investigation-report-2019-getup-limited.pdf)**.",
+      "nav_title": "AEC Disclosures"
+    },
+    {
+      "type": "major_donations_disclosures",
+      "id": "donations-table",
+      "title": "Major Donations Disclosures",
+      "intro": "GetUp is a not-for-profit organisation — and we don't receive any funding from political parties or the Government. In the last financial year we took money from 57,551 individual donors, making up a whopping 557,460 individual donations. 97% of these donations were under $100. On the rare occasion GetUp does receive a large donation, they're declared right here on our website within 30 days. Below are all cumulative donations over $10,000 for each financial year, for the last seven financial years. Donations which met relevant legislative disclosure thresholds prior to that can be found on the AEC website.",
+      "heading": "Donations Disclosures",
+      "disclaimer": "All cumulative donations over $10,000 are declared within 30 days.",
+      "donations": [
+        {
+          "currency": "AUD",
+          "name": "Estate of the late Michael Greer Kirkham",
+          "financial_year": "2025/2026",
+          "amount": 85899
+        },
+        {
+          "name": "Estate of the late Geoffrey Lawson Hook",
+          "financial_year": "2024/2025",
+          "amount": 26220.19,
+          "currency": "AUD"
+        },
+        {
+          "name": "Barbara Semler",
+          "financial_year": "2023/2024",
+          "amount": 10170,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the Late Geoffrey Bond",
+          "financial_year": "2023/2024",
+          "amount": 124511.89,
+          "currency": "AUD"
+        },
+        {
+          "name": "The Sunrise Project Australia Limited",
+          "financial_year": "2023/2024",
+          "amount": 40000,
+          "currency": "AUD"
+        },
+        {
+          "name": "First Australians Capital Ltd",
+          "financial_year": "2023/2024",
+          "amount": 500000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Australian Communities Foundation",
+          "financial_year": "2023/2024",
+          "amount": 50000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Lush Australasia Retail Pty. Limited",
+          "financial_year": "2023/2024",
+          "amount": 48471.08,
+          "currency": "AUD"
+        },
+        {
+          "name": "Clare Herschell",
+          "financial_year": "2023/2024",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late David Walsh",
+          "financial_year": "2022/2023",
+          "amount": 14206,
+          "currency": "AUD"
+        },
+        {
+          "name": "Australian Communities Foundation",
+          "financial_year": "2022/2023",
+          "amount": 34000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Deanne Weir",
+          "financial_year": "2022/2023",
+          "amount": 25000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Nicholas Fairfax",
+          "financial_year": "2022/2023",
+          "amount": 20000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Gemma Salteri",
+          "financial_year": "2022/2023",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Carla Salteri",
+          "financial_year": "2022/2023",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Anthony Salteri",
+          "financial_year": "2022/2023",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Tripple Ventures",
+          "financial_year": "2022/2023",
+          "amount": 80000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Geoffrey Lawson Hook",
+          "financial_year": "2022/2023",
+          "amount": 261000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Johanna Featherstone",
+          "financial_year": "2022/2023",
+          "amount": 100000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late David Walsh",
+          "financial_year": "2022/2023",
+          "amount": 125000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Boundless Earth Limited",
+          "financial_year": "2022/2023",
+          "amount": 80000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Keith Lethlean",
+          "financial_year": "2022/2023",
+          "amount": 26474,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karen Loblay AM",
+          "financial_year": "2021/2022",
+          "amount": 11017,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sue Holmes",
+          "financial_year": "2021/2022",
+          "amount": 23517,
+          "currency": "AUD"
+        },
+        {
+          "name": "Amber Electric Pty Ltd",
+          "financial_year": "2021/2022",
+          "amount": 15500,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late David Walsh",
+          "financial_year": "2021/2022",
+          "amount": 33333.33,
+          "currency": "AUD"
+        },
+        {
+          "name": "Deanne Weir",
+          "financial_year": "2021/2022",
+          "amount": 25000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Keith Lethlean",
+          "financial_year": "2021/2022",
+          "amount": 20000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Rick Davies",
+          "financial_year": "2021/2022",
+          "amount": 15000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Penelope Gullan",
+          "financial_year": "2020/2021",
+          "amount": 11291,
+          "currency": "AUD"
+        },
+        {
+          "name": "Keith Lethlean",
+          "financial_year": "2020/2021",
+          "amount": 12500,
+          "currency": "AUD"
+        },
+        {
+          "name": "Helen Semler",
+          "financial_year": "2020/2021",
+          "amount": 22085,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karen Loblay AM",
+          "financial_year": "2020/2021",
+          "amount": 12000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Peter Brown",
+          "financial_year": "2020/2021",
+          "amount": 12000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Rick Davies",
+          "financial_year": "2020/2021",
+          "amount": 20085,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Geoffrey Lawson Hook",
+          "financial_year": "2020/2021",
+          "amount": 450000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Deanne Weir",
+          "financial_year": "2020/2021",
+          "amount": 25000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Adrian Joseph Hetherington",
+          "financial_year": "2020/2021",
+          "amount": 27717,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Geoffrey Bond",
+          "financial_year": "2020/2021",
+          "amount": 50000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Eva Bitel",
+          "financial_year": "2020/2021",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sally Perini",
+          "financial_year": "2019/2020",
+          "amount": 20000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sue Holmes",
+          "financial_year": "2019/2020",
+          "amount": 19900,
+          "currency": "AUD"
+        },
+        {
+          "name": "Wayne Burns",
+          "financial_year": "2019/2020",
+          "amount": 10600,
+          "currency": "AUD"
+        },
+        {
+          "name": "Colin Chesterman",
+          "financial_year": "2019/2020",
+          "amount": 12364,
+          "currency": "AUD"
+        },
+        {
+          "name": "James Christie",
+          "financial_year": "2019/2020",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Peter Brown",
+          "financial_year": "2019/2020",
+          "amount": 12000,
+          "currency": "AUD"
+        },
+        {
+          "name": "The Broadley Trust",
+          "financial_year": "2019/2020",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karen Loblay AM",
+          "financial_year": "2019/2020",
+          "amount": 10400,
+          "currency": "AUD"
+        },
+        {
+          "name": "Minax Uriel Pty Ltd for the late Norman Rothfield Peace and Justice Fund",
+          "financial_year": "2019/2020",
+          "amount": 100300,
+          "currency": "AUD"
+        },
+        {
+          "name": "Mary Schramm",
+          "financial_year": "2018/2019",
+          "amount": 10595,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karin Andersson",
+          "financial_year": "2018/2019",
+          "amount": 18220,
+          "currency": "AUD"
+        },
+        {
+          "name": "Leon Harrison",
+          "financial_year": "2018/2019",
+          "amount": 10785,
+          "currency": "AUD"
+        },
+        {
+          "name": "Luc Favre",
+          "financial_year": "2018/2019",
+          "amount": 13101,
+          "currency": "AUD"
+        },
+        {
+          "name": "Simon Monk",
+          "financial_year": "2018/2019",
+          "amount": 50000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Diana & Briane Snape AM",
+          "financial_year": "2018/2019",
+          "amount": 10260,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sue Milliken",
+          "financial_year": "2018/2019",
+          "amount": 12960,
+          "currency": "AUD"
+        },
+        {
+          "name": "Dr Richard Stiles",
+          "financial_year": "2018/2019",
+          "amount": 20000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Amanda Lopez",
+          "financial_year": "2018/2019",
+          "amount": 13220,
+          "currency": "AUD"
+        },
+        {
+          "name": "Ian Landon-Smith",
+          "financial_year": "2018/2019",
+          "amount": 14000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Anne Coombs and Susan Varga",
+          "financial_year": "2018/2019",
+          "amount": 17703,
+          "currency": "AUD"
+        },
+        {
+          "name": "Anne Borgert",
+          "financial_year": "2018/2019",
+          "amount": 10040,
+          "currency": "AUD"
+        },
+        {
+          "name": "Daniel and Lyndell Droga",
+          "financial_year": "2018/2019",
+          "amount": 20000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Peter Brown",
+          "financial_year": "2018/2019",
+          "amount": 13000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Tony and Maureen Wheeler (contribution to administration)",
+          "financial_year": "2018/2019",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Johanna Featherstone",
+          "financial_year": "2018/2019",
+          "amount": 30000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Factory X",
+          "financial_year": "2018/2019",
+          "amount": 40000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Janet Cameron",
+          "financial_year": "2018/2019",
+          "amount": 200000,
+          "currency": "AUD"
+        },
+        {
+          "name": "J and S McKinnon",
+          "financial_year": "2018/2019",
+          "amount": 80000,
+          "currency": "AUD"
+        },
+        {
+          "name": "The Sunrise Project (contribution to climate justice to protect the natural environment from carbon pollution and over exploitation)",
+          "financial_year": "2018/2019",
+          "amount": 495000,
+          "currency": "AUD"
+        },
+        {
+          "name": "The Russell Mills Foundation",
+          "financial_year": "2018/2019",
+          "amount": 40000,
+          "currency": "AUD"
+        },
+        {
+          "name": "James Christie and Sally Paton",
+          "financial_year": "2018/2019",
+          "amount": 51500,
+          "currency": "AUD"
+        },
+        {
+          "name": "Clive Blazey",
+          "financial_year": "2018/2019",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karen Loblay AM",
+          "financial_year": "2018/2019",
+          "amount": 20700,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Dr Jan Barendregt",
+          "financial_year": "2018/2019",
+          "amount": 18955.31,
+          "currency": "AUD"
+        },
+        {
+          "name": "Minax Uriel Pty Ltd for the late Norman Rothfield Peace and Justice Fund",
+          "financial_year": "2018/2019",
+          "amount": 160545,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sue Holmes",
+          "financial_year": "2018/2019",
+          "amount": 40000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Bill Bush",
+          "financial_year": "2018/2019",
+          "amount": 12060,
+          "currency": "AUD"
+        },
+        {
+          "name": "Norman James",
+          "financial_year": "2017/2018",
+          "amount": 11783,
+          "currency": "AUD"
+        },
+        {
+          "name": "Heather Barrett",
+          "financial_year": "2017/2018",
+          "amount": 10340,
+          "currency": "AUD"
+        },
+        {
+          "name": "Tony and Maureen Wheeler (contribution to improve policy and practice towards refugees and asylum seekers in Australia)",
+          "financial_year": "2017/2018",
+          "amount": 86000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Dr Jan Barendregt",
+          "financial_year": "2017/2018",
+          "amount": 100000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Paul Hogan",
+          "financial_year": "2017/2018",
+          "amount": 29205.32,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karin Andersson",
+          "financial_year": "2017/2018",
+          "amount": 10805,
+          "currency": "AUD"
+        },
+        {
+          "name": "Sue Holmes",
+          "financial_year": "2017/2018",
+          "amount": 13500,
+          "currency": "AUD"
+        },
+        {
+          "name": "Joan Croll AO",
+          "financial_year": "2017/2018",
+          "amount": 11740,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Claire Eliza Brunner",
+          "financial_year": "2017/2018",
+          "amount": 100000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Ann Jacobs",
+          "financial_year": "2017/2018",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Karen Loblay AM",
+          "financial_year": "2017/2018",
+          "amount": 40700,
+          "currency": "AUD"
+        },
+        {
+          "name": "Minax Uriel Pty Ltd for the late Norman Rothfield Peace and Justice Fund",
+          "financial_year": "2017/2018",
+          "amount": 42360,
+          "currency": "AUD"
+        },
+        {
+          "name": "Estate of the late Linda Jean McDonald",
+          "financial_year": "2017/2018",
+          "amount": 10000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Lush Australia",
+          "financial_year": "2017/2018",
+          "amount": 80000,
+          "currency": "AUD"
+        },
+        {
+          "name": "Avaaz Foundation",
+          "financial_year": "2017/2018",
+          "amount": 72630.42,
+          "currency": "AUD"
+        },
+        {
+          "name": "JE and SJ McKinnon",
+          "financial_year": "2017/2018",
+          "amount": 40000,
+          "currency": "AUD"
+        }
+      ]
+    }
+  ]
+}

@@ -13,9 +13,12 @@
 
   let isOpen = $state(false);
   let isHeaderVisible = $state(true);
+  let showTocNub = $state(false);
+  let isNarrow = $state(false);
 
-  function isActive(href: string) {
+  function isActive(href: string, exact: boolean = false) {
     if (!activeHref) return false;
+    if (exact) return activeHref === href;
     return activeHref === href || activeHref.startsWith(href + "/");
   }
 
@@ -28,7 +31,15 @@
   }
 
   onMount(() => {
-    if (mobileLayout === "header" && headerSelector) {
+    const mq = window.matchMedia("(max-width: 1023px)");
+    const handleMq = () => (isNarrow = mq.matches);
+    handleMq();
+    mq.addEventListener("change", handleMq);
+
+    if (
+      (mobileLayout === "header" || mobileLayout === "handle") &&
+      headerSelector
+    ) {
       const header = document.querySelector(headerSelector);
       if (header) {
         const observer = new IntersectionObserver(
@@ -38,16 +49,25 @@
           { threshold: 0 },
         );
         observer.observe(header);
-        return () => observer.disconnect();
+        return () => {
+          observer.disconnect();
+          mq.removeEventListener("change", handleMq);
+        };
       }
     }
+
+    if (mobileLayout === "handle") {
+      showTocNub = true;
+    }
+
+    return () => mq.removeEventListener("change", handleMq);
   });
 </script>
 
 <!-- Mobile Triggers -->
-{#if mobileLayout === "handle"}
+{#if mobileLayout === "handle" && isNarrow}
   <button
-    class="sidebar-handle"
+    class={`sidebar-handle z-100 lg:hidden ${showTocNub ? "sidebar-handle--pinned" : ""}`}
     onclick={toggle}
     aria-expanded={isOpen}
     aria-label="Toggle navigation"
@@ -75,7 +95,7 @@
       {/if}
     </svg>
   </button>
-{:else if mobileLayout === "header"}
+{:else if mobileLayout === "header" && isNarrow}
   <!-- In-Header Trigger -->
   <button
     class="header-dropdown-trigger {isHeaderVisible
@@ -153,20 +173,17 @@
     : ''}"
 >
   <nav>
-    <ul class="sidebar-submenu-list text-white lg:text-slate-900">
+    <ul class="sidebar-submenu-list text-slate-900">
       {#each items as item}
         <li>
           <a
             href={item.href}
-            class="sidebar-submenu-link {isActive(item.href)
+            class="sidebar-submenu-link {isActive(item.href, item.exact)
               ? 'sidebar-submenu-link--active'
               : ''}"
             onclick={close}
           >
-            {#if item.icon}
-              <svelte:component this={item.icon} size={18} class="text-white lg:text-slate-900" />
-            {/if}
-            <span class="text-white lg:text-slate-900">{item.label}</span>
+            <span class="sidebar-parent-label">{item.label}</span>
           </a>
 
           {#if item.children && item.children.length > 0}
@@ -175,12 +192,15 @@
                 <li>
                   <a
                     href={child.href}
-                    class="sidebar-submenu-child-link {isActive(child.href)
+                    class="sidebar-submenu-child-link {isActive(
+                      child.href,
+                      child.exact,
+                    )
                       ? 'sidebar-submenu-child-link--active'
                       : ''}"
                     onclick={close}
                   >
-                    <span class="text-white lg:text-slate-900">{child.label}</span>
+                    <span class="text-slate-900">{child.label}</span>
                   </a>
                 </li>
               {/each}
@@ -229,74 +249,69 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    color: var(--color-slate);
   }
 
   .sidebar-submenu-link {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    padding: 0.625rem 1rem;
+    display: block;
+    padding: 0.5rem 0.25rem;
     font-size: 0.9375rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-slate);
     text-decoration: none;
-    border-radius: 6px;
-    border-left: 3px solid transparent;
-    transition: all 0.2s ease;
+    transition: color 0.15s ease;
   }
 
   .sidebar-submenu-link:hover {
-    background: rgba(252, 102, 31, 0.05);
     color: var(--color-orange);
   }
 
   .sidebar-submenu-link--active {
-    background: rgba(252, 102, 31, 0.1);
     color: var(--color-orange);
-    border-left-color: var(--color-orange);
+  }
+
+  .sidebar-parent-label {
+    display: inline-block;
   }
 
   .sidebar-submenu-children {
     list-style: none;
     margin: 0.25rem 0 0.5rem 0;
-    padding: 0;
+    padding: 0 0 0 0.35rem;
     display: flex;
     flex-direction: column;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .sidebar-submenu-child-link {
-    display: block;
-    padding: 0.5rem 1rem 0.5rem 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0 0.35rem 0.75rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-slate-light);
     text-decoration: none;
-    border-left: 3px solid transparent;
-    transition: all 0.2s ease;
-    position: relative;
+    transition: color 0.15s ease;
   }
 
   .sidebar-submenu-child-link::before {
     content: "";
-    position: absolute;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--color-slate-light);
-    opacity: 0.4;
+    background: var(--color-orange);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.15s ease, transform 0.15s ease;
   }
 
   .sidebar-submenu-child-link:hover {
     color: var(--color-orange);
-    background: rgba(252, 102, 31, 0.03);
   }
 
   .sidebar-submenu-child-link:hover::before {
-    background: var(--color-orange);
-    opacity: 1;
+    opacity: 0.6;
   }
 
   .sidebar-submenu-child-link--active {
@@ -305,10 +320,8 @@
   }
 
   .sidebar-submenu-child-link--active::before {
-    background: var(--color-orange);
     opacity: 1;
-    width: 6px;
-    height: 6px;
+    transform: scale(1);
   }
 
   /* Handle & Backdrop (Hidden on Desktop) */
@@ -320,7 +333,7 @@
   }
 
   /* Mobile Styles */
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     .sidebar-submenu {
       position: fixed;
       bottom: 5.5rem; /* Space for handle */
@@ -365,10 +378,10 @@
       width: 3.5rem;
       height: 3.5rem;
       border-radius: 50%;
-      background: var(--color-orange, #fc661f);
+      background: var(--color-purple, #7c3aed);
       color: white;
       border: none;
-      box-shadow: 0 4px 12px rgba(252, 102, 31, 0.4);
+      box-shadow: 0 4px 12px rgba(75, 70, 213, 0.4);
       z-index: 51;
       cursor: pointer;
       transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);

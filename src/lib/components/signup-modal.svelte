@@ -1,68 +1,158 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
-  
+  import { goto } from '$app/navigation';
+
   interface Props {
     isOpen?: boolean;
     onClose?: any;
   }
 
   let { isOpen = false, onClose = () => {} }: Props = $props();
-  
+
   let email = $state('');
   let firstName = $state('');
   let lastName = $state('');
   let postcode = $state('');
   let phone = $state('');
-  let interests = $state<string[]>([]);
   let isSubmitting = $state(false);
   let step = $state(1);
-  
-  const campaignOptions = [
-    { id: 'climate', label: 'Climate Justice' },
-    { id: 'first-nations', label: 'First Nations Justice' },
-    { id: 'democracy', label: 'Democracy & Accountability' },
-    { id: 'economic', label: 'Economic Fairness' },
-    { id: 'human-rights', label: 'Human Rights' },
-  ];
-  
-  function toggleInterest(id: string) {
-    if (interests.includes(id)) {
-      interests = interests.filter((i) => i !== id);
-    } else {
-      interests = [...interests, id];
+  let errorMessage = $state('');
+
+  const FormStatus = {
+    READY: 'ready',
+    LOADING: 'loading',
+    SUCCESS: 'success',
+    THROTTLED: 'throttled',
+    ERROR: 'error',
+  };
+
+  let formStatus = $state(FormStatus.READY);
+
+  async function submitToAPI(isUpdate = false) {
+    if (formStatus === FormStatus.LOADING) return;
+
+    formStatus = FormStatus.LOADING;
+    errorMessage = '';
+    isSubmitting = true;
+
+    try {
+      const response = await fetch('https://api.gu.tools/subscriptions/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          first_name: firstName || undefined,
+          last_name: lastName || undefined,
+          post_code: postcode || undefined,
+          phone: phone || undefined,
+          reason: 'website-signup-modal',
+          token: '',
+        }),
+      });
+
+      if (response.status === 200) {
+        // Track success
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          window.dataLayer.push({
+            event: 'subscribe',
+            result: 'success',
+            isUpdate: isUpdate
+          });
+        }
+        formStatus = FormStatus.SUCCESS;
+        isSubmitting = false;
+        return true;
+      } else if (response.status === 429) {
+        // Rate limited
+        if (typeof window !== 'undefined' && window.dataLayer) {
+          window.dataLayer.push({ event: 'subscribe', result: 'throttled' });
+        }
+        formStatus = FormStatus.THROTTLED;
+        errorMessage = "Too many requests. Please try again later.";
+        isSubmitting = false;
+        return false;
+      } else {
+        throw new Error(`Subscription failed with status ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      if (typeof window !== 'undefined' && window.dataLayer) {
+        window.dataLayer.push({
+          event: 'subscribe',
+          result: 'error',
+          error: error.message
+        });
+      }
+      formStatus = FormStatus.ERROR;
+      errorMessage = "Something went wrong. Please try again.";
+      isSubmitting = false;
+      return false;
     }
   }
-  
+
   async function handleSubmit(e: Event) {
     e.preventDefault();
     if (step === 1) {
-      step = 2;
+      // Submit email first
+      const success = await submitToAPI(false);
+      if (success) {
+        step = 2;
+      }
       return;
     }
-    
-    isSubmitting = true;
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    isSubmitting = false;
-    alert('Welcome to GetUp! Check your email for next steps.');
-    onClose();
-    email = '';
-    firstName = '';
-    lastName = '';
-    postcode = '';
-    phone = '';
-    interests = [];
-    step = 1;
+
+    // Step 2: Submit additional details and redirect
+    await completeSignup();
   }
-  
-  function handleBackdropClick(e: MouseEvent) {
-    if (e.target === e.currentTarget) {
-      onClose();
+
+  async function completeSignup() {
+    if (formStatus === FormStatus.LOADING) return;
+
+    // Submit updated information
+    const success = await submitToAPI(true);
+
+    if (success) {
+      resetAndClose();
+      // Redirect after brief delay
+      setTimeout(() => {
+        goto('/welcome');
+      }, 100);
     }
   }
-  
+
+  function skipDetails() {
+    resetAndClose();
+    // Just redirect, email already submitted
+    goto('/welcome');
+  }
+
+  function resetAndClose() {
+    onClose();
+    // Reset form after modal closes
+    setTimeout(() => {
+      email = '';
+      firstName = '';
+      lastName = '';
+      postcode = '';
+      phone = '';
+      step = 1;
+      formStatus = FormStatus.READY;
+      errorMessage = '';
+      isSubmitting = false;
+    }, 300);
+  }
+
+  function handleBackdropClick(e: MouseEvent) {
+    if (e.target === e.currentTarget) {
+      resetAndClose();
+    }
+  }
+
   function handleKeyDown(e: KeyboardEvent) {
     if (e.key === 'Escape') {
-      onClose();
+      resetAndClose();
     }
   }
 </script>
@@ -109,127 +199,135 @@
       <form onsubmit={handleSubmit} class="p-6">
         {#if step === 1}
           <div class="space-y-4" transition:fade>
+            <p class="text-slate font-medium mb-4">
+              Enter your email to join GetUp
+            </p>
+
             <div>
-              <label for="email" class="block text-sm font-bold text-slate mb-1">
-                Email Address *
-              </label>
               <input
                 type="email"
                 id="email"
                 bind:value={email}
                 required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                placeholder="you@example.com"
+                disabled={isSubmitting}
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple focus:border-transparent"
+                placeholder="Email"
               />
             </div>
-            
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="firstName" class="block text-sm font-bold text-slate mb-1">
-                  First Name *
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  bind:value={firstName}
-                  required
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                />
+
+            {#if errorMessage}
+              <div class="text-sm text-red-600 text-center">
+                {errorMessage}
               </div>
-              <div>
-                <label for="lastName" class="block text-sm font-bold text-slate mb-1">
-                  Last Name *
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  bind:value={lastName}
-                  required
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                />
-              </div>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label for="postcode" class="block text-sm font-bold text-slate mb-1">
-                  Postcode *
-                </label>
-                <input
-                  type="text"
-                  id="postcode"
-                  bind:value={postcode}
-                  required
-                  maxlength="4"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label for="phone" class="block text-sm font-bold text-slate mb-1">
-                  Phone (optional)
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  bind:value={phone}
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange focus:border-transparent"
-                />
-              </div>
-            </div>
+            {/if}
           </div>
         {:else}
           <div class="space-y-4" transition:fade>
-            <p class="text-slate font-medium">What campaigns interest you most?</p>
-            <div class="space-y-2">
-              {#each campaignOptions as option}
-                <button
-                  type="button"
-                  onclick={() => toggleInterest(option.id)}
-                  class="w-full flex items-center gap-3 p-3 border rounded-lg transition-colors {interests.includes(option.id) ? 'border-orange bg-orange/10' : 'border-gray-200 hover:border-gray-300'}"
-                >
-                  <div class="w-5 h-5 rounded border-2 flex items-center justify-center {interests.includes(option.id) ? 'border-orange bg-orange' : 'border-gray-300'}">
-                    {#if interests.includes(option.id)}
-                      <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
-                      </svg>
-                    {/if}
-                  </div>
-                  <span class="text-slate">{option.label}</span>
-                </button>
-              {/each}
+            <p class="text-slate font-medium mb-4">
+              Help us personalize your GetUp experience (optional)
+            </p>
+
+            <div>
+              <input
+                type="text"
+                id="firstName"
+                bind:value={firstName}
+                disabled={isSubmitting}
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple focus:border-transparent"
+                placeholder="First name"
+              />
             </div>
+
+            <div>
+              <input
+                type="text"
+                id="lastName"
+                bind:value={lastName}
+                disabled={isSubmitting}
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple focus:border-transparent"
+                placeholder="Last name"
+              />
+            </div>
+
+            <div>
+              <input
+                type="text"
+                id="postcode"
+                bind:value={postcode}
+                maxlength="4"
+                disabled={isSubmitting}
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple focus:border-transparent"
+                placeholder="Postcode"
+              />
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                id="phone"
+                bind:value={phone}
+                disabled={isSubmitting}
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple focus:border-transparent"
+                placeholder="Phone number"
+              />
+            </div>
+
+            {#if errorMessage}
+              <div class="text-sm text-red-600 text-center">
+                {errorMessage}
+              </div>
+            {/if}
           </div>
         {/if}
-        
+
         <div class="mt-6 flex gap-3">
           {#if step === 2}
             <button
               type="button"
-              onclick={() => step = 1}
-              class="flex-1 py-3 border border-gray-300 rounded-lg font-bold text-slate hover:bg-gray-50 transition-colors"
+              onclick={skipDetails}
+              disabled={isSubmitting}
+              class="flex-1 py-3 border border-gray-300 rounded-lg font-bold text-slate hover:bg-gray-50 transition-colors disabled:opacity-50"
             >
-              Back
+              Skip
+            </button>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              class="flex-1 py-3 bg-purple text-white rounded-lg font-bold hover:bg-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {#if isSubmitting}
+                <span class="flex items-center justify-center gap-2">
+                  <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Submitting...
+                </span>
+              {:else}
+                Complete
+              {/if}
+            </button>
+          {:else}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              class="flex-1 py-3 bg-purple text-white rounded-lg font-bold hover:bg-purple-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {#if isSubmitting}
+                <span class="flex items-center justify-center gap-2">
+                  <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Joining...
+                </span>
+              {:else}
+                Continue
+              {/if}
             </button>
           {/if}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            class="flex-1 py-3 bg-orange text-white rounded-lg font-bold hover:bg-orange-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {#if isSubmitting}
-              <span class="flex items-center justify-center gap-2">
-                <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Joining...
-              </span>
-            {:else}
-              {step === 1 ? 'Continue' : 'Join GetUp'}
-            {/if}
-          </button>
         </div>
-        
+
         <p class="mt-4 text-xs text-gray-500 text-center">
           By signing up, you agree to our privacy policy and to receive campaign updates via email.
         </p>

@@ -1,0 +1,14 @@
+{
+  "title": "People.  Power. Impact.",
+  "description": "Join over a million GetUp members fighting for a fair, flourishing, and just Australia.",
+  "image": "/images/uploads/members-jumping-with-htvs.jpg",
+  "buttonPrimary": {
+    "label": "Create Petition +",
+    "link": "https://petitions.getup.org.au/petition/start?source=root",
+    "path": "https://petitions.getup.org.au"
+  },
+  "buttonSecondary": {
+    "label": "Donate",
+    "path": "/donate"
+  }
+}

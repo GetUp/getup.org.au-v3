@@ -5,59 +5,182 @@
 
   let { children } = $props();
 
+
   const navItems = [
-    { label: "Overview", href: "/about" },
-    { label: "Board", href: "/about/board" },
-    { label: "Work at GetUp", href: "/about/work-at-getup" },
-    { label: "Reports", href: "/about/reports" },
-    { label: "FAQs", href: "/about/faqs" },
-    { label: "Transparency", href: "/about/transparency" }
+    {
+      label: "About",
+      href: "/about",
+      icon: "star",
+      children: [
+        { label: "Overview", href: "/about", exact: true },
+        { label: "Board", href: "/about/board" },
+        { label: "Work at GetUp", href: "/about/work-at-getup" },
+        { label: "Reports", href: "/about/reports" },
+        { label: "FAQs", href: "/about/faqs" },
+        { label: "Transparency", href: "/about/transparency" },
+        { label: "Donation snapshot", href: "/about/donations-snapshot" },
+      ],
+    },
   ];
 
-  const isActive = (href: string, current: string) =>
-    current === href || (href !== "/about" && current.startsWith(href));
-
-  const currentPath = $derived($page.url.pathname);
-  const activeNav = $derived(navItems.find((item) => isActive(item.href, currentPath)) ?? navItems[0]);
-  const heroTitle = $derived(aboutContent.header.heading);
-  const heroSubhead = $derived(aboutContent.header.subhead);
-  const heroImage = $derived(aboutContent.header.image);
+  const heroTitle = $derived(aboutContent.header.heading || "About us");
+  const heroSubhead = $derived(
+    aboutContent.header.subhead ||
+      "We're an independent movement of more than one million people working to build a progressive Australia and put people back into politics.",
+  );
+  const heroImage = $derived(
+    aboutContent.header.image || "/images/human-rights.jpg",
+  );
 </script>
 
-<main class="bg-white min-h-screen">
-  <section class="relative overflow-hidden bg-(--color-orange)">
-    <div class="absolute inset-0">
-      {#if heroImage}
-        <img src={heroImage} alt={heroTitle} class="w-full h-full object-cover" loading="lazy" />
-      {/if}
-      <div class="absolute inset-0 bg-gradient-to-r from-orange-900/70 via-orange-800/60 to-orange-700/70"></div>
+<main class="page-main">
+  <section class="about-hero page-hero">
+    <div class="page-hero__overlay">
+      <div class="about-hero__image" style={`background-image:url(${heroImage});`}></div>
+      <div class="about-hero__gradient"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-10 relative text-white">
-      <div class="flex justify-between items-start gap-4">
-        <div class="space-y-2 max-w-3xl">
-          <p class="uppercase text-xs font-semibold tracking-[0.3em]">About GetUp</p>
-          <h1 class="text-3xl md:text-5xl font-black leading-tight">{heroTitle}</h1>
-          <p class="text-lg md:text-xl">{heroSubhead}</p>
-        </div>
-        <div class="lg:hidden">
-          <SidebarSubmenu
-            items={navItems}
-            mobileLayout="header"
-            headerSelector="section"
-          />
-        </div>
+    <div class="page-hero__content">
+      <div class="about-hero__text">
+      <h1 class="about-hero__title font-display">
+          {heroTitle}
+        </h1>
+        <p class="about-hero__subhead">
+          {heroSubhead}
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 lg:py-14">
-    <div class="lg:flex lg:gap-12">
-      <div class="hidden lg:block">
-        <SidebarSubmenu items={navItems} mobileLayout="header" headerSelector="section" />
+  <section class="about-content">
+    <div class="about-content__container">
+      <div class="about-content__layout">
+        <div class="about-content__sidebar">
+          <SidebarSubmenu
+            items={navItems}
+            mobileLayout="handle"
+            headerSelector="section"
+            activeHref={$page.url.pathname + $page.url.hash}
+          />
+        </div>
+        <section class="about-content__main">
+          {@render children()}
+        </section>
       </div>
-      <section class="flex-1 space-y-10">
-        {@render children()}
-      </section>
     </div>
   </section>
 </main>
+
+<style>
+  /* ==========================================================================
+     About Layout Styles
+     ========================================================================== */
+
+  /* Hero Section */
+  .about-hero {
+    background: var(--color-orange);
+  }
+
+  .about-hero__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .about-hero__gradient {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(252, 102, 31, 0.7),
+      rgba(252, 102, 31, 0.6),
+      rgba(252, 102, 31, 0.7)
+    );
+  }
+
+  .about-hero__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 56rem;
+  }
+
+  .about-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+    font-weight: var(--font-normal);
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+  }
+
+  .about-hero__subhead {
+    font-size: clamp(var(--text-lg), 2vw, var(--text-xl));
+    line-height: var(--leading-snug);
+    max-width: 48rem;
+    color: var(--color-white);
+  }
+
+  /* Content Section */
+  .about-content {
+    padding: var(--space-10) var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    .about-content {
+      padding: var(--space-14) var(--space-4);
+    }
+  }
+
+  .about-content__container {
+    width: min(var(--container-xl), 100%);
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .about-content__container {
+      padding-inline: var(--space-6);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-content__container {
+      padding-inline: var(--space-8);
+    }
+  }
+
+  .about-content__layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 1024px) {
+    .about-content__layout {
+      flex-direction: row;
+      gap: var(--space-12);
+    }
+  }
+
+  .about-content__sidebar {
+    display: block;
+  }
+
+  @media (min-width: 1024px) {
+    .about-content__sidebar {
+      flex-shrink: 0;
+    }
+  }
+
+  .about-content__main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+</style>

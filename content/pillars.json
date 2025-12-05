@@ -1,0 +1,74 @@
+{
+  "pillars": [
+    {
+      "subhead": "We’re striving for a safe climate and thriving, vibrant natural world that future generations can enjoy for years to come.",
+      "heading": "Climate Justice",
+      "slug": "climate-justice",
+      "colour": "#4b46d5",
+      "featured": true,
+      "iconFile": "/icons/pillars/climate-justice.svg",
+      "tint_image": true,
+      "blurb": "Our Climate Justice campaigns hold the government to account and demand clean energy and climate solutions that keep us and our planet safe.",
+      "image": "/images/environmental-justice.jpg"
+    },
+    {
+      "subhead": "We believe in a society defined by social and economic equity, where everyone has the opportunity to succeed.",
+      "heading": "Economic Fairness",
+      "slug": "economic-fairness",
+      "colour": "#fb661e",
+      "featured": true,
+      "iconFile": "/icons/pillars/economic-fairness.svg",
+      "tint_image": true,
+      "blurb": "Our campaigns for Economic Fairness push for tangible, positive change like increased funding for social housing, local job creation, and a social safety net everyone can rely on.",
+      "image": "/images/economic-fairness.jpg"
+    },
+    {
+      "subhead": "We strive for our campaigns to contribute to the larger fight for First Nations Justice across the country.",
+      "heading": "First Nations Justice",
+      "slug": "first-nations-justice",
+      "colour": "#de4f2a",
+      "featured": true,
+      "iconFile": "/icons/pillars/first-nations-justice.svg",
+      "tint_image": true,
+      "title": "First Nations Justice",
+      "blurb": "Our team leads campaigns to end fracking in the Northern Territory, increase democratic participation, and create new federal laws protecting Aboriginal cultural heritage. ",
+      "image": "/images/first-nations-justice.jpg"
+    },
+    {
+      "subhead": "We want to live in a country where everyone is treated with fairness and compassion — no matter where they’re from, how they worship, or who they love.",
+      "heading": "Human Rights",
+      "slug": "human-rights",
+      "colour": "#fb661e",
+      "featured": true,
+      "iconFile": "/icons/pillars/human-rights.svg",
+      "tint_image": true,
+      "title": "Human Rights",
+      "blurb": "Our Human Rights campaigns push for progress on human rights issues including government support for international students and people on temporary visas who are doing it tough, racial justice, and an end to far-right extremism.",
+      "image": "/images/human-rights.jpg"
+    },
+    {
+      "subhead": "We know that an open, free, and fair media is one of the cornerstones of democracy — and must be defended.",
+      "heading": "Media and Democracy",
+      "slug": "media-democracy",
+      "colour": "#4b46d5",
+      "featured": true,
+      "iconFile": "/icons/pillars/media-democracy.svg",
+      "tint_image": true,
+      "title": "Media and Democracy",
+      "blurb": "Our Media and Democracy campaigns fight to keep our ABC fully funded, for press freedom and whistleblower protections, and for a strong anti-corruption commission with real power to hold politicians to account.",
+      "image": "/images/fair-media.jpg"
+    },
+    {
+      "subhead": "Community-driven campaigns started by GetUp members like you, fighting for the issues that matter most to everyday Australians.",
+      "heading": "Campaigns By You",
+      "slug": "community-run",
+      "colour": "#fc661f",
+      "featured": true,
+      "iconFile": "/icons/pillars/community-run.svg",
+      "tint_image": false,
+      "title": "Campaigns By You",
+      "blurb": "Member-led petitions and campaigns that bring people together to demand action from decision-makers on local and national issues.",
+      "image": "/images/women-htv-og-tote.png"
+    }
+  ]
+}

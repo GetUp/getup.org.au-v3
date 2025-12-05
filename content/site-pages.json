@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2025-12-07T21:15:04.140Z",
+  "pages": [
+    {
+      "path": "/",
+      "label": "Home"
+    },
+    {
+      "path": "/about",
+      "label": "About"
+    },
+    {
+      "path": "/about/board",
+      "label": "About > Board"
+    },
+    {
+      "path": "/about/donations-snapshot",
+      "label": "About > Donations Snapshot"
+    },
+    {
+      "path": "/about/faqs",
+      "label": "About > Faqs"
+    },
+    {
+      "path": "/about/reports",
+      "label": "About > Reports"
+    },
+    {
+      "path": "/about/transparency",
+      "label": "About > Transparency"
+    },
+    {
+      "path": "/about/work-at-getup",
+      "label": "About > Work At Getup"
+    },
+    {
+      "path": "/campaigns",
+      "label": "Campaigns"
+    },
+    {
+      "path": "/design",
+      "label": "Design"
+    },
+    {
+      "path": "/donate",
+      "label": "Donate"
+    },
+    {
+      "path": "/donate/crew",
+      "label": "Donate > Crew"
+    },
+    {
+      "path": "/donate/willpower",
+      "label": "Donate > Willpower"
+    },
+    {
+      "path": "/edit",
+      "label": "Edit"
+    },
+    {
+      "path": "/reports",
+      "label": "Reports"
+    },
+    {
+      "path": "/unsubscribe",
+      "label": "Unsubscribe"
+    },
+    {
+      "path": "/welcome",
+      "label": "Welcome"
+    }
+  ]
+}

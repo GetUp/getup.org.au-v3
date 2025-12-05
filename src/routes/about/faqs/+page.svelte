@@ -1,39 +1,13 @@
 <script lang="ts">
-  const faqFiles = import.meta.glob("../../../../content/_faqs/*.md", { as: "raw", eager: true });
+  import { aboutFaqs } from "$lib/data/content";
+  import { renderMarkdown } from "$lib/utils/markdown";
+  import Accordion from "$lib/components/accordion.svelte";
 
-  const parseFrontmatter = (raw: string) => {
-    const parts = raw.split("---");
-    if (parts.length < 3) return { title: "", section: "", content: raw, order: 999 };
-    const front = parts[1].trim().split("\n");
-    const data: Record<string, string> = {};
-    front.forEach((line) => {
-      const idx = line.indexOf(":");
-      if (idx !== -1) {
-        const key = line.slice(0, idx).trim();
-        const value = line.slice(idx + 1).trim();
-        data[key] = value;
-      }
-    });
-    const body = parts.slice(2).join("---").trim();
-    return {
-      title: data.title || "",
-      section: data.section || "General",
-      content: body,
-      order: Number(data.order) || 999,
-    };
-  };
+  const faqsSection = aboutFaqs || { items: [] };
 
-  const renderMarkdown = (md: string) =>
-    md
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
-      .replace(/\n\n+/g, "</p><p>");
-
-  const faqs = Object.values(faqFiles)
-    .map((raw) => parseFrontmatter(raw as string))
-    .sort((a, b) => a.order - b.order);
+  const faqs = [...(faqsSection.items || [])].sort(
+    (a: any, b: any) => (a.order ?? 999) - (b.order ?? 999),
+  );
 
   const grouped = faqs.reduce<Record<string, typeof faqs>>((acc, faq) => {
     acc[faq.section] = acc[faq.section] || [];
@@ -44,30 +18,152 @@
 
 <svelte:head>
   <title>Frequently Asked Questions - GetUp</title>
-  <meta name="description" content="Answers to common questions about GetUp, donations, and getting involved." />
+  <meta
+    name="description"
+    content="Answers to common questions about GetUp, donations, and getting involved."
+  />
 </svelte:head>
 
-<section class="space-y-8">
-  <div class="space-y-2">
-    <h1 class="text-4xl font-display leading-tight">Frequently Asked Questions</h1>
-    <p class="text-gray-700">Find answers about GetUp, donations, subscriptions, and getting involved.</p>
+<section class="faqs-page">
+  <div class="faqs-header">
+    <h1 class="faqs-header__heading">
+      Frequently Asked Questions
+    </h1>
+    <p class="faqs-header__intro">
+      Find answers about GetUp, donations, subscriptions, and getting involved.
+    </p>
   </div>
 
-  <div class="space-y-6">
+  <div class="faqs-sections">
     {#each Object.keys(grouped) as section}
-      <div class="space-y-3">
-        <h2 class="text-2xl font-bold text-slate-900">{section}</h2>
-        <div class="space-y-4">
+      <div class="faqs-section">
+        <h2 class="faqs-section__heading">{section}</h2>
+        <div class="faqs-section__items">
           {#each grouped[section] as faq}
-            <details class="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
-              <summary class="font-semibold text-lg text-slate-900 cursor-pointer">{faq.title}</summary>
-              <div class="mt-3 prose max-w-none">
-                {@html `<p>${renderMarkdown(faq.content)}</p>`}
-              </div>
-            </details>
+            <Accordion title={faq.title}>
+              {#if faq.content || faq.body || faq.answer}
+                <div class="faqs-answer">
+                  {@html renderMarkdown(
+                    faq.content || faq.body || faq.answer || "",
+                  )}
+                </div>
+              {:else}
+                <p class="faqs-placeholder">Details coming soon.</p>
+              {/if}
+            </Accordion>
           {/each}
         </div>
       </div>
     {/each}
   </div>
 </section>
+
+<style>
+  /* ==========================================================================
+     FAQs Page Styles
+     ========================================================================== */
+
+  .faqs-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  /* Header */
+  .faqs-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .faqs-header__heading {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+    font-weight: 400;
+    line-height: var(--leading-wide);
+    margin-bottom: var(--space-6);
+    color: var(--color-slate);
+  }
+
+  .faqs-header__intro {
+    font-size: var(--text-lg);
+    color: var(--color-slate);
+  }
+
+  /* Sections */
+  .faqs-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .faqs-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .faqs-section__heading {
+    font-family: var(--font-sans);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-6);
+    color: var(--color-slate);
+  }
+
+  .faqs-section__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* Answer Content */
+  .faqs-answer {
+    max-width: none;
+    color: var(--color-slate);
+  }
+
+  .faqs-answer :global(p) {
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-relaxed);
+  }
+
+  .faqs-answer :global(a) {
+    color: var(--color-orange);
+    text-decoration: underline;
+  }
+
+  .faqs-answer :global(a:hover) {
+    opacity: 0.8;
+  }
+
+  .faqs-answer :global(ul),
+  .faqs-answer :global(ol) {
+    margin-left: var(--space-6);
+    margin-bottom: var(--space-4);
+  }
+
+  .faqs-answer :global(li) {
+    margin-bottom: var(--space-2);
+  }
+
+  .faqs-answer :global(strong) {
+    font-weight: var(--font-bold);
+  }
+
+  .faqs-answer :global(em) {
+    font-style: italic;
+  }
+
+  .faqs-answer :global(h3),
+  .faqs-answer :global(h4) {
+    font-weight: var(--font-bold);
+    margin-top: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .faqs-placeholder {
+    color: var(--color-slate-400);
+    font-size: var(--text-sm);
+  }
+</style>

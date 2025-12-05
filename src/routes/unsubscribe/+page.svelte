@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import data from "../../../content/unsubscribe.json";
+  import data from "../../../content/pages/unsubscribe.json";
   import { renderMarkdown } from "$lib/utils/markdown";
 
   type Status = "ready" | "loading" | "success" | "throttled" | "error";
@@ -34,11 +34,14 @@
 
     status = "loading";
     try {
-      const res = await fetch("https://api.gu.tools/subscriptions/unsubscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        "https://api.gu.tools/subscriptions/unsubscribe",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
       lastSubmittedEmail = payload.email;
       if (res.ok) {
         status = "success";
@@ -56,12 +59,17 @@
 
 <svelte:head>
   <title>Unsubscribe - GetUp</title>
-  <meta name="description" content="Manage your GetUp email preferences or unsubscribe." />
+  <meta
+    name="description"
+    content="Manage your GetUp email preferences or unsubscribe."
+  />
 </svelte:head>
 
 <section class="v2-basic space-y-8">
   <div class="space-y-2">
-    <h1>{data.heading}</h1>
+    <h1 class="text-4xl md:text-5xl font-display leading-wide mb-6">
+      {data.heading}
+    </h1>
   </div>
 
   <div>
@@ -70,7 +78,9 @@
 
   <form class="space-y-4" on:submit|preventDefault={onSubmit}>
     <div class="space-y-2">
-      <label for="email" class="block text-sm font-semibold text-gray-700">Email</label>
+      <label for="email" class="block text-sm font-semibold text-gray-700"
+        >Email</label
+      >
       <input
         id="email"
         name="email"
@@ -86,21 +96,31 @@
       <input
         type="hidden"
         name="reason"
-        value={(token.trim() !== "" || mailingId.trim() !== "") ? "campaign-email" : "website-manual"}
+        value={token.trim() !== "" || mailingId.trim() !== ""
+          ? "campaign-email"
+          : "website-manual"}
       />
     </div>
 
     {#if status === "success"}
-      <div class="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-green-800 text-sm">
-        All done. If {lastSubmittedEmail || "this address"} was subscribed, it has now been unsubscribed. If you continue
-        to receive email after 7 days, please <a class="underline font-semibold" href="/contact-us">get in contact</a>.
+      <div
+        class="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-green-800 text-sm"
+      >
+        All done. If {lastSubmittedEmail || "this address"} was subscribed, it has
+        now been unsubscribed. If you continue to receive email after 7 days, please
+        <a class="underline font-semibold" href="/contact-us">get in contact</a
+        >.
       </div>
     {:else if status === "throttled"}
-      <div class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-red-800 text-sm">
+      <div
+        class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-red-800 text-sm"
+      >
         That's too many attempts, sorry. Please try again later.
       </div>
     {:else if status === "error"}
-      <div class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-red-800 text-sm">
+      <div
+        class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-red-800 text-sm"
+      >
         Something went wrong. Please try again.
       </div>
     {/if}
@@ -111,7 +131,9 @@
       disabled={status === "loading"}
     >
       {#if status === "loading"}
-        <span class="animate-spin h-5 w-5 border-2 border-white/60 border-t-white rounded-full"></span>
+        <span
+          class="animate-spin h-5 w-5 border-2 border-white/60 border-t-white rounded-full"
+        ></span>
       {:else}
         Unsubscribe
       {/if}

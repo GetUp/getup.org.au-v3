@@ -5,9 +5,21 @@ marked.setOptions({
   breaks: true
 });
 
+const h2Class = "text-2xl mb-6 font-subheader text-slate-900";
+
+export function styleHeadings(html: string): string {
+  if (!html) return "";
+  let converted = html
+    .replace(/<h1[^>]*>/g, `<h2 class="${h2Class}">`)
+    .replace(/<\/h1>/g, "</h2>");
+  converted = converted.replace(/<h2[^>]*>/g, `<h2 class="${h2Class}">`);
+  return converted;
+}
+
 export function renderMarkdown(md: string): string {
   if (!md) return "";
-  return marked.parse(md) as string;
+  const html = marked.parse(md) as string;
+  return styleHeadings(html);
 }
 
 export function parseYamlBlock(raw: string) {

@@ -1,17 +1,19 @@
 {
-  "name": "base-sveltekit-app",
+  "name": "GetUp Static Site v3",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "dependencies": {
+    "@iframe-resizer/child": "^5.5.7",
+    "@iframe-resizer/parent": "^5.5.7",
     "@types/js-yaml": "^4.0.9",
-    "iframe-resizer": "^5.5.7",
     "js-yaml": "^4.1.1",
     "marked": "^12.0.2",
     "yaml": "^2.6.0"
   },
   "scripts": {
-    "dev": "npx concurrently 'npx decap-server' 'vite dev --host'",
+    "dev": "pnpm generate:site-pages && npx concurrently \"pnpm site-pages:watch\" \"npx decap-server\" \"vite dev --host\"",
+    "dev:https": "VITE_HTTPS=true pnpm dev",
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
@@ -21,7 +23,10 @@
     "lint": "prettier --check .",
     "deploy:worker": "wrangler deploy -c wrangler.toml",
     "deploy:pages": "pnpm build && wrangler pages deploy build",
-    "deploy": "pnpm deploy:worker && pnpm deploy:pages"
+    "deploy": "pnpm deploy:worker && pnpm deploy:pages",
+    "generate:site-pages": "tsx scripts/generate-site-pages.ts",
+    "site-pages:watch": "chokidar \"src/routes/**\" -c \"pnpm generate:site-pages\"",
+    "prebuild": "pnpm generate:site-pages"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.0.0",
@@ -35,11 +40,14 @@
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "chokidar-cli": "^3.0.0",
     "src": "latest",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
+    "tsx": "^4.19.2",
     "tailwindcss": "^4.0.0",
     "typescript": "5.9.3",
-    "vite": "^6.2.6"
+    "vite": "^6.2.6",
+    "vite-plugin-mkcert": "^1.17.9"
   }
 }

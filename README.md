@@ -18,6 +18,30 @@ pnpm build         # production build
 pnpm preview       # serve the production build locally
 ```
 
+### HTTPS Development Mode
+
+To run the dev server with HTTPS (useful for testing secure contexts, service workers, etc.):
+
+```bash
+# Use the dedicated script:
+pnpm dev:https
+
+# Or set the environment variable manually:
+VITE_HTTPS=true pnpm dev
+```
+
+This will:
+- Automatically generate local SSL certificates using mkcert
+- Serve the site at https://localhost:3000
+- The first time you run it, you may need to install mkcert on your system:
+  ```bash
+  # macOS
+  brew install mkcert
+  mkcert -install
+
+  # Other platforms: see https://github.com/FiloSottile/mkcert#installation
+  ```
+
 Key entry points:
 - `src/routes/+page.svelte` – home page composition.
 - `src/lib/components/` – UI building blocks (hero, campaign cards, etc.).

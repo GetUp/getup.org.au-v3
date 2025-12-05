@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "heading": "People. Power. Impact.",
+    "subhead": "Join over a million GetUp members fighting for a fair, flourishing, and just Australia.",
+    "images": [
+      "/images/human-rights.jpg"
+    ]
+  },
+  "takeAction": {
+    "heading": "Take action",
+    "secondaryAsk": {
+      "title": "Join The Fightback Fund!",
+      "excerpt": "",
+      "body": "One Nation is polling at its highest level ever. The Liberals and Nationals have abandoned their commitment to net zero. Worst of all, far-right group Advance has just surpassed 500,000 members – and it's growing fast.\n\nThat's why we've launched the Fightback Fund – a bold, people-powered plan to take on the far right. If we succeed, it will be the single largest fund in the country dedicated to confronting this threat head on, and building the future they fear – one grounded in truth, justice and equality.\n\nWe've seen what happens when the far right goes unchallenged – and we can't let it happen here. Not in Australia. Not on our watch.",
+      "ctaLabel": "JOIN TODAY ",
+      "link": "https://www.getup.org.au/campaigns/core-2025/fightback-fund/stop-the-far-right-join-the-fightback-fund"
+    }
+  },
+  "impact": {
+    "heading": "Transparency in action",
+    "body": "We're proudly independent and member-funded. Here's what our community achieved recently.",
+    "stats": {
+      "period": "month",
+      "stat1": "Average Donation",
+      "stat2": "Donors",
+      "stat3": "Actions Taken"
+    },
+    "ctas": [
+      {
+        "style": "primary",
+        "label": "Find out more",
+        "link": "/about/transparency"
+      }
+    ]
+  },
+  "members": {
+    "heading": "People power in action",
+    "memberCount": "1,000,000+",
+    "memberLabel": "members strong",
+    "backgroundImage": "/images/invasion-day-rally.jpg",
+    "body": "When we stand together, we're unstoppable. GetUp members have won marriage equality, protected the ABC, and blocked fossil fuel projects. Your voice, amplified by a million others, creates real change.",
+    "quote": {
+      "text": "Thanks for being there and making it easier for the little person to have an impact.",
+      "author": "Karen",
+      "authorLabel": "GetUp Member since 2012"
+    },
+    "ctas": [
+      {
+        "style": "primary",
+        "label": "Join the movement",
+        "link": "#signup"
+      },
+      {
+        "style": "secondary",
+        "label": "Donate",
+        "link": "/donate"
+      }
+    ]
+  },
+  "getInvolved": {
+    "heading": "Get involved",
+    "items": [
+      {
+        "icon": "petition",
+        "title": "Start a petition",
+        "description": "Launch your own campaign and rally support for the change you want to see.",
+        "link": "https://petitions.getup.org.au/petition/start?source=homepage",
+        "external": true
+      },
+      {
+        "icon": "campaigns",
+        "title": "Join a campaign",
+        "description": "Add your voice to campaigns fighting for climate action, fairness, and justice.",
+        "link": "/campaigns",
+        "external": false
+      },
+      {
+        "icon": "donate",
+        "title": "Make a donation",
+        "description": "Power our campaigns and help build a movement for change.",
+        "link": "/donate",
+        "external": false
+      }
+    ]
+  },
+  "values": {
+    "heading": "Our values",
+    "items": [
+      {
+        "title": "Fair",
+        "body": "GetUp members are campaigning for a fairer taxation system, a better education for every child, and a comprehensive welfare system that protects society's most vulnerable. We’re also fighting for stronger national heritage laws that protect Aboriginal and Torres Strait Islander sacred sites and culture.",
+        "image": "/images/invasion-day-rally.jpg",
+        "order": 1
+      },
+      {
+        "title": "Flourishing",
+        "body": "In a crucial decade for our planet, GetUp members are pushing the government to take action to prevent climate change and pave the way towards a renewable energy future. We also stand for the ongoing protection of our forests, oceans and wildlife.",
+        "image": "/images/img_8284_720-1-.jpg",
+        "order": 2
+      },
+      {
+        "title": "Just",
+        "body": "GetUp members believe in a fair go for everyone and continue to fight for justice for asylum seekers, support for temporary visa holders and international students during the coronavirus crisis, and a free and fair media — including the ABC.",
+        "image": "/images/fair-ii.jpg",
+        "order": 3
+      }
+    ]
+  }
+}

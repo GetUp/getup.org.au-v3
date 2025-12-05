@@ -1,0 +1,21 @@
+{
+  "heading": "Power Australia Forward",
+  "subhead": "When you support GetUp you're powering a million-strong, strategically savvy organisation that makes real change happen.",
+  "body": "Your donation funds billboards that confront decision-makers, television advertising in key electorates, and grassroots rallies that show the strength of our community. We don't take corporate donations — that keeps us accountable to our community, not big business.",
+  "embed": "https://www.getup.org.au/campaigns/getup/homepage/make-a-donation-b",
+  "highlights": [],
+  "ctas": [
+    {
+      "heading": "Join GetUp Crew",
+      "copy": "Become the driving force of our movement with a weekly or monthly contribution.",
+      "action": "Donate regularly",
+      "link": "/donate/crew"
+    },
+    {
+      "heading": "Leave a gift in your will",
+      "copy": "Protect our democracy for future generations with a legacy donation.",
+      "action": "Learn more",
+      "link": "/donate/willpower"
+    }
+  ]
+}

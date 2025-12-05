@@ -1,0 +1,22 @@
+{
+  "type": "how",
+  "heading": "How we do it",
+  "subhead": "We do whatever it takes to make genuine progress on issues our movement cares about.",
+  "body": "Together with our team of experienced strategists, our members use their voice, time, and skills to take action that moves the needle online and offline.",
+  "strategySmallImage": "/images/press-freedom-poster.jpg",
+  "strategyImage": "/images/tessa-with-doggo.jpg",
+  "strategies": [
+    {
+      "heading": "Online actions",
+      "body": "Simple actions that together amount to significant power: signing petitions, writing to influence key decision makers, or chipping in to help fund polling, research, or advertising."
+    },
+    {
+      "heading": "Offline actions",
+      "body": "Careful, strategic, and bold action in the real world: meeting local MPs, handing out How To Vote cards at polling booths, or attending rallies."
+    },
+    {
+      "heading": "In the media",
+      "body": "Using our powerful and respected voice in Australian politics: building greater awareness of the issues we care about, and holding decision makers accountable to the public."
+    }
+  ]
+}

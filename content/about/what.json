@@ -1,0 +1,38 @@
+{
+  "type": "what",
+  "heading": "What we work on",
+  "subhead": "Our work is driven by values, not party politics.",
+  "body": "From making sure people are able to vote in elections to successfully stopping major projects threatening the Great Barrier Reef, our movement has a decade-long history of taking on powerful interests — and winning.",
+  "items": [
+    {
+      "text": "Fighting for a safe and healthy climate",
+      "image": "/images/issues-pollution.jpg",
+      "alt": ""
+    },
+    {
+      "text": "Protecting the future of our reef",
+      "image": "/images/issues-reef.jpg",
+      "alt": ""
+    },
+    {
+      "text": "Holding governments to account",
+      "image": "/images/issues-dutton.jpg",
+      "alt": ""
+    },
+    {
+      "text": "Stopping the world’s biggest coal mine",
+      "image": "/images/issues-mine.jpg",
+      "alt": ""
+    },
+    {
+      "text": "Defending refugees & asylum seekers",
+      "image": "/images/issues-refugee.jpg",
+      "alt": ""
+    },
+    {
+      "text": "Campaigning for a fair and just Australia",
+      "image": "/images/issues-marriage.jpg",
+      "alt": ""
+    }
+  ]
+}

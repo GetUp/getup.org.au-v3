@@ -1,0 +1,25 @@
+{
+  "stickyLatest": true,
+  "ctaType": "signup",
+  "primaryButton": {
+    "label": "Step up. Power change.",
+    "url": "/join"
+  },
+  "secondaryButton": {
+    "label": "Take action now!",
+    "url": "/take-action"
+  },
+  "signupForm": {
+    "desktopFields": [
+      "firstName",
+      "lastName",
+      "postcode"
+    ],
+    "mobileFields": [
+      "postcode"
+    ],
+    "requiredFields": [
+      "postcode"
+    ]
+  }
+}

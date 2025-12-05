@@ -1,121 +1,297 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 ---
 backend:
-  name: proxy
-  proxy_url: "/api"
+  name: github
+  repo: GetUp/getup.org.au-v3
   branch: main
-
-local_backend: true
-publish_mode: editorial_workflow
+local_backend: true # for decap-server local dev; ignored by Sveltia
 
 media_folder: static/images
 public_folder: /images
 
 editor:
   preview: false
+publish_mode: editorial_workflow
 
 collections:
+  - name: settings
+    label: Settings
+    files:
+      - label: Home Page
+        name: home_page
+        file: content/settings/hero.json
+        fields:
+          - {
+              label: Sticky Latest,
+              name: stickyLatest,
+              widget: boolean,
+              default: true,
+            }
+          - {
+              label: CTA Type,
+              name: ctaType,
+              widget: select,
+              options: ["buttons", "signup"],
+              default: "buttons",
+            }
+          - label: Primary Button
+            name: primaryButton
+            widget: object
+            required: false
+            condition: { field: "ctaType", value: "buttons" }
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: Secondary Button
+            name: secondaryButton
+            widget: object
+            required: false
+            condition: { field: "ctaType", value: "buttons" }
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+          - label: Signup Form Settings
+            name: signupForm
+            widget: object
+            required: false
+            condition: { field: "ctaType", value: "signup" }
+            fields:
+              - label: Visible Fields (Desktop)
+                name: desktopFields
+                widget: select
+                multiple: true
+                options:
+                  - { label: "First Name", value: "firstName" }
+                  - { label: "Last Name", value: "lastName" }
+                  - { label: "Postcode", value: "postcode" }
+                  - { label: "Phone", value: "phone" }
+                default: ["firstName", "lastName", "postcode"]
+              - label: Visible Fields (Mobile)
+                name: mobileFields
+                widget: select
+                multiple: true
+                options:
+                  - { label: "First Name", value: "firstName" }
+                  - { label: "Last Name", value: "lastName" }
+                  - { label: "Postcode", value: "postcode" }
+                  - { label: "Phone", value: "phone" }
+                default: []
+              - label: Required Fields
+                name: requiredFields
+                widget: select
+                multiple: true
+                options:
+                  - { label: "First Name", value: "firstName" }
+                  - { label: "Last Name", value: "lastName" }
+                  - { label: "Postcode", value: "postcode" }
+                  - { label: "Phone", value: "phone" }
+                default: ["postcode"]
+      - label: Campaigns
+        name: campaigns
+        file: content/settings/campaigns.json
+        fields:
+          - {
+              label: Top Count,
+              name: topCount,
+              widget: number,
+              min: 1,
+              max: 3,
+              default: 1,
+            }
+          - {
+              label: CbM Count,
+              name: cbmCount,
+              widget: number,
+              min: 0,
+              max: 10,
+              default: 3,
+            }
+          - {
+              label: Featured Count,
+              name: featuredCount,
+              widget: number,
+              min: 0,
+              max: 10,
+              default: 3,
+            }
   - name: pages
     label: Pages
     files:
       - label: Home
         name: home
-        file: content/home.json
+        file: content/pages/home.json
         fields:
-          - label: Header
-            name: header
+          - label: Hero
+            name: hero
             widget: object
             fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Description, name: description, widget: string }
-              - { label: Image, name: image, widget: image }
-              - label: Primary Button
-                name: buttonPrimary
+              - { label: Heading, name: heading, widget: string }
+              - { label: Subhead, name: subhead, widget: string }
+              - label: Images
+                name: images
+                widget: list
+                field: { label: Image, name: image, widget: image }
+          - label: Take Action
+            name: takeAction
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+
+              - label: Secondary Ask
+                name: secondaryAsk
                 widget: object
-                collapsed: true
+                required: false
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - {
+                      label: Excerpt,
+                      name: excerpt,
+                      widget: text,
+                      required: false,
+                    }
+                  - { label: Bodyd, name: body, widget: markdown }
+                  - { label: CTA Label, name: ctaLabel, widget: string }
+                  - { label: Link, name: link, widget: string }
+          - label: Impact Section
+            name: impact
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: markdown }
+              - label: Impact Stats Settings
+                name: stats
+                widget: object
+                fields:
+                  - label: Time Period
+                    name: period
+                    widget: select
+                    options:
+                      - { label: "Last Day", value: "day" }
+                      - { label: "Last 7 Days", value: "week" }
+                      - { label: "Last 30 Days", value: "month" }
+                      - { label: "Last 365 Days", value: "year" }
+                    default: "month"
+                  - label: Stat 1 Metric
+                    name: stat1
+                    widget: select
+                    options:
+                      [
+                        "Donations",
+                        "Donations Total",
+                        "Average Donation",
+                        "Actions Taken",
+                        "New Members",
+                        "Donors",
+                        "First-time Donors",
+                      ]
+                    default: "Average Donation"
+                  - label: Stat 2 Metric
+                    name: stat2
+                    widget: select
+                    options:
+                      [
+                        "Donations",
+                        "Donations Total",
+                        "Average Donation",
+                        "Actions Taken",
+                        "New Members",
+                        "Donors",
+                        "First-time Donors",
+                      ]
+                    default: "Donors"
+                  - label: Stat 3 Metric
+                    name: stat3
+                    widget: select
+                    options:
+                      [
+                        "Donations",
+                        "Donations Total",
+                        "Average Donation",
+                        "Actions Taken",
+                        "New Members",
+                        "Donors",
+                        "First-time Donors",
+                      ]
+                    default: "Actions Taken"
+              - label: CTAs
+                name: ctas
+                widget: list
+                min: 1
+                max: 2
                 fields:
                   - { label: Label, name: label, widget: string }
-                  - { label: Path, name: path, widget: string }
-              - label: Secondary Button
-                name: buttonSecondary
-                widget: object
-                collapsed: true
-                fields:
-                  - { label: Label, name: label, widget: string }
-                  - { label: Path, name: path, widget: string }
-          - label: Secondary Ask
-            name: secondaryAsk
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Paragraphs
-                name: body
-                widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-              - { label: Link, name: link, widget: string }
-              - { label: Button, name: button, widget: string }
-          - label: Take Action Now
-            name: takeActionNow
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - label: Featured
-                name: featured
-                widget: list
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Excerpt, name: excerpt, widget: string }
                   - { label: Link, name: link, widget: string }
-                  - { label: Image, name: image, widget: image }
-              - label: Other
-                name: other
-                widget: list
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Excerpt, name: excerpt, widget: string }
-                  - { label: Link, name: link, widget: string }
-                  - { label: Image, name: image, widget: image }
-          - label: What is GetUp
-            name: whatIsGetUp
+                  - {
+                      label: Style,
+                      name: style,
+                      widget: select,
+                      options: ["primary", "secondary"],
+                      default: "primary",
+                    }
+          - label: Members Section
+            name: members
             widget: object
             fields:
               - { label: Heading, name: heading, widget: string }
-              - label: Paragraphs
-                name: body
+              - { label: Body, name: body, widget: markdown }
+              - label: Testimonials
+                name: testimonials
                 widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-              - label: Impact Stats
-                name: impactStats
-                widget: object
-                fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - label: Stats
-                    name: stats
-                    widget: list
-                    fields:
-                      - { label: Label, name: label, widget: string }
-                      - { label: Value, name: value, widget: string }
-          - label: Mission
-            name: mission
-            widget: object
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Body, name: body, widget: text }
-              - label: Quote
-                name: quote
-                widget: object
                 fields:
                   - { label: Text, name: text, widget: text }
                   - { label: Author, name: author, widget: string }
                   - { label: Author Label, name: authorLabel, widget: string }
-          - label: Values
+                  - {
+                      label: Avatar,
+                      name: avatar,
+                      widget: image,
+                      required: false,
+                    }
+              - label: CTAs
+                name: ctas
+                widget: list
+                min: 1
+                max: 2
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Link, name: link, widget: string }
+                  - {
+                      label: Style,
+                      name: style,
+                      widget: select,
+                      options: ["primary", "secondary"],
+                      default: "primary",
+                    }
+          - label: Get Involved Section
+            name: getInvolved
+            widget: object
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - label: Items
+                name: items
+                widget: list
+                min: 3
+                max: 3
+                fields:
+                  - label: Icon
+                    name: icon
+                    widget: select
+                    options:
+                      - { label: "Petition", value: "petition" }
+                      - { label: "Campaigns", value: "campaigns" }
+                      - { label: "Donate", value: "donate" }
+                      - { label: "Email", value: "email" }
+                    default: "petition"
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Link, name: link, widget: string }
+                  - {
+                      label: External Link,
+                      name: external,
+                      widget: boolean,
+                      default: false,
+                    }
+          - label: Values Section
             name: values
             widget: object
             fields:
@@ -124,106 +300,20 @@ collections:
                 name: items
                 widget: list
                 fields:
-                  - { label: Heading, name: heading, widget: string }
-                  - { label: Body, name: body, widget: string }
-                  - { label: Image, name: image, widget: image }
-          - label: Footer
-            name: footer
-            widget: object
-            fields:
-              - { label: Image, name: image, widget: image }
-      - label: About
-        name: about
-        file: content/about.json
-        fields:
-          - label: Header
-            name: header
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Subhead, name: subhead, widget: string }
-              - { label: Image, name: image, widget: image, required: false }
-          - label: Who we are
-            name: who
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Subhead, name: subhead, widget: string }
-              - { label: Image, name: image, widget: image }
-              - label: Paragraphs
-                name: body
-                widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-          - label: What we work on
-            name: what
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Subhead, name: subhead, widget: string }
-              - label: Paragraphs
-                name: body
-                widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-              - label: Items
-                name: items
-                widget: list
-                collapsed: true
-                fields:
-                  - { label: Text, name: text, widget: string }
-                  - { label: Image, name: image, widget: image }
-                  - { label: Alt, name: alt, widget: string, required: false }
-          - label: How we do it
-            name: how
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Subhead, name: subhead, widget: string }
-              - label: Paragraphs
-                name: body
-                widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-              - { label: Strategy Small Image, name: strategySmallImage, widget: image }
-              - { label: Strategy Image, name: strategyImage, widget: image }
-              - label: Strategies
-                name: strategies
-                widget: list
-                fields:
-                  - { label: Heading, name: heading, widget: string }
+                  - { label: Title, name: title, widget: string }
                   - { label: Body, name: body, widget: text }
-          - label: Donations
-            name: donations
-            widget: object
-            collapsed: true
-            fields:
-              - { label: Heading, name: heading, widget: string }
-              - { label: Subhead, name: subhead, widget: string }
-              - label: Paragraphs
-                name: body
-                widget: list
-                collapsed: true
-                field:
-                  label: Paragraph
-                  name: body
-                  widget: text
-      - label: Reports
-        name: reports
-        file: content/reports.json
+                  - { label: Image, name: image, widget: image }
+                  - { label: Order, name: order, widget: number }
+      - label: Unsubscribe
+        name: unsubscribe
+        file: content/pages/unsubscribe.json
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Subhead, name: subhead, widget: string, required: false }
+          - { label: Body, name: body, widget: markdown }
+      - label: Research Reports
+        name: research_reports
+        file: content/pages/research-reports.json
         fields:
           - label: Header
             name: header
@@ -242,43 +332,136 @@ collections:
               - { label: Description, name: description, widget: text }
               - { label: Image, name: image, widget: image }
               - { label: Link to PDF, name: link, widget: string }
-      - label: Privacy Policy
-        name: privacy-policy
-        file: content/privacy-policy.yaml
+      - label: Contact Us
+        name: contact_us
+        file: content/pages/contact-us.json
         fields:
-          - { label: Heading, name: heading, widget: string }
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Permalink,
+              name: permalink,
+              widget: string,
+              required: false,
+            }
+          - {
+              label: Layout,
+              name: layout,
+              widget: select,
+              options: ["simple", "header"],
+              default: "simple",
+            }
           - { label: Body, name: body, widget: markdown }
-          - label: Sections
-            name: sections
-            widget: list
+      - label: Privacy Policy
+        name: privacy_policy
+        file: content/pages/privacy-policy.json
+        fields:
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Permalink,
+              name: permalink,
+              widget: string,
+              required: false,
+            }
+          - {
+              label: Layout,
+              name: layout,
+              widget: select,
+              options: ["simple", "header"],
+              default: "simple",
+            }
+          - { label: Body, name: body, widget: markdown }
+  - name: about
+    label: About
+    files:
+      - label: Overview
+        name: overview
+        file: content/pages/about.json
+        fields:
+          - label: Header
+            name: header
+            widget: object
             fields:
-              - { label: Heading, name: heading, widget: string }
+              - { label: Header, name: header, widget: string }
+              - { label: Image, name: image, widget: image, required: false }
+          - label: Who We Are
+            name: who
+            widget: object
+            fields:
+              - { label: Type, name: type, widget: hidden, default: "who" }
+              - { label: Header, name: header, widget: string }
+              - { label: Image, name: image, widget: image, required: false }
               - { label: Body, name: body, widget: markdown }
-  - name: major_donations_disclosures
-    label: Major Donations Disclosures
-    files:
-      - file: content/major-donations-disclosures.json
-        label: Major Donations Disclosures
-        name: major-donations-disclosures
-        fields:
-          - { label: Heading, name: heading, widget: string }
-          - { label: Disclaimer, name: disclaimer, widget: text, required: false }
-          - name: donations
-            label: Donations
-            widget: list
+          - label: What We Work On
+            name: what
+            widget: object
             fields:
-              - { label: Name(s), name: name, widget: string }
-              - { label: Financial Year, name: financial_year, widget: string }
-              - { label: Amount, name: amount, widget: number, value_type: float }
-              - { label: Currency, name: currency, widget: select, options: [AUD], default: AUD }
-              - { label: Note, name: note, widget: string, required: false }
-  - name: transparency_reports
-    label: Transparency Reports
-    files:
-      - file: content/transparency-reports.json
-        label: Transparency Reports
-        name: transparency-reports
+              - { label: Type, name: type, widget: hidden, default: "what" }
+              - { label: Header, name: header, widget: string }
+              - { label: Body, name: body, widget: markdown }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Text, name: text, widget: string }
+                  - { label: Image, name: image, widget: image }
+                  - { label: Alt, name: alt, widget: string, required: false }
+          - label: How We Do It
+            name: how
+            widget: object
+            fields:
+              - { label: Type, name: type, widget: hidden, default: "how" }
+              - { label: Header, name: header, widget: string }
+              - { label: Body, name: body, widget: markdown }
+              - {
+                  label: Strategy Small Image,
+                  name: strategySmallImage,
+                  widget: image,
+                  required: false,
+                }
+              - {
+                  label: Strategy Image,
+                  name: strategyImage,
+                  widget: image,
+                  required: false,
+                }
+              - label: Strategies
+                name: strategies
+                widget: list
+                fields:
+                  - { label: Heading, name: heading, widget: string }
+                  - { label: Body, name: body, widget: text }
+                  - { label: Icon, name: icon, widget: image, required: false }
+          - label: Donations Section
+            name: donations
+            widget: object
+            fields:
+              - {
+                  label: Type,
+                  name: type,
+                  widget: hidden,
+                  default: "donations",
+                }
+              - { label: Header, name: header, widget: string }
+              - { label: Body, name: body, widget: markdown }
+              - label: Primary CTA
+                name: primaryCTA
+                widget: object
+                fields:
+                  - { label: Text, name: text, widget: string }
+                  - { label: URL, name: url, widget: string }
+              - label: Secondary CTA
+                name: secondaryCTA
+                widget: object
+                required: false
+                fields:
+                  - { label: Text, name: text, widget: string }
+                  - { label: URL, name: url, widget: string }
+      - label: Financial Reports
+        name: reports
+        file: content/pages/about/reports.json
         fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown, required: false }
           - name: annual_reports
             label: Annual Reports
             widget: list
@@ -297,15 +480,82 @@ collections:
             fields:
               - { label: Title, name: title, widget: string }
               - { label: URL, name: url, widget: string }
-  - name: transparency_page
-    label: Transparency Page
-    files:
-      - file: content/transparency-page.json
-        label: Transparency Page
-        name: transparency-page
+      - label: Board
+        name: board
+        file: content/pages/about/board.json
+        fields:
+          - { label: Heading, name: heading, widget: string, required: false }
+          - { label: Intro, name: intro, widget: markdown, required: false }
+          - name: members
+            label: Members
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Role, name: role, widget: string, required: false }
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Order, name: order, widget: number, required: false }
+              - { label: Bio, name: body, widget: markdown, required: false }
+          - name: accordions
+            label: Governance Info (Accordions)
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: markdown }
+      - label: FAQs
+        name: faqs
+        file: content/pages/about/faqs.json
+        fields:
+          - { label: Heading, name: heading, widget: string, required: false }
+          - name: items
+            label: FAQ Items
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: markdown }
+              - { label: Section, name: section, widget: string }
+              - {
+                  label: Order,
+                  name: order,
+                  widget: number,
+                  value_type: int,
+                  default: 0,
+                }
+      - label: Work at GetUp
+        name: work
+        file: content/pages/about/work-at-getup.json
+        fields:
+          - { label: Heading, name: heading, widget: string, required: false }
+          - {
+              label: Subheading,
+              name: subheading,
+              widget: string,
+              required: false,
+            }
+          - { label: Intro, name: intro, widget: markdown, required: false }
+          - { label: Body, name: body, widget: markdown, required: false }
+          - label: Bullets
+            name: bullets
+            widget: list
+          - { label: CTA Label, name: cta_label, widget: string }
+          - { label: CTA Href, name: cta_href, widget: string }
+          - { label: Hero Image, name: hero_image, widget: image }
+          - label: Benefits
+            name: benefits
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+          - label: Values
+            name: values
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+      - label: Transparency
+        name: transparency
+        file: content/pages/about/transparency.json
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Slug, name: slug, widget: string }
           - name: blocks
             label: Blocks
             widget: list
@@ -316,101 +566,489 @@ collections:
                 fields:
                   - { label: ID, name: id, widget: string, required: false }
                   - { label: Title, name: title, widget: string }
-                  - { label: Nav Title, name: nav_title, widget: string, required: false }
+                  - {
+                      label: Nav Title,
+                      name: nav_title,
+                      widget: string,
+                      required: false,
+                    }
                   - { label: Body, name: body, widget: markdown }
-              - label: Transparency Reports
-                name: transparency_reports
-                widget: object
-                fields:
-                  - { label: ID, name: id, widget: string, required: false }
-                  - { label: Title, name: title, widget: string }
-                  - { label: Nav Title, name: nav_title, widget: string, required: false }
-                  - { label: Intro, name: intro, widget: markdown, required: false }
               - label: Major Donations Disclosures
                 name: major_donations_disclosures
                 widget: object
                 fields:
                   - { label: ID, name: id, widget: string, required: false }
                   - { label: Title, name: title, widget: string }
-                  - { label: Nav Title, name: nav_title, widget: string, required: false }
-                  - { label: Intro, name: intro, widget: markdown, required: false }
-              - label: Major Donations Disclosures (legacy)
-                name: donations_disclosures
-                widget: object
-                fields:
-                  - { label: ID, name: id, widget: string, required: false }
-                  - { label: Title, name: title, widget: string }
-                  - { label: Nav Title, name: nav_title, widget: string, required: false }
-                  - { label: Intro, name: intro, widget: markdown, required: false }
-  - name: pillars
-    label: Pillars
-    folder: content/_pillars
-    identifier_field: slug
-    create: true
-    extension: json
-    fields:
-      - { label: Heading, name: heading, widget: string }
-      - { label: Subhead, name: subhead, widget: string }
-      - { label: Blurb, name: blurb, widget: text }
-      - { label: Slug, name: slug, widget: string }
-      - { label: Image, name: image, widget: image }
-      - { label: Colour, name: colour, widget: color, allowInput: true, enableAlpha: false }
-      - { label: Tint image, name: tint_image, widget: boolean }
-      - { label: Featured, name: featured, widget: boolean }
-      - label: Campaigns (legacy)
-        name: campaigns
-        widget: list
-        summary: "{{title}}"
+                  - {
+                      label: Nav Title,
+                      name: nav_title,
+                      widget: string,
+                      required: false,
+                    }
+                  - {
+                      label: Intro,
+                      name: intro,
+                      widget: markdown,
+                      required: false,
+                    }
+                  - {
+                      label: Disclaimer,
+                      name: disclaimer,
+                      widget: text,
+                      required: false,
+                    }
+                  - name: donations
+                    label: Donations
+                    widget: list
+                    fields:
+                      - { label: Name(s), name: name, widget: string }
+                      - {
+                          label: Financial Year,
+                          name: financial_year,
+                          widget: string,
+                        }
+                      - {
+                          label: Amount,
+                          name: amount,
+                          widget: number,
+                          value_type: float,
+                        }
+                      - {
+                          label: Currency,
+                          name: currency,
+                          widget: select,
+                          options: [AUD],
+                          default: AUD,
+                        }
+                      - {
+                          label: Note,
+                          name: note,
+                          widget: string,
+                          required: false,
+                        }
+              - { label: Order, name: order, widget: number, required: false }
+              - { label: Content, name: content, widget: markdown }
+      - file: content/pages/contact-us.json
+        label: Contact Us
+        name: contact_us
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Excerpt, name: excerpt, widget: text }
-          - { label: Image, name: image, widget: image }
-          - { label: Link, name: href, widget: string }
-          - { label: Featured, name: featured, widget: boolean }
-          - { label: Related Campaign (new), name: campaign_ref, widget: relation, collection: campaigns, value_field: "{{slug}}", search_fields: ["title", "slug"], display_fields: ["title"], required: false }
+          - {
+              label: Permalink,
+              name: permalink,
+              widget: string,
+              required: false,
+            }
+          - {
+              label: Layout,
+              name: layout,
+              widget: select,
+              options: ["simple", "header"],
+              default: "simple",
+            }
+          - { label: Body, name: body, widget: markdown }
+      - file: content/pages/privacy-policy.json
+        label: Privacy Policy
+        name: privacy_policy
+        fields:
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Permalink,
+              name: permalink,
+              widget: string,
+              required: false,
+            }
+          - {
+              label: Layout,
+              name: layout,
+              widget: select,
+              options: ["simple", "header"],
+              default: "simple",
+            }
+          - { label: Body, name: body, widget: markdown }
+
   - name: campaigns
     label: Campaigns
     folder: content/_campaigns
     create: true
     identifier_field: slug
     extension: json
+    summary: "{{title}} — {{status}} — {{type}}"
+    thumbnail: "{{image}}"
+    sort: { field: external_created_at, order: desc }
+    view_groups:
+      - label: Status
+        field: status
+      - label: Type
+        field: type
+      - label: Pillar
+        field: pillar
+      - label: External ID
+        field: external_id
+        pattern: "^(?!$)" # group by presence (has value vs empty)
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Slug, name: slug, widget: string }
+      - {
+          label: External ID,
+          name: external_id,
+          widget: string,
+          required: false,
+          hint: "Optional external reference; Tijuana PS ID or CS slug.",
+        }
+      - {
+          label: External Created At,
+          name: external_created_at,
+          widget: datetime,
+          required: false,
+          hint: "Creation timestamp from Tijuana/Controlshift.",
+        }
       - { label: Excerpt, name: excerpt, widget: text }
       - { label: Image, name: image, widget: image, required: false }
       - { label: Link, name: href, widget: string }
-      - { label: Featured, name: featured, widget: boolean, required: false, default: false }
-      - { label: Archived, name: archived, widget: boolean, required: false, default: false }
-      - { label: Type, name: type, widget: select, options: [{label: "GetUp", value: "getup"}, {label: "CbM", value: "cbm"}], default: "getup" }
-      - { label: Pillar, name: pillar, widget: relation, collection: pillars, value_field: "{{slug}}", search_fields: ["heading", "slug"], display_fields: ["heading"], required: false }
-  # Media collections removed for V3
-  - name: faqs
-    label: FAQs
-    folder: content/_faqs
+      - label: Placement
+        name: status
+        default: "none"
+        widget: select
+        options:
+          - { label: "None", value: "none" }
+          - { label: "Top", value: "top" }
+          - { label: "Featured", value: "featured" }
+        hint: "Choose Top or Featured (one only). Leave as None if not on home."
+      - { label: Archived, name: archived, widget: boolean, default: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - {
+          label: Type,
+          name: type,
+          widget: select,
+          options:
+            [
+              { label: "GetUp", value: "getup" },
+              { label: "CbM", value: "cbm" },
+            ],
+          default: "getup",
+        }
+      - {
+          label: Pillar,
+          name: pillar,
+          widget: relation,
+          collection: pillars,
+          file: pillars,
+          value_field: "pillars.*.slug",
+          search_fields: ["pillars.*.heading", "pillars.*.slug"],
+          display_fields: ["pillars.*.heading"],
+          required: false,
+        }
+  - name: basic_pages
+    label: Basic Pages
+    folder: content/basic-pages
     create: true
+    slug: "{{slug}}"
+    extension: json
     fields:
       - { label: Title, name: title, widget: string }
-      - label: Section
-        name: section
-        widget: string
-        hint: If you create a new section go to the FAQ page and add it
-      - { label: Content, name: content, widget: text }
-      - { label: Order, name: order, widget: number }
-  - name: board
-    label: Board
-    identifier_field: name
-    folder: content/_board
-    create: true
-    fields:
-      - { label: Name, name: name, widget: string }
-      - { label: Role, name: role, widget: string, required: false }
-      - { label: Image, name: image, widget: image }
-      - { label: Order, name: order, widget: number }
+      - {
+          label: Permalink,
+          name: permalink,
+          widget: string,
+          hint: "e.g. /my-new-page (leave empty to use title slug)",
+        }
+      - {
+          label: Layout,
+          name: layout,
+          widget: select,
+          options:
+            [
+              { label: "Simple (White Background)", value: "simple" },
+              { label: "Header Image (About Style)", value: "header" },
+            ],
+          default: "simple",
+        }
+      - {
+          label: Header Image,
+          name: header_image,
+          widget: image,
+          required: false,
+          hint: "Required if Layout is Header Image",
+        }
       - { label: Body, name: body, widget: markdown }
-  - name: shared
-    label: Shared content
+  - name: donate
+    label: Donate
     files:
+      - label: Donate
+        name: donate
+        file: content/donate/donate.json
+        fields:
+          - { label: Heading, name: heading, widget: string }
+          - { label: Subhead, name: subhead, widget: string }
+          - { label: Body, name: body, widget: markdown, required: false }
+          - { label: Embed URL, name: embed, widget: string, required: false }
+          - name: highlights
+            label: Highlights
+            widget: list
+            field: { label: Item, name: item, widget: string }
+          - name: ctas
+            label: CTAs
+            widget: list
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Copy, name: copy, widget: text }
+              - { label: Action Label, name: action, widget: string }
+              - { label: Link, name: link, widget: string }
+      - label: Crew
+        name: crew
+        file: content/donate/crew.json
+        fields:
+          - { label: Type, name: type, widget: hidden, default: "crew" }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Subhead, name: subhead, widget: string, required: false }
+          - { label: Body, name: body, widget: markdown }
+          - { label: Embed URL, name: embed, widget: string, required: false }
+          - name: benefits
+            label: Benefits
+            widget: list
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Body, name: body, widget: text }
+          - label: Testimonial
+            name: testimonial
+            widget: object
+            fields:
+              - { label: Quote, name: quote, widget: text }
+              - { label: Author, name: author, widget: string }
+              - {
+                  label: Location,
+                  name: location,
+                  widget: string,
+                  required: false,
+                }
+          - { label: Image, name: image, widget: image, required: false }
+      - label: Willpower
+        name: willpower
+        file: content/donate/willpower.json
+        fields:
+          - { label: Type, name: type, widget: hidden, default: "willpower" }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Body, name: body, widget: markdown }
+          - { label: Embed URL, name: embed, widget: string, required: false }
+          - {
+              label: Contact URL,
+              name: contact_url,
+              widget: string,
+              required: false,
+            }
+  # Media collections removed for V3
+  - name: site_pages
+    label: Site Pages (generated)
+    hide: true
+    files:
+      - label: Pages
+        name: pages
+        file: content/site-pages.json
+        fields:
+          - {
+              label: Generated At,
+              name: generatedAt,
+              widget: string,
+              required: false,
+            }
+          - label: Pages
+            name: pages
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Path, name: path, widget: string }
+  - name: pillars
+    label: Pillars
+    files:
+      - label: Pillars
+        name: pillars
+        file: content/pillars.json
+        fields:
+          - label: Pillars
+            name: pillars
+            widget: list
+            fields:
+              - { label: Heading, name: heading, widget: string }
+              - { label: Subhead, name: subhead, widget: string }
+              - { label: Blurb, name: blurb, widget: text }
+
+              - { label: Image, name: image, widget: image }
+              - label: Icon File (SVG/PNG)
+                name: iconFile
+                widget: image
+                required: false
+                media_folder: "static/icons"
+                public_folder: "/icons"
+              - {
+                  label: Colour,
+                  name: colour,
+                  widget: color,
+                  allowInput: true,
+                  enableAlpha: false,
+                }
+              - { label: Tint image, name: tint_image, widget: boolean }
+              - { label: Featured, name: featured, widget: boolean }
+  - name: shared
+    label: Shared
+    files:
+      - label: Header
+        name: header
+        file: content/shared/header.json
+        fields:
+          - label: Navigation Items
+            name: items
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - {
+                  label: External,
+                  name: external,
+                  widget: boolean,
+                  default: false,
+                  required: false,
+                }
+              - label: Page
+                name: page
+                widget: relation
+                collection: site_pages
+                file: pages
+                value_field: "pages.*.path"
+                search_fields: ["pages.*.label", "pages.*.path"]
+                display_fields: ["pages.*.label"]
+                required: false
+              - {
+                  label: External URL,
+                  name: url,
+                  widget: string,
+                  required: false,
+                  hint: "Use when External is true.",
+                }
+              - label: Target
+                name: target
+                widget: select
+                options:
+                  - { label: "Same tab", value: "_self" }
+                  - { label: "New tab", value: "_blank" }
+                required: false
+          - label: Header Buttons
+            name: buttons
+            widget: list
+            required: false
+            fields:
+              - { label: Label, name: label, widget: string }
+              - {
+                  label: External,
+                  name: external,
+                  widget: boolean,
+                  default: false,
+                  required: false,
+                }
+              - label: Page
+                name: page
+                widget: relation
+                collection: site_pages
+                file: pages
+                value_field: "pages.*.path"
+                search_fields: ["pages.*.label", "pages.*.path"]
+                display_fields: ["pages.*.label"]
+                required: false
+              - {
+                  label: External URL,
+                  name: url,
+                  widget: string,
+                  required: false,
+                }
+              - label: Target
+                name: target
+                widget: select
+                options:
+                  - { label: "Same tab", value: "_self" }
+                  - { label: "New tab", value: "_blank" }
+                required: false
+              - label: Style
+                name: style
+                widget: select
+                options:
+                  - { label: "Primary", value: "primary" }
+                  - { label: "Secondary", value: "secondary" }
+                required: false
+      - label: Footer
+        name: footer
+        file: content/footer.json
+        fields:
+          - label: Social Media
+            name: socialMedia
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+              - label: Icon
+                name: icon
+                widget: select
+                options:
+                  [
+                    facebook,
+                    twitter,
+                    bluesky,
+                    instagram,
+                    youtube,
+                    tiktok,
+                    linkedin,
+                  ]
+                required: false
+              - label: Icon File (SVG/PNG)
+                name: iconFile
+                widget: image
+                required: false
+                media_folder: "static/icons"
+                public_folder: "/icons"
+          - label: Link Columns
+            name: linkColumns
+            widget: list
+            fields:
+              - { label: Column Label, name: label, widget: string }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - {
+                      label: External,
+                      name: external,
+                      widget: boolean,
+                      default: false,
+                      required: false,
+                    }
+                  - label: Page
+                    name: page
+                    widget: relation
+                    collection: site_pages
+                    file: pages
+                    value_field: "pages.*.path"
+                    search_fields: ["pages.*.label", "pages.*.path"]
+                    display_fields: ["pages.*.label"]
+                    required: false
+                  - {
+                      label: External URL,
+                      name: url,
+                      widget: string,
+                      required: false,
+                    }
+                  - label: Target
+                    name: target
+                    widget: select
+                    options:
+                      - { label: "Same tab", value: "_self" }
+                      - { label: "New tab", value: "_blank" }
+                    required: false
+          - { label: Acknowledgment, name: acknowledgment, widget: text }
+          - { label: Warning, name: warning, widget: text }
+          - {
+              label: Copyright,
+              name: copyright,
+              widget: string,
+              hint: "Use {{year}} for current year",
+            }
       - label: CTA Footer
         name: footer-cta
         file: content/footer-cta.json
