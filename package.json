@@ -35,19 +35,20 @@
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.0.0",
+    "chokidar-cli": "^3.0.0",
     "concurrently": "^9.2.1",
     "decap-cms-backend-git-gateway": "^3.4.1",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "chokidar-cli": "^3.0.0",
     "src": "latest",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.0",
-    "tsx": "^4.19.2",
     "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.2",
     "typescript": "5.9.3",
     "vite": "^6.2.6",
-    "vite-plugin-mkcert": "^1.17.9"
+    "vite-plugin-mkcert": "^1.17.9",
+    "wrangler": "3.114.15"
   }
 }

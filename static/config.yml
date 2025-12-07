@@ -1,11 +1,10 @@
-# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 ---
 backend:
-  name: github
-  repo: GetUp/getup.org.au-v3
+  name: proxy
+  proxy_url: "/api"
   branch: main
-local_backend: true # for decap-server local dev; ignored by Sveltia
 
+local_backend: true
 media_folder: static/images
 public_folder: /images
 
