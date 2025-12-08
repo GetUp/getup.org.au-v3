@@ -168,12 +168,6 @@
     document.head.appendChild(script);
   });
 
-  const switchCms = (choice) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set("cms", choice);
-    localStorage.setItem("cms-choice", choice);
-    window.location.href = url.toString();
-  };
 </script>
 
 <svelte:head>
@@ -182,42 +176,17 @@
 </svelte:head>
 
 <main class="pt-16 px-4 md:px-6 lg:px-8">
-  <div class="flex justify-end gap-2 mb-4 text-sm text-slate">
-    <!-- <span class="font-semibold">CMS:</span>
-    <button
-      class={`px-3 py-1 rounded border ${
-        cmsChoice === "sveltia"
-          ? "bg-orange text-white border-orange"
-          : "border-slate/40"
-      }`}
-      on:click={() => switchCms("sveltia")}
-    >
-      Sveltia
-    </button>
-    <button
-      class={`px-3 py-1 rounded border ${
-        cmsChoice === "decap"
-          ? "bg-orange text-white border-orange"
-          : "border-slate/40"
-      }`}
-      on:click={() => switchCms("decap")}
-    >
-      Decap
-    </button>
-  </div> -->
+  <div id="nc-root" class="min-h-screen"></div>
 
-    <div id="nc-root" class="min-h-screen"></div>
-
-    {#if !cmsLoaded}
-      <div class="flex items-center justify-center min-h-screen">
-        <div class="text-center">
-          <div
-            class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-orange"
-          ></div>
-          <p class="mt-4 text-slate">Loading CMS...</p>
-        </div>
+  {#if !cmsLoaded}
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="text-center">
+        <div
+          class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-orange"
+        ></div>
+        <p class="mt-4 text-slate">Loading CMS...</p>
       </div>
-    {/if}
-  </div>
+    </div>
+  {/if}
 </main>
 <!-- @ts-nocheck -->

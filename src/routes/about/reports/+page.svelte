@@ -165,7 +165,7 @@
   {#if (activeCategory === "all" || activeCategory === "annual") && visibleAnnual.length > 0}
     <section class="reports-section" transition:slide|local>
       <div class="reports-section__header">
-        <h2 class="reports-section__heading">
+        <h2 class="section__heading">
           Annual Impact Snapshots
         </h2>
       </div>
@@ -203,7 +203,7 @@
   {#if (activeCategory === "all" || activeCategory === "financial") && visibleFinancial.length > 0}
     <section class="reports-section" transition:slide|local>
       <div class="reports-section__header">
-        <h2 class="reports-section__heading">
+        <h2 class="section__heading">
           Audited Financials
         </h2>
       </div>
@@ -240,7 +240,7 @@
   {#if (activeCategory === "all" || activeCategory === "election") && visibleElection.length > 0}
     <section class="reports-section" transition:slide|local>
       <div class="reports-section__header">
-        <h2 class="reports-section__heading">
+        <h2 class="section__heading">
           Election Reviews & Submissions
         </h2>
       </div>
@@ -391,7 +391,7 @@
     padding-bottom: var(--space-2);
   }
 
-  .reports-section__heading {
+  .section__heading {
     font-size: var(--text-xl);
     font-weight: var(--font-bold);
     color: var(--color-slate);

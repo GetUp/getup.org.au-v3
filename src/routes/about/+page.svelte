@@ -25,38 +25,37 @@
   />
 </svelte:head>
 
-<main class="about-page">
-  <!-- Who we are -->
-  <section class="about-section about-section--who">
-    <div class="about-section__container">
-      <div class="about-section__content">
-        <div class="about-section__text">
-          <h1 class="about-section__heading about-section__heading--primary">
-            {who.header}
-          </h1>
-          {#if who.body}
-            <div class="about-section__body">
-              {@html who.body}
-            </div>
-          {/if}
+<!-- Who we are (stays in sidebar layout) -->
+<section class="about-section about-section--who">
+  <div class="about-section__content">
+    <div class="about-section__text">
+      <h2 class="section__heading">
+        {who.header}
+      </h2>
+      {#if who.body}
+        <div class="about-section__body">
+          {@html who.body}
         </div>
-        <a href="/campaigns" class="about-section__link">
-          See all campaigns
-          <svg
-            viewBox="0 0 16 16"
-            class="about-section__link-icon"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M9.707 13.707l5-5c.391-.39.391-1.024 0-1.414l-5-5c-.391-.391-1.024-.391-1.414 0s-.391 1.024 0 1.414l3.293 3.293H2.293C1.74 7.586 1.293 8.034 1.293 8.586s.448 1 1 1h9.293l-3.293 3.293c-.195.195-.293.451-.293.707s.098.512.293.707c.391.391 1.024.391 1.414 0z"
-            />
-          </svg>
-        </a>
-      </div>
+      {/if}
     </div>
-  </section>
+    <a href="/campaigns" class="about-section__link">
+      See all campaigns
+      <svg
+        viewBox="0 0 16 16"
+        class="about-section__link-icon"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          d="M9.707 13.707l5-5c.391-.39.391-1.024 0-1.414l-5-5c-.391-.391-1.024-.391-1.414 0s-.391 1.024 0 1.414l3.293 3.293H2.293C1.74 7.586 1.293 8.034 1.293 8.586s.448 1 1 1h9.293l-3.293 3.293c-.195.195-.293.451-.293.707s.098.512.293.707c.391.391 1.024.391 1.414 0z"
+        />
+      </svg>
+    </a>
+  </div>
+</section>
 
+<!-- Full-width sections break out of sidebar layout -->
+<div class="about-page__full-width">
   <div class="about-image">
     <img
       src={who.image || "/images/power-up-group.jpg"}
@@ -69,7 +68,7 @@
   <section class="about-section about-section--what">
     <div class="about-section__container about-section__container--wide">
       <div class="about-section__header">
-        <h2 class="about-section__heading about-section__heading--secondary">
+        <h2>
           {what.header}
         </h2>
         {#if what.body}
@@ -101,7 +100,7 @@
     <div class="about-section__container">
       <div class="about-section__layout">
         <div class="about-section__main">
-          <h2 class="about-section__heading about-section__heading--primary">
+          <h2 class="section__heading section__heading">
             {how.header}
           </h2>
           {#if how.body}
@@ -212,7 +211,7 @@
   <section class="about-section about-section--donations">
     <div class="about-section__container about-section__container--wide">
       <div class="about-section__header">
-        <h2 class="about-section__heading about-section__heading--primary">
+        <h2 class="section__heading section__heading">
           {donations.header}
         </h2>
       </div>
@@ -244,30 +243,37 @@
   <!-- In the numbers -->
   <section class="about-section about-section--snapshot">
     <div class="about-section__container about-section__container--wide">
-      <h2 class="about-section__heading about-section__heading--secondary">
+      <h2 class="section__heading section__heading--secondary">
         In the numbers
       </h2>
       <DonationSnapshot />
     </div>
   </section>
-</main>
+</div>
 
 <style>
   /* ==========================================================================
      About Page Styles
      ========================================================================== */
 
-  .about-page {
-    background: var(--color-white);
+  /* Full-width breakout wrapper - layout handles grid positioning */
+  .about-page__full-width {
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Section Base */
-  .about-section {
+  /* First section - no extra padding, lives in layout grid */
+  .about-section--who {
+    padding: 0;
+  }
+
+  /* Full-width sections have their own padding */
+  .about-page__full-width .about-section {
     padding: var(--space-12) var(--space-4);
   }
 
   @media (min-width: 768px) {
-    .about-section {
+    .about-page__full-width .about-section {
       padding: var(--space-16) var(--space-4);
     }
   }
@@ -339,21 +345,21 @@
     height: 100%;
     object-fit: cover;
   }
-
-  /* Headings */
-  .about-section__heading--primary {
+/* 
+  Headings
+  .section__heading {
     font-family: var(--font-display);
     font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
     font-weight: 400;
-    color: var(--color-purple);
-  }
+  } */
 
-  .about-section--what .about-section__heading--primary,
-  .about-section--what .about-section__heading--secondary {
+  
+  .about-section--what .section__heading,
+  .about-section--what .section__heading--secondary {
     color: var(--color-white);
   }
 
-  .about-section__heading--secondary {
+  .section__heading--secondary {
     font-family: var(--font-sans);
     font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
     font-weight: var(--font-bold);

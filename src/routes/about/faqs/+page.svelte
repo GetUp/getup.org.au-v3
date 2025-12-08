@@ -37,7 +37,7 @@
   <div class="faqs-sections">
     {#each Object.keys(grouped) as section}
       <div class="faqs-section">
-        <h2 class="faqs-section__heading">{section}</h2>
+        <h2 class="section__heading">{section}</h2>
         <div class="faqs-section__items">
           {#each grouped[section] as faq}
             <Accordion title={faq.title}>
@@ -103,7 +103,7 @@
     gap: var(--space-3);
   }
 
-  .faqs-section__heading {
+  .section__heading {
     font-family: var(--font-sans);
     font-size: var(--text-2xl);
     font-weight: var(--font-bold);

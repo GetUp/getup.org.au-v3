@@ -5,6 +5,9 @@
 
   let { children } = $props();
 
+  // Check if we're on the root about page (for different layout treatment)
+  const isRootPage = $derived($page.url.pathname === "/about");
+
 
   const navItems = [
     {
@@ -51,20 +54,18 @@
     </div>
   </section>
 
-  <section class="about-content">
+  <section class="about-content" class:about-content--overview={isRootPage}>
     <div class="about-content__container">
-      <div class="about-content__layout">
-        <div class="about-content__sidebar">
-          <SidebarSubmenu
-            items={navItems}
-            mobileLayout="handle"
-            headerSelector="section"
-            activeHref={$page.url.pathname + $page.url.hash}
-          />
-        </div>
-        <section class="about-content__main">
-          {@render children()}
-        </section>
+      <div class="about-content__sidebar">
+        <SidebarSubmenu
+          items={navItems}
+          mobileLayout="handle"
+          headerSelector="section"
+          activeHref={$page.url.pathname + $page.url.hash}
+        />
+      </div>
+      <div class="about-content__main">
+        {@render children()}
       </div>
     </div>
   </section>
@@ -139,6 +140,9 @@
   .about-content__container {
     width: min(var(--container-xl), 100%);
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
 
   @media (min-width: 768px) {
@@ -150,37 +154,63 @@
   @media (min-width: 1024px) {
     .about-content__container {
       padding-inline: var(--space-8);
-    }
-  }
-
-  .about-content__layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-  }
-
-  @media (min-width: 1024px) {
-    .about-content__layout {
-      flex-direction: row;
+      grid-template-columns: 240px 1fr;
       gap: var(--space-12);
     }
   }
 
   .about-content__sidebar {
-    display: block;
+    display: contents;
   }
 
   @media (min-width: 1024px) {
     .about-content__sidebar {
-      flex-shrink: 0;
+      display: block;
+      grid-column: 1;
+      grid-row: 1;
     }
   }
 
   .about-content__main {
-    flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-10);
+  }
+
+  @media (min-width: 1024px) {
+    .about-content__main {
+      grid-column: 2;
+      grid-row: 1;
+    }
+  }
+
+  /* Overview page: allow full-width breakout */
+  .about-content--overview .about-content__main {
+    display: contents;
+  }
+
+  .about-content--overview .about-content__main :global(> *) {
+    grid-column: 1 / -1;
+  }
+
+  .about-content--overview .about-content__main :global(> :first-child) {
+    grid-column: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .about-content--overview .about-content__container {
+      grid-template-rows: auto 1fr;
+    }
+
+    .about-content--overview .about-content__main :global(> :first-child) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .about-content--overview .about-content__main :global(> .about-page__full-width) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
   }
 </style>

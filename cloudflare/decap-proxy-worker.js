@@ -158,51 +158,49 @@ export default {
 
           // Map "files" collections (slug -> specific file path)
           const fileCollections = {
-            home: {
-              header: "content/home/header.json",
-              hero: "content/home/hero.json",
-              "take-action": "content/home/take-action.json",
-              impact: "content/home/impact.json",
-              members: "content/home/members.json",
-              values: "content/home/values.json",
-              footer: "content/home/footer.json",
+            pages: {
+              home: "content/pages/home.json",
+              unsubscribe: "content/pages/unsubscribe.json",
+              research_reports: "content/pages/research-reports.json",
+              contact_us: "content/pages/contact-us.json",
+              privacy_policy: "content/pages/privacy-policy.json",
             },
             about: {
-              header: "content/about/header.json",
-              who: "content/about/who.json",
-              what: "content/about/what.json",
-              how: "content/about/how.json",
-              donations: "content/about/donations.json",
-              transparency: "content/about/transparency.json",
-              board: "content/about/board.json",
-              faqs: "content/about/faqs.json",
-              "work-at-getup": "content/about/work-at-getup.json",
+              overview: "content/pages/about.json",
+              reports: "content/pages/about/reports.json",
+              board: "content/pages/about/board.json",
+              faqs: "content/pages/about/faqs.json",
+              work: "content/pages/about/work-at-getup.json",
+              transparency: "content/pages/about/transparency.json",
+              contact_us: "content/pages/contact-us.json",
+              privacy_policy: "content/pages/privacy-policy.json",
             },
             donate: {
               donate: "content/donate/donate.json",
               crew: "content/donate/crew.json",
               willpower: "content/donate/willpower.json",
             },
-            pillars: { pillars: "content/pillars.json" },
-            other_pages: {
-              "donations-policy": "content/donations-policy.yaml",
-              "contact-us": "content/contact-us.json",
-              unsubscribe: "content/unsubscribe.json",
-              reports: "content/reports.json",
-              "privacy-policy": "content/privacy-policy.yaml",
+            pillars: {
+              pillars: "content/pillars.json"
             },
-            shared: { "footer-cta": "content/footer-cta.json" },
-            site_pages: { pages: "content/site-pages.json" },
+            site_pages: {
+              pages: "content/site-pages.json"
+            },
             settings: {
               home_page: "content/settings/hero.json",
               campaigns: "content/settings/campaigns.json",
+            },
+            shared: {
+              header: "content/shared/header.json",
+              footer: "content/footer.json",
+              "footer-cta": "content/footer-cta.json"
             },
           };
 
           // Map "folder" collections (slug -> folder/slug.ext)
           const folderCollections = {
             campaigns: { folder: "content/_campaigns", ext: "json" },
-            pillars: { folder: "content/_pillars", ext: "json" },
+            basic_pages: { folder: "content/basic-pages", ext: "json" },
           };
 
           let filePath;
@@ -269,51 +267,49 @@ export default {
         } else if (params.collection && params.slug) {
           // Map "files" collections (slug -> specific file path)
           const fileCollections = {
-            home: {
-              header: "content/home/header.json",
-              hero: "content/home/hero.json",
-              "take-action": "content/home/take-action.json",
-              impact: "content/home/impact.json",
-              members: "content/home/members.json",
-              values: "content/home/values.json",
-              footer: "content/home/footer.json",
+            pages: {
+              home: "content/pages/home.json",
+              unsubscribe: "content/pages/unsubscribe.json",
+              research_reports: "content/pages/research-reports.json",
+              contact_us: "content/pages/contact-us.json",
+              privacy_policy: "content/pages/privacy-policy.json",
             },
             about: {
-              header: "content/about/header.json",
-              who: "content/about/who.json",
-              what: "content/about/what.json",
-              how: "content/about/how.json",
-              donations: "content/about/donations.json",
-              transparency: "content/about/transparency.json",
-              board: "content/about/board.json",
-              faqs: "content/about/faqs.json",
-              "work-at-getup": "content/about/work-at-getup.json",
+              overview: "content/pages/about.json",
+              reports: "content/pages/about/reports.json",
+              board: "content/pages/about/board.json",
+              faqs: "content/pages/about/faqs.json",
+              work: "content/pages/about/work-at-getup.json",
+              transparency: "content/pages/about/transparency.json",
+              contact_us: "content/pages/contact-us.json",
+              privacy_policy: "content/pages/privacy-policy.json",
             },
             donate: {
               donate: "content/donate/donate.json",
               crew: "content/donate/crew.json",
               willpower: "content/donate/willpower.json",
             },
-            pillars: { pillars: "content/pillars.json" },
-            other_pages: {
-              "donations-policy": "content/donations-policy.yaml",
-              "contact-us": "content/contact-us.json",
-              unsubscribe: "content/unsubscribe.json",
-              reports: "content/reports.json",
-              "privacy-policy": "content/privacy-policy.yaml",
+            pillars: {
+              pillars: "content/pillars.json"
             },
-            shared: { "footer-cta": "content/footer-cta.json" },
-            site_pages: { pages: "content/site-pages.json" },
+            site_pages: {
+              pages: "content/site-pages.json"
+            },
             settings: {
               home_page: "content/settings/hero.json",
               campaigns: "content/settings/campaigns.json",
+            },
+            shared: {
+              header: "content/shared/header.json",
+              footer: "content/footer.json",
+              "footer-cta": "content/footer-cta.json"
             },
           };
 
           // Map "folder" collections (slug -> folder/slug.ext)
           const folderCollections = {
             campaigns: { folder: "content/_campaigns", ext: "json" },
-            pillars: { folder: "content/_pillars", ext: "json" },
+            basic_pages: { folder: "content/basic-pages", ext: "json" },
           };
 
           if (fileCollections[params.collection]?.[params.slug]) {

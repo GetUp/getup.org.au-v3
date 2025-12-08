@@ -68,7 +68,7 @@
 
         <div class="willpower-sections">
           <div class="willpower-section">
-            <h3 class="willpower-section__heading">What is GetUp's legal name and ACN?</h3>
+            <h3 class="section__heading">What is GetUp's legal name and ACN?</h3>
             <div class="willpower-section__card">
               <p class="willpower-section__text">
                 Name: GetUp Limited<br />
@@ -84,7 +84,7 @@
           </div>
 
           <div class="willpower-section">
-            <h3 class="willpower-section__heading">What wording should I use?</h3>
+            <h3 class="section__heading">What wording should I use?</h3>
             <p class="willpower-section__body">Below is example wording you may want to include in your Will.</p>
             <div class="willpower-section__card">
               <p class="willpower-section__text">
@@ -106,7 +106,7 @@
           </div>
 
           <div class="willpower-section">
-            <h3 class="willpower-section__heading">What type of gift can I leave?</h3>
+            <h3 class="section__heading">What type of gift can I leave?</h3>
             <p class="willpower-section__body">
               We ask GetUp members to leave a residual bequest if they can. A residual bequest is one in which you leave a portion of your estate to GetUp.
             </p>
@@ -122,7 +122,7 @@
           </div>
 
           <div class="willpower-section">
-            <h3 class="willpower-section__heading">Letting us know</h3>
+            <h3 class="section__heading">Letting us know</h3>
             <p class="willpower-section__body">
               When you leave your bequest to GetUp, it would be great if you could let us know. You don't have to, but we'd love to thank you personally and talk about how your visionary gift could be used.
               It's also helpful for us to know that members are supporting the movement in this way.
@@ -303,7 +303,7 @@
     gap: var(--space-4);
   }
 
-  .willpower-section__heading {
+  .section__heading {
     font-family: var(--font-sans);
     font-weight: var(--font-extrabold);
     font-size: var(--text-xl);
